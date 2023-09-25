@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>树莓派入门系列02 - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916
+系统备份步骤
+简述 全卡备份 创建img文件 使用软件备份 压缩备份 原理 备份流程 安装工具 存储镜像到U盘 创建img文件 对img文件分区 格式化img文件中的分区 备份boot分区 备份root分区 清理工作 完整的压缩备份脚本 简述
+我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。
+树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。
+全卡备份
+全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。
+创建img文件
+在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。
+在这里插入图片描述 在这里插入图片描述
+使用软件备份
+选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。
+在这里插入图片描述
+压缩备份
+压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml
+原理
+树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。
+官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。
+官方镜像
+备份流程
+读取当前系统boot、root分区的大小 创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。 备份boot、root分区 和原来一样的方式，烧录备份的系统到sd卡，正常使用。 安装工具
+rsync：镜像备份工具
+dosfstools：fat32分区格式化工具
+parted &amp;amp; kpartx：虚拟磁盘工具
+pv：显示进度
+sudo apt-get -y install rsync dosfstools parted kpartx pv 存储镜像到U盘
+img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。
+#mount USB device usbmount=/mnt mkdir -p $usbmount if [ -z $1 ]; then echo &amp;#34;no argument, assume the mount device is /dev/sda1 ?" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="树莓派入门系列02 - NOTE" />
+<meta name="twitter:description"
+  content="原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916
+系统备份步骤
+简述 全卡备份 创建img文件 使用软件备份 压缩备份 原理 备份流程 安装工具 存储镜像到U盘 创建img文件 对img文件分区 格式化img文件中的分区 备份boot分区 备份root分区 清理工作 完整的压缩备份脚本 简述
+我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。
+树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。
+全卡备份
+全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。
+创建img文件
+在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。
+在这里插入图片描述 在这里插入图片描述
+使用软件备份
+选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。
+在这里插入图片描述
+压缩备份
+压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml
+原理
+树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。
+官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。
+官方镜像
+备份流程
+读取当前系统boot、root分区的大小 创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。 备份boot、root分区 和原来一样的方式，烧录备份的系统到sd卡，正常使用。 安装工具
+rsync：镜像备份工具
+dosfstools：fat32分区格式化工具
+parted &amp;amp; kpartx：虚拟磁盘工具
+pv：显示进度
+sudo apt-get -y install rsync dosfstools parted kpartx pv 存储镜像到U盘
+img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。
+#mount USB device usbmount=/mnt mkdir -p $usbmount if [ -z $1 ]; then echo &amp;#34;no argument, assume the mount device is /dev/sda1 ?" />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/img/0048.jpg">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="树莓派入门系列02 - NOTE">
+<meta property="og:description"
+  content="原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916
+系统备份步骤
+简述 全卡备份 创建img文件 使用软件备份 压缩备份 原理 备份流程 安装工具 存储镜像到U盘 创建img文件 对img文件分区 格式化img文件中的分区 备份boot分区 备份root分区 清理工作 完整的压缩备份脚本 简述
+我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。
+树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。
+全卡备份
+全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。
+创建img文件
+在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。
+在这里插入图片描述 在这里插入图片描述
+使用软件备份
+选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。
+在这里插入图片描述
+压缩备份
+压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml
+原理
+树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。
+官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。
+官方镜像
+备份流程
+读取当前系统boot、root分区的大小 创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。 备份boot、root分区 和原来一样的方式，烧录备份的系统到sd卡，正常使用。 安装工具
+rsync：镜像备份工具
+dosfstools：fat32分区格式化工具
+parted &amp;amp; kpartx：虚拟磁盘工具
+pv：显示进度
+sudo apt-get -y install rsync dosfstools parted kpartx pv 存储镜像到U盘
+img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。
+#mount USB device usbmount=/mnt mkdir -p $usbmount if [ -z $1 ]; then echo &amp;#34;no argument, assume the mount device is /dev/sda1 ?" />
+<meta property="og:url" content="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/" />
+<meta property="og:site_name" content="树莓派入门系列02" />
+<meta property="og:image"
+  content="https://stc214.github.io/img/0048.jpg">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-02-05 22:46:52 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/">树莓派入门系列02</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 05 Feb 2021 22:46:52 &#43;0800"
+                    class="no-wrap">
+                    Fri, 05 Feb 2021 22:46:52 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Fri, 05 Feb 2021 22:46:52 &#43;0800"
+                    class="no-wrap">
+                    Fri, 05 Feb 2021 22:46:52 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2746 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Note
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      笔记
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916</p>
+<p>系统备份步骤</p>
+<pre><code>简述  
+全卡备份  
+    创建img文件  
+    使用软件备份  
+压缩备份  
+    原理  
+    备份流程  
+    安装工具  
+    存储镜像到U盘  
+    创建img文件  
+    对img文件分区  
+    格式化img文件中的分区  
+    备份boot分区  
+    备份root分区  
+    清理工作  
+完整的压缩备份脚本  
+</code></pre>
+<p>简述</p>
+<p>我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。</p>
+<p>树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。<br>
+全卡备份</p>
+<p>全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。<br>
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。<br>
+创建img文件</p>
+<p>在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。<br>
+在这里插入图片描述 在这里插入图片描述<br>
+使用软件备份</p>
+<p>选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。<br>
+在这里插入图片描述<br>
+压缩备份</p>
+<p>压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。<br>
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml<br>
+原理</p>
+<p>树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。<br>
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。<br>
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。<br>
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。<br>
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。</p>
+<p>官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。<br>
+官方镜像<br>
+备份流程</p>
+<pre><code>读取当前系统boot、root分区的大小  
+创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。  
+备份boot、root分区  
+和原来一样的方式，烧录备份的系统到sd卡，正常使用。  
+</code></pre>
+<p>安装工具</p>
+<p>rsync：镜像备份工具<br>
+dosfstools：fat32分区格式化工具<br>
+parted &amp; kpartx：虚拟磁盘工具<br>
+pv：显示进度</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sudo apt-get -y install rsync dosfstools parted kpartx pv  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>存储镜像到U盘</p>
+<p>img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。<br>
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#mount USB device  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">usbmount</span><span class="o">=</span>/mnt  
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;no argument, assume the mount device is /dev/sda1 ? Y/N&#34;</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">read</span> key  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$key</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;y&#34;</span> -o <span class="s2">&#34;</span><span class="nv">$key</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;Y&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		sudo mount -o <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> /dev/sda1 <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>  
+</span></span><span class="line"><span class="cl">		<span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2"> [backup dest device name], e.g. </span><span class="nv">$0</span><span class="s2"> /dev/sda1&#34;</span>  
+</span></span><span class="line"><span class="cl">		<span class="nb">exit</span> <span class="m">0</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">else</span>  
+</span></span><span class="line"><span class="cl">	sudo mount -o <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">$1</span> <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;`grep </span><span class="nv">$usbmount</span><span class="s2"> /etc/mtab`&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;mount fail, exit now&#34;</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">exit</span> <span class="m">0</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>   
+</span></span><span class="line"><span class="cl"><span class="nv">img</span><span class="o">=</span><span class="nv">$usbmount</span>/rpi-back-<span class="sb">`</span>date +%Y%m%d-%H%M<span class="sb">`</span>.img  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;备份文件位置：</span><span class="nv">$img</span><span class="s2">&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>创建img文件</p>
+<p>使用df -P命令可以查看磁盘使用的情况：<br>
+在这里插入图片描述</p>
+<p>先读取当前系统分区的大小，获取boot size和root size，并计算总空间。因为需要留一部分空间，供备份过程中临时使用，以及开机后需要的正常运行和执行命令的空间。所有总大小扩大1.3倍。<br>
+dd命令用来创建img镜像，pv命令用来显示进度，该过程需要等待较长的一段时间。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">bootsz</span><span class="o">=</span><span class="sb">`</span>df -P <span class="p">|</span> grep /boot <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">rootsz</span><span class="o">=</span><span class="sb">`</span>df -P <span class="p">|</span> grep /dev/root <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">totalsz</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$bootsz</span> <span class="nv">$rootsz</span> <span class="p">|</span> awk <span class="s1">&#39;{print int(($1+$2)*1.3)}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;start create img，total size=</span><span class="si">${</span><span class="nv">totalsz</span><span class="si">}</span><span class="s2">K&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#sudo dd if=/dev/zero of=$img bs=1K count=$totalsz  </span>
+</span></span><span class="line"><span class="cl">pv -tpreb /dev/zero <span class="p">|</span>sudo dd <span class="nv">of</span><span class="o">=</span><span class="nv">$img</span> <span class="nv">bs</span><span class="o">=</span>1K <span class="nv">count</span><span class="o">=</span><span class="nv">$totalsz</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>对img文件分区</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">bootstart</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p1 <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">bootend</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p1 <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">rootstart</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p2 <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#rootend=`sudo fdisk -l /dev/mmcblk0 | grep mmcblk0p2 | awk &#39;{print $3}&#39;`  </span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;format virtual disk:    boot: </span><span class="nv">$bootstart</span><span class="s2"> &gt;&gt;&gt; </span><span class="nv">$bootend</span><span class="s2">, root: </span><span class="nv">$rootstart</span><span class="s2"> &gt;&gt;&gt; end&#34;</span>  
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mklabel msdos  
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mkpart primary fat32 <span class="si">${</span><span class="nv">bootstart</span><span class="si">}</span>s <span class="si">${</span><span class="nv">bootend</span><span class="si">}</span>s  
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mkpart primary ext4 <span class="si">${</span><span class="nv">rootstart</span><span class="si">}</span>s -1  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>格式化img文件中的分区</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">loopdevice</span><span class="o">=</span><span class="sb">`</span>sudo losetup -f --show <span class="nv">$img</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">device</span><span class="o">=</span>/dev/mapper/<span class="sb">`</span>sudo kpartx -va <span class="nv">$loopdevice</span> <span class="p">|</span> sed -E <span class="s1">&#39;s/.*(loop[0-9])p.*/\1/g&#39;</span> <span class="p">|</span> head -1<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">sleep <span class="m">5</span>  
+</span></span><span class="line"><span class="cl">sudo mkfs.vfat <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 -n boot  
+</span></span><span class="line"><span class="cl">sudo mkfs.ext4 <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;format finish&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>备份boot分区</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">mountb</span><span class="o">=</span><span class="nv">$usbmount</span>/backup_boot/  
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$mountb</span>   
+</span></span><span class="line"><span class="cl">sudo mount -t vfat <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sudo cp -rfp /boot/* <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sync  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;...Boot partition done&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>备份root分区</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">mountr</span><span class="o">=</span><span class="nv">$usbmount</span>/backup_root/    
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$mountr</span>     
+</span></span><span class="line"><span class="cl">sudo mount -t ext4 <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2 <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#对swap分区特殊处理  </span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -f /etc/dphys-swapfile <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">        <span class="nv">SWAPFILE</span><span class="o">=</span><span class="sb">`</span>cat /etc/dphys-swapfile <span class="p">|</span> grep ^CONF_SWAPFILE <span class="p">|</span> cut -f <span class="m">2</span> -d<span class="o">=</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$SWAPFILE</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		<span class="nv">SWAPFILE</span><span class="o">=</span>/var/swap  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl">	<span class="nv">EXCLUDE_SWAPFILE</span><span class="o">=</span><span class="s2">&#34;--exclude </span><span class="nv">$SWAPFILE</span><span class="s2">&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#复制文件，并跳过特殊目录  </span>
+</span></span><span class="line"><span class="cl">sudo rsync --force -rltWDEgop --delete --stats --progress <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	<span class="nv">$EXCLUDE_SWAPFILE</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;.gvfs&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/dev&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;/media&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/mnt&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/proc&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;/run&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/sys&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/tmp&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;lost\+found&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;$usbmount&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	// <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#创建一下特殊目录  </span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in dev media mnt proc run sys boot<span class="p">;</span> <span class="k">do</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> ! -d <span class="nv">$mountr</span>/<span class="nv">$i</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		sudo mkdir <span class="nv">$mountr</span>/<span class="nv">$i</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">done</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="nv">$mountr</span>/tmp <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	sudo mkdir <span class="nv">$mountr</span>/tmp  
+</span></span><span class="line"><span class="cl">	sudo chmod a+w <span class="nv">$mountr</span>/tmp  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#移除网络配置  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sudo rm -f $mountr/etc/udev/rules.d/70-persistent-net.rules  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sync   
+</span></span><span class="line"><span class="cl">ls -lia <span class="nv">$mountr</span>/home/pi/  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;...Root partition done&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">清理工作  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># replace PARTUUID  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">opartuuidb</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> /dev/mmcblk0p1 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">opartuuidr</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> /dev/mmcblk0p2 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">npartuuidb</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">npartuuidr</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidr</span><span class="s2">/</span><span class="nv">$npartuuidr</span><span class="s2">/g&#34;</span> <span class="nv">$mountb</span>/cmdline.txt  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidb</span><span class="s2">/</span><span class="nv">$npartuuidb</span><span class="s2">/g&#34;</span> <span class="nv">$mountr</span>/etc/fstab  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidr</span><span class="s2">/</span><span class="nv">$npartuuidr</span><span class="s2">/g&#34;</span> <span class="nv">$mountr</span>/etc/fstab  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># umount loop device  </span>
+</span></span><span class="line"><span class="cl">sudo kpartx -d <span class="nv">$loopdevice</span>  
+</span></span><span class="line"><span class="cl">sudo losetup -d <span class="nv">$loopdevice</span>  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl">rm -rf <span class="nv">$mountb</span> <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;==== All done. You can un-plug the backup device&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>完整的压缩备份脚本</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/sh  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="o">=====================</span> part 1, install <span class="nv">tools</span> <span class="o">===============================</span>  
+</span></span><span class="line"><span class="cl">sudo apt-get -y install rsync dosfstools parted kpartx exfat-fuse pv  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="o">=====================</span> part 2, choose <span class="nv">USB</span> <span class="o">===============================</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#mount USB device  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">usbmount</span><span class="o">=</span>/mnt  
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;no argument, assume the mount device is /dev/sda1 ? Y/N&#34;</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">read</span> key  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$key</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;y&#34;</span> -o <span class="s2">&#34;</span><span class="nv">$key</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;Y&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		sudo mount -o <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> /dev/sda1 <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>  
+</span></span><span class="line"><span class="cl">		<span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2"> [backup dest device name], e.g. </span><span class="nv">$0</span><span class="s2"> /dev/sda1&#34;</span>  
+</span></span><span class="line"><span class="cl">		<span class="nb">exit</span> <span class="m">0</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">else</span>  
+</span></span><span class="line"><span class="cl">	sudo mount -o <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">$1</span> <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;`grep </span><span class="nv">$usbmount</span><span class="s2"> /etc/mtab`&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;mount fail, exit now&#34;</span>  
+</span></span><span class="line"><span class="cl">	<span class="nb">exit</span> <span class="m">0</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>   
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nv">img</span><span class="o">=</span><span class="nv">$usbmount</span>/rpi-back-<span class="sb">`</span>date +%Y%m%d-%H%M<span class="sb">`</span>.img  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;备份文件位置：</span><span class="nv">$img</span><span class="s2">&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="o">=====================</span> part 3, create a new blank <span class="nv">img</span> <span class="o">===============================</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># New img file  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sudo rm $img  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">bootsz</span><span class="o">=</span><span class="sb">`</span>df -P <span class="p">|</span> grep /boot <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">rootsz</span><span class="o">=</span><span class="sb">`</span>df -P <span class="p">|</span> grep /dev/root <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">totalsz</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$bootsz</span> <span class="nv">$rootsz</span> <span class="p">|</span> awk <span class="s1">&#39;{print int(($1+$2)*1.3)}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;start create img，total size=</span><span class="si">${</span><span class="nv">totalsz</span><span class="si">}</span><span class="s2">K&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#sudo dd if=/dev/zero of=$img bs=1K count=$totalsz  </span>
+</span></span><span class="line"><span class="cl">pv -tpreb /dev/zero <span class="p">|</span>sudo dd <span class="nv">of</span><span class="o">=</span><span class="nv">$img</span> <span class="nv">bs</span><span class="o">=</span>1K <span class="nv">count</span><span class="o">=</span><span class="nv">$totalsz</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># format virtual disk  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">bootstart</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p1 <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">bootend</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p1 <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">rootstart</span><span class="o">=</span><span class="sb">`</span>sudo fdisk -l /dev/mmcblk0 <span class="p">|</span> grep mmcblk0p2 <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;format virtual disk:    boot: </span><span class="nv">$bootstart</span><span class="s2"> &gt;&gt;&gt; </span><span class="nv">$bootend</span><span class="s2">, root: </span><span class="nv">$rootstart</span><span class="s2"> &gt;&gt;&gt; end&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#rootend=`sudo fdisk -l /dev/mmcblk0 | grep mmcblk0p2 | awk &#39;{print $3}&#39;`  </span>
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mklabel msdos  
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mkpart primary fat32 <span class="si">${</span><span class="nv">bootstart</span><span class="si">}</span>s <span class="si">${</span><span class="nv">bootend</span><span class="si">}</span>s  
+</span></span><span class="line"><span class="cl">sudo parted <span class="nv">$img</span> --script -- mkpart primary ext4 <span class="si">${</span><span class="nv">rootstart</span><span class="si">}</span>s -1  
+</span></span><span class="line"><span class="cl"><span class="nv">loopdevice</span><span class="o">=</span><span class="sb">`</span>sudo losetup -f --show <span class="nv">$img</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">device</span><span class="o">=</span>/dev/mapper/<span class="sb">`</span>sudo kpartx -va <span class="nv">$loopdevice</span> <span class="p">|</span> sed -E <span class="s1">&#39;s/.*(loop[0-9])p.*/\1/g&#39;</span> <span class="p">|</span> head -1<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">sleep <span class="m">5</span>  
+</span></span><span class="line"><span class="cl">sudo mkfs.vfat <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 -n boot  
+</span></span><span class="line"><span class="cl">sudo mkfs.ext4 <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;format finish&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="o">=====================</span> part 4, fill the data to <span class="nv">img</span> <span class="o">=========================</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># mount partitions  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">mountb</span><span class="o">=</span><span class="nv">$usbmount</span>/backup_boot/  
+</span></span><span class="line"><span class="cl"><span class="nv">mountr</span><span class="o">=</span><span class="nv">$usbmount</span>/backup_root/  
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$mountb</span> <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># backup /boot  </span>
+</span></span><span class="line"><span class="cl">sudo mount -t vfat <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sudo cp -rfp /boot/* <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sync  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;...Boot partition done&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># backup /root  </span>
+</span></span><span class="line"><span class="cl">sudo mount -t ext4 <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2 <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -f /etc/dphys-swapfile <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">        <span class="nv">SWAPFILE</span><span class="o">=</span><span class="sb">`</span>cat /etc/dphys-swapfile <span class="p">|</span> grep ^CONF_SWAPFILE <span class="p">|</span> cut -f <span class="m">2</span> -d<span class="o">=</span><span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$SWAPFILE</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		<span class="nv">SWAPFILE</span><span class="o">=</span>/var/swap  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl">	<span class="nv">EXCLUDE_SWAPFILE</span><span class="o">=</span><span class="s2">&#34;--exclude </span><span class="nv">$SWAPFILE</span><span class="s2">&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl">sudo rsync --force -rltWDEgop --delete --stats --progress <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	<span class="nv">$EXCLUDE_SWAPFILE</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;.gvfs&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/dev&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;/media&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/mnt&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/proc&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;/run&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/sys&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;/tmp&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">        --exclude <span class="s1">&#39;lost\+found&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	--exclude <span class="s1">&#39;$usbmount&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">	// <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># special dirs   </span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in dev media mnt proc run sys boot<span class="p">;</span> <span class="k">do</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> ! -d <span class="nv">$mountr</span>/<span class="nv">$i</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">		sudo mkdir <span class="nv">$mountr</span>/<span class="nv">$i</span>  
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>  
+</span></span><span class="line"><span class="cl"><span class="k">done</span>  
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="nv">$mountr</span>/tmp <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  
+</span></span><span class="line"><span class="cl">	sudo mkdir <span class="nv">$mountr</span>/tmp  
+</span></span><span class="line"><span class="cl">	sudo chmod a+w <span class="nv">$mountr</span>/tmp  
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#移除网络配置  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sudo rm -f $mountr/etc/udev/rules.d/70-persistent-net.rules  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sync   
+</span></span><span class="line"><span class="cl">ls -lia <span class="nv">$mountr</span>/home/pi/  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;...Root partition done&#34;</span>  
+</span></span><span class="line"><span class="cl"><span class="c1"># if using the dump/restore   </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># tmp=$usbmount/root.ext4  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sudo chattr +d $img $mountb $mountr $tmp  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sudo mount -t ext4 ${device}p2 $mountr  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cd $mountr  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sudo dump -0uaf - / | sudo restore -rf -  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cd  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># replace PARTUUID  </span>
+</span></span><span class="line"><span class="cl"><span class="nv">opartuuidb</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> /dev/mmcblk0p1 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">opartuuidr</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> /dev/mmcblk0p2 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">npartuuidb</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p1 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl"><span class="nv">npartuuidr</span><span class="o">=</span><span class="sb">`</span>blkid -o <span class="nb">export</span> <span class="si">${</span><span class="nv">device</span><span class="si">}</span>p2 <span class="p">|</span> grep PARTUUID<span class="sb">`</span>  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidr</span><span class="s2">/</span><span class="nv">$npartuuidr</span><span class="s2">/g&#34;</span> <span class="nv">$mountb</span>/cmdline.txt  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidb</span><span class="s2">/</span><span class="nv">$npartuuidb</span><span class="s2">/g&#34;</span> <span class="nv">$mountr</span>/etc/fstab  
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s2">&#34;s/</span><span class="nv">$opartuuidr</span><span class="s2">/</span><span class="nv">$npartuuidr</span><span class="s2">/g&#34;</span> <span class="nv">$mountr</span>/etc/fstab  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$mountb</span>  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># umount loop device  </span>
+</span></span><span class="line"><span class="cl">sudo kpartx -d <span class="nv">$loopdevice</span>  
+</span></span><span class="line"><span class="cl">sudo losetup -d <span class="nv">$loopdevice</span>  
+</span></span><span class="line"><span class="cl">sudo umount <span class="nv">$usbmount</span>  
+</span></span><span class="line"><span class="cl">rm -rf <span class="nv">$mountb</span> <span class="nv">$mountr</span>  
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;==== All done. You can un-plug the backup device&#34;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>linux搭建smb、挂载smb、Windows共享 - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
+安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
+sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
+服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
+/etc/samba/smb.conf
+配置文件参数解释
+[global]
+#全局参数。
+workgroup = MYGROUP
+#工作组名称
+server string = Samba Server Version %v
+#服务器介绍信息，参数%v为显示
+SMB版本号
+log file = /var/log/samba/log.%m
+#定义日志文件的存放位置与名称，
+参数%m为来访的主机名
+max log size = 50
+#定义日志文件的最大容量为50KB
+security = user
+#安全验证的方式，总共有4种
+#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
+使用user模式，map to guest=bad user代替
+#user：需验证来访主机提供的口令后才可以访问；提升了安全性" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="linux搭建smb、挂载smb、Windows共享 - NOTE" />
+<meta name="twitter:description"
+  content="原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
+安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
+sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
+服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
+/etc/samba/smb.conf
+配置文件参数解释
+[global]
+#全局参数。
+workgroup = MYGROUP
+#工作组名称
+server string = Samba Server Version %v
+#服务器介绍信息，参数%v为显示
+SMB版本号
+log file = /var/log/samba/log.%m
+#定义日志文件的存放位置与名称，
+参数%m为来访的主机名
+max log size = 50
+#定义日志文件的最大容量为50KB
+security = user
+#安全验证的方式，总共有4种
+#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
+使用user模式，map to guest=bad user代替
+#user：需验证来访主机提供的口令后才可以访问；提升了安全性" />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/img/0061.jpg">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="linux搭建smb、挂载smb、Windows共享 - NOTE">
+<meta property="og:description"
+  content="原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
+安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
+sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
+服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
+/etc/samba/smb.conf
+配置文件参数解释
+[global]
+#全局参数。
+workgroup = MYGROUP
+#工作组名称
+server string = Samba Server Version %v
+#服务器介绍信息，参数%v为显示
+SMB版本号
+log file = /var/log/samba/log.%m
+#定义日志文件的存放位置与名称，
+参数%m为来访的主机名
+max log size = 50
+#定义日志文件的最大容量为50KB
+security = user
+#安全验证的方式，总共有4种
+#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
+使用user模式，map to guest=bad user代替
+#user：需验证来访主机提供的口令后才可以访问；提升了安全性" />
+<meta property="og:url" content="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/" />
+<meta property="og:site_name" content="linux搭建smb、挂载smb、Windows共享" />
+<meta property="og:image"
+  content="https://stc214.github.io/img/0061.jpg">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-02-06 02:45:32 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/">linux搭建smb、挂载smb、Windows共享</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Sat, 06 Feb 2021 02:45:32 &#43;0800"
+                    class="no-wrap">
+                    Sat, 06 Feb 2021 02:45:32 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sat, 06 Feb 2021 02:45:32 &#43;0800"
+                    class="no-wrap">
+                    Sat, 06 Feb 2021 02:45:32 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2998 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Note
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      笔记
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>原文地址： <a href="https://www.cnblogs.com/-xuan/p/10293859.html">https://www.cnblogs.com/-xuan/p/10293859.html</a></p>
+<h2 id="安装完成smb相关的软件和依赖之后-只需要通过如下命令即可访问smb服务器">安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器</h2>
+<blockquote>
+<p>smbclient //{smbserverip}/{foldername}</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sudo mount -t cifs //ip地址/path/to/share path/to/mount  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">命令行解释：  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">mount：挂载命令  
+</span></span><span class="line"><span class="cl">-t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos：  
+</span></span><span class="line"><span class="cl">yum install nfs-utils】  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">//ip地址/path/to/share：共享目录路径  
+</span></span><span class="line"><span class="cl">path/to/mount：要挂载的路径，需要自己创建一个  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件   <br>
+Samba软件包的构成</p>
+<pre><code>服务端：samba      
+客户端：samba-client      
+公共组件：samba-common      
+Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议）      
+Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议）      
+</code></pre>
+<p>Samba服务的程序组件   <br>
+主配置文件路径</p>
+<p>/etc/samba/smb.conf</p>
+<p>配置文件参数解释</p>
+<p>[global]</p>
+<p>#全局参数。</p>
+<p>workgroup = MYGROUP</p>
+<p>#工作组名称</p>
+<p>server string = Samba Server Version %v</p>
+<p>#服务器介绍信息，参数%v为显示</p>
+<p>SMB版本号</p>
+<p>log file = /var/log/samba/log.%m</p>
+<p>#定义日志文件的存放位置与名称，</p>
+<p>参数%m为来访的主机名</p>
+<p>max log size = 50</p>
+<p>#定义日志文件的最大容量为50KB</p>
+<p>security = user</p>
+<p>#安全验证的方式，总共有4种</p>
+<p>#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，</p>
+<p>使用user模式，map to guest=bad user代替</p>
+<p>#user：需验证来访主机提供的口令后才可以访问；提升了安全性</p>
+<p>#server：使用独立的远程主机验证来访主机提供的口令（集中管理账户）</p>
+<p>#domain：使用域控制器进行身份验证</p>
+<p>passdb backend = tdbsam</p>
+<p>#定义用户后台的类型，共有3种</p>
+<p>#smbpasswd：使用smbpasswd命令为系统用户设置Samba服务程序的密码</p>
+<p>#tdbsam：创建数据库文件并使用pdbedit命令建立Samba服务程序的用户</p>
+<p>#ldapsam：基于LDAP服务进行账户验证</p>
+<p>load printers = yes</p>
+<p>#设置在Samba服务启动时是否共享</p>
+<p>打印机设备</p>
+<p>cups options = raw</p>
+<p>#打印机的选项</p>
+<p>[homes]</p>
+<p>#共享参数</p>
+<p>comment = Home Directories</p>
+<p>#描述信息</p>
+<p>browseable = no</p>
+<p>#指定共享信息是否在“网上邻居”中可见</p>
+<p>writable = yes</p>
+<p>#定义是否可以执行写入操作，</p>
+<p>与“read only”相反</p>
+<p>[printers]</p>
+<p>#打印机共享参数</p>
+<p>comment = All Printers</p>
+<p>path = /var/spool/samba</p>
+<p>#共享文件的实际路径(重要)。</p>
+<p>browseable = no</p>
+<p>#网络发现是否可见</p>
+<p>guest ok = no</p>
+<p>#是否所有人可见，等同于&quot;public&quot;参数。</p>
+<p>writable = no</p>
+<p>#是否允许写入</p>
+<p>printable = yes</p>
+<p>u  部署samba服务   <br>
+匿名方式访问</p>
+<p>准备环境</p>
+<p>setenforce 0                      //关闭selinux</p>
+<p>systemctl stop firewalld          //关闭防火墙</p>
+<p>1.搭建本地yum源。</p>
+<p>2.使用yum方式安装samba服务程序</p>
+<p>yum install -y samba*             //yum方式安装samba服务</p>
+<pre><code>创建共享的目录      
+编辑主配置文件设置匿名共享，设置共享目录      
+重启服务，使用windos访问验证，无法访问请检查iptable 防火墙      
+</code></pre>
+<p>mkdir -p /var/public              //创建要共享目录</p>
+<p>vim /etc/samba/smb.conf                   //编辑samba主配置文件</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;添加或者修改红色部分的参数&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+<p>[global]</p>
+<pre><code>    workgroup = SAMBA      
+  
+    security = user            //7.0以下系统将user改为share      
+  
+    passdb backend = tdbsam      
+  
+    map to guest = bad user            //7.0以上匿名访问必加      
+</code></pre>
+<p>[public]                                  //共享目录名称</p>
+<pre><code>    comment = public                  //共享描述      
+  
+    path = /var/public                //共享目录路径      
+  
+    guest ok = yes                     //共享目录是否所有人可见      
+  
+    read only = yes                    //是否只读      
+  
+    browseable = yes                   //网络发现是否可见      
+</code></pre>
+<p>systemctl restart smb                     //重启samba服务</p>
+<p>用户验证的共享</p>
+<p>案例：创建一个共享目录/var/yonghu/，只有zhangsan和lisi可以访问共享，只有zhangsan有可以写入的权限</p>
+<p>注意：创建共享用户前需要有对应的系统用户</p>
+<pre><code>创建共享用户zhangsan、lisi，创建共享的目录      
+修改smb配置文件，设置共享目录      
+</code></pre>
+<p>Useradd zhangsan          //创建系统用户zhangsan</p>
+<p>Useradd lisi              //创建系统用户lisi</p>
+<p>Pdbedit -a -u zhangsan     //创建共享用户zhangsan，-a添加-u指定用户</p>
+<p>Pdbedit -a -u lisi         //创建共享用户lisi，-a添加-u指定用户</p>
+<p>Mkdir /var/yonghu         //创建共享目录</p>
+<p>vim /etc/samba/smb.conf           //编辑samba主配置文件</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;添加或修改红色部分参数&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</p>
+<p>[global]</p>
+<pre><code>    workgroup = MYGROUP      
+  
+    security = user      
+  
+    passdb backend = tdbsam      
+  
+    map to guest = bad user    //匿名访问必加，否则需要密码      
+</code></pre>
+<p>[public]</p>
+<pre><code>    comment = public      
+  
+    path = /var/public      
+  
+    guest ok = yes      
+</code></pre>
+<p>[yonghu]                          //共享目录名称</p>
+<pre><code>    comment = yonghu           //描述      
+  
+    path = /var/yonghu         //共享目录路径      
+  
+    public = no        //是否所有人可见      
+  
+    read only = yes            //是否只读      
+  
+    valid users = zhangsan,lisi       //哪些用户可以访问      
+  
+    write list = zhangsan      //哪些用户可以写入，组加“@组名”      
+  
+    directory mask = 0755      //用户上传目录权限为755      
+  
+    create mask = 0644         //用户上传文件权限为644      
+</code></pre>
+<p>3.给予共享目录777权限</p>
+<p>Chmod -R 777 /var/yonghu          //更改共享目录的权限为777</p>
+<p>4.重启smb服务验证权限</p>
+<p>systemctl restart smb             //重启samba服务</p>
+<p>windows清除smb的连接会话</p>
+<p>net use                           //查看连接会话</p>
+<p>net use * /del                    //清除连接会话</p>
+<p>用户映射的共享(安全性高)</p>
+<p>正常情况下，一个共享账号都有一个同名的系统账号很不安全，可以使用映射的方式，将一个共享用户映射为多个不同的名称(别名)，只需要通过共享用户的别名和密码就能访问资源了，而不需要知道真正的共享用户(系统用户)名称</p>
+<p>默认的共享账号映射文件位于：/etc/samba/smbusers</p>
+<p>启用映射功能，需要修改主配置文件，在全局配置加入：</p>
+<p>username map=/etc/samba/smbusers</p>
+<p>重启服务即可生效</p>
+<p>访问地址限制</p>
+<p>在global或者配置里面添加hosts allow或者hosts deny即可</p>
+<p>Hosts allow = 192.168.2.  172.16.      //允许192.168.2.0,172.16.0.0网段访问</p>
+<p>Hosts deny = 192.168.3.  172.14.      //拒绝192.168.3.0,172.14.0.0网段访问</p>
+<p>使用smbclient访问共享</p>
+<p>查询共享资源列表</p>
+<p>smbclient -L 192.168.2.162 -U administrator</p>
+<p>匿名访问共享文件夹</p>
+<p>smbclient //192.168.2.223/public</p>
+<p>使用用户名、别名访问共享</p>
+<p>smbclient -U ls //192.168.2.223/zhangsan</p>
+<p>挂载共享目录</p>
+<p>Linux下挂载samba共享目录</p>
+<p>1.使用yum安装cifs-utils工具</p>
+<p>yum install -y cifs-utils                 //yum安装cifs-utils工具</p>
+<p>2.使用smbclient工具查询共享目录</p>
+<p>smbclient -L 192.168.2.224                //查询2.224的共享目录</p>
+<p>匿名挂载方法</p>
+<p>mount.cifs //192.168.2.223/public /ceshi</p>
+<pre><code>                      //将public目录挂载到本地ceshi目录      
+</code></pre>
+<p>指定用户挂载</p>
+<p>mount.cifs //192.168.2.223/yonghu /ceshi/ -o username=zhangsan,password=aaa</p>
+<pre><code>       //将yonghu目录挂载到本地ceshi目录，指定用户名zhangsan      
+</code></pre>
+<p>Linux下挂载windos共享目录</p>
+<p>1.使用smbclient工具查询共享目录</p>
+<p>smbclient -L 192.168.2.224                //查询2.224的共享目录</p>
+<p>2.挂载windos共享目录</p>
+<p>　　①mount -t cifs -o username=administrator,password=123 //192.168.2.162/d /ceshi/                 //将d盘挂载到本地的ceshi目录</p>
+<p>　　②mount -t cifs -o username=administrator,password=666,vers=2.0 //192.168.9.1/test /media/windows</p>
+<p>smb常见故障</p>
+<p>注意：如果windows无法访问，先使用其他客户端或者linux测试是否能访问，然后在排除故障</p>
+<p>1.win7访问Linux Samba的共享目录提示“登录失败：用户名或密码错误”解决方法：</p>
+<p>单击”开始“-“运行”，输入secpol.msc，打开“本地安全策略”，在本地安全策略窗口中依次打开“本地策略”&ndash;&gt;“安全选项”，然后再右侧的列表中找到“网络安全：LAN管理器身份验证级别”，把这个选项的值改为“发送 LM 和 NTLM – 如果已协商，则使用 NTLMv2会话安全”，最后应用确定，然后重新连接测试</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>

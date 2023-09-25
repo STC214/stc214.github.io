@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>wordpress docker版 从ubuntu装好到打开博客02 - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="docker # 以树莓派ubuntu server 20.04版为例 apt install docker.io -y linux版本不同docker安装的版本可能也不同
+一般有 docker / docker-ce / docker.io 等
+换源 # 先运行一次docker命令 生成文件 docker images # 备份源文件（如果有） cp /etc/docker/daemon.json /etc/docker/daemon.json.bak # 编辑 vim /etc/docker/daemon.json # 填入内容 { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn&amp;#34;] } # 保存退出并重启docker service docker restart 其他docker源参考:
+不得不说 docker的火爆程度已经达到的地步， 由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里： 正主：Docker 官方镜像加速：http://www.docker-cn.com/registry-mirror 在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～ 在 Linux上 安装 Docker curl -sSL https://get.daocloud.io/docker | sh 适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源 当然有时候不知道为什么daocloud响应不了，用阿里云的： 用阿里云的： 安装最新版本的Docker Engine curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet| sh - 安装1.9.1版本的Docker Engine curl -sSL http://acs-public-mirror." />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2020_06_30_15_02_26/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="wordpress docker版 从ubuntu装好到打开博客02 - NOTE" />
+<meta name="twitter:description"
+  content="docker # 以树莓派ubuntu server 20.04版为例 apt install docker.io -y linux版本不同docker安装的版本可能也不同
+一般有 docker / docker-ce / docker.io 等
+换源 # 先运行一次docker命令 生成文件 docker images # 备份源文件（如果有） cp /etc/docker/daemon.json /etc/docker/daemon.json.bak # 编辑 vim /etc/docker/daemon.json # 填入内容 { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn&amp;#34;] } # 保存退出并重启docker service docker restart 其他docker源参考:
+不得不说 docker的火爆程度已经达到的地步， 由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里： 正主：Docker 官方镜像加速：http://www.docker-cn.com/registry-mirror 在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～ 在 Linux上 安装 Docker curl -sSL https://get.daocloud.io/docker | sh 适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源 当然有时候不知道为什么daocloud响应不了，用阿里云的： 用阿里云的： 安装最新版本的Docker Engine curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet| sh - 安装1.9.1版本的Docker Engine curl -sSL http://acs-public-mirror." />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="wordpress docker版 从ubuntu装好到打开博客02 - NOTE">
+<meta property="og:description"
+  content="docker # 以树莓派ubuntu server 20.04版为例 apt install docker.io -y linux版本不同docker安装的版本可能也不同
+一般有 docker / docker-ce / docker.io 等
+换源 # 先运行一次docker命令 生成文件 docker images # 备份源文件（如果有） cp /etc/docker/daemon.json /etc/docker/daemon.json.bak # 编辑 vim /etc/docker/daemon.json # 填入内容 { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn&amp;#34;] } # 保存退出并重启docker service docker restart 其他docker源参考:
+不得不说 docker的火爆程度已经达到的地步， 由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里： 正主：Docker 官方镜像加速：http://www.docker-cn.com/registry-mirror 在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～ 在 Linux上 安装 Docker curl -sSL https://get.daocloud.io/docker | sh 适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源 当然有时候不知道为什么daocloud响应不了，用阿里云的： 用阿里云的： 安装最新版本的Docker Engine curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet| sh - 安装1.9.1版本的Docker Engine curl -sSL http://acs-public-mirror." />
+<meta property="og:url" content="https://stc214.github.io/post/2020_06_30_15_02_26/" />
+<meta property="og:site_name" content="wordpress docker版 从ubuntu装好到打开博客02" />
+<meta property="og:image"
+  content="https://stc214.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2020_06_30_15_02_26/">wordpress docker版 从ubuntu装好到打开博客02</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Fri, 22 Sep 2023 21:23:43 &#43;0800"
+                    class="no-wrap">
+                    Fri, 22 Sep 2023 21:23:43 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2261 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      note
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h2 id="docker">docker</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 以树莓派ubuntu server 20.04版为例  </span>
+</span></span><span class="line"><span class="cl">apt install docker.io -y  
+</span></span></code></pre></div><p>linux版本不同docker安装的版本可能也不同<br>
+一般有 docker / docker-ce / docker.io 等</p>
+<h5 id="换源">换源</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 先运行一次docker命令 生成文件  </span>
+</span></span><span class="line"><span class="cl">docker images  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 备份源文件（如果有）  </span>
+</span></span><span class="line"><span class="cl">cp /etc/docker/daemon.json /etc/docker/daemon.json.bak  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 编辑  </span>
+</span></span><span class="line"><span class="cl">vim /etc/docker/daemon.json  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 填入内容  </span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;https://docker.mirrors.ustc.edu.cn&#34;</span><span class="o">]</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存退出并重启docker   </span>
+</span></span><span class="line"><span class="cl">service docker restart  
+</span></span></code></pre></div><p>其他docker源参考:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">不得不说</span> <span class="err">docker的火爆程度已经达到的地步，</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">正主：Docker</span> <span class="err">官方镜像加速：http:</span><span class="c1">//www.docker-cn.com/registry-mirror  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～</span>  
+</span></span><span class="line"><span class="cl"><span class="err">在</span> <span class="err">Linux上</span> <span class="err">安装</span> <span class="err">Docker</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">https:</span><span class="c1">//get.daocloud.io/docker | sh   
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">适用于Ubuntu，Debian,Centos等大部分Linux，会</span><span class="mi">3</span><span class="err">小时同步一次Docker官方资源</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">当然有时候不知道为什么daocloud响应不了，用阿里云的：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">用阿里云的：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">安装最新版本的Docker</span> <span class="err">Engine</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">http:</span><span class="c1">//acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet| sh -  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">安装</span><span class="mf">1.9</span><span class="err">.</span><span class="mi">1</span><span class="err">版本的Docker</span> <span class="err">Engine</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">http:</span><span class="c1">//acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet| sh /dev/stdin 1.9.1  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">如果你的机器是阿里云主机，那么可以通过以下脚本，通过内网地址进行安装。</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">http:</span><span class="c1">//acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/intranet| sh -  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">安装</span> <span class="err">Docker</span> <span class="err">Compose</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">Docker</span> <span class="err">Compose存放在Git</span> <span class="err">Hub，不太稳定。</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">你可以也通过执行下面的命令，高速安装Docker</span> <span class="err">Compose。</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-L</span> <span class="err">https:</span><span class="c1">//get.daocloud.io/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">chmod</span>  <span class="err">+x</span>  <span class="err">/usr/local/bin/docker-compose</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">你可以通过修改URL中的版本，可以自定义您的需要的版本。</span>  
+</span></span><span class="line"><span class="cl"><span class="err">Docker更换镜像源</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">有位博主说的好，国内有</span><span class="mi">4</span><span class="err">家感觉还可以的镜像源.</span>  
+</span></span><span class="line"><span class="cl"><span class="err">选择一：老东家的</span>  <span class="err">daocloud：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">老东家提供的daocloud加速器，需要用户注册，每个用户每个月限制</span><span class="mi">10</span><span class="err">GB</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">不过也感觉非常快，注册也相当容器，不需要验证邮箱噢～～～&gt;-&lt;</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">https:</span><span class="c1">//get.daocloud.io/daotools/set_mirror.sh | sh -s http://67e93489.m.daocloud.io  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">curl</span> <span class="err">-sSL</span> <span class="err">https:</span><span class="c1">//get.daocloud.io/daotools/set_mirror.sh | sh -s http://f7291398.m.daocloud.io  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">具体来说</span>  <span class="err">daocloud的模式就是将你的id也就是shell</span><span class="mi">123</span><span class="err">转化成</span><span class="mf">67e93489</span><span class="err">，其格式为：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">curl-sSL</span> <span class="err">https:</span><span class="c1">//get.daocloud.io/daotools/set_mirror.sh | sh-shttp://{your_id}.m.daocloud.io  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">事实上，实际改的是</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">ExecStart=/usr/bin/docker-current</span> <span class="err">daemon</span> <span class="err">--registry-mirror=http:</span><span class="c1">//{your_id}.m.daocloud.io\  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">记得设置后，需要重新启动</span>  <span class="err">sudo</span> <span class="err">service</span> <span class="err">docker</span> <span class="err">restart</span>  
+</span></span><span class="line"><span class="cl"><span class="err">选择二：ustc</span> <span class="err">中科大的docker源</span> <span class="err">也是超级好的</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">官方文档也写的非常好，有兴趣可以看看</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">配置方法：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">新版的</span> <span class="err">Docker</span> <span class="err">使用</span> <span class="err">/etc/docker/daemon.json（Linux）</span> <span class="err">或者</span> <span class="err">%programdata%\docker\config\daemon.json（Windows）</span> <span class="err">来配置</span> <span class="err">Daemon。</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">请在该配置文件中加入（没有该文件的话，请先建一个）：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;https://docker.mirrors.ustc.edu.cn&#34;</span><span class="p">]</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">亦即：$~</span> <span class="err">sudo</span> <span class="err">vim</span> <span class="err">/etc/docker/daemon.json</span>  <span class="err">写入：</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;https://docker.mirrors.ustc.edu.cn&#34;</span><span class="p">]}</span><span class="err">这一行</span> <span class="err">然后重启docker服务即可.</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">选择三：网易蜂巢的镜像源，个人感觉上面的镜像好少，而且有时候pull他们的镜像还会失败，不过如果要写dockerfile的话，可以到上面参考参考，dockerfile他们到时写的很详细噢～</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">$~</span> <span class="err">sudo</span> <span class="err">echo</span><span class="s2">&#34;DOCKER_OPTS=\&#34;--registry-mirror=http://hub-mirror.c.163.com\&#34;&#34;</span><span class="err">&gt;&gt;/etc/default/docker</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">$~</span> <span class="err">service</span> <span class="err">docker</span> <span class="err">restart</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">最后一个选择：阿里的alicloud</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">个人感觉繁琐的是在注册上：不光要注册为阿里云的用户，还得加入开发者平台。不过提着眼睛做完这些以后，它的服务还真是不错，基本</span><span class="mi">1</span><span class="err">MB/s的pull速度(部分原因可能是因为我也在杭州吧)。配置方法跟daocloud类似，也是开通加速器以后给一个url。</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">ExecStart=/usr/bin/docker-current</span> <span class="err">daemon</span> <span class="err">--registry-mirror=https:</span><span class="c1">//{your_id}.mirror.aliyuncs.com\  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">阿里的你们可以去尝试，如果不是阿里云的EMS用户的话，个人不太推荐。</span>  
+</span></span><span class="line"><span class="cl"><span class="err">所以本人</span> <span class="err">强烈推荐！！强烈推荐！！使用ustc的！！！！</span>  
+</span></span><span class="line"><span class="cl"><span class="err">#Docker-machine安装</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">参照官网的教程：https:</span><span class="c1">//docs.docker.com/machine/install-machine/  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl"><span class="err">linux用户安装方式为：$~</span>  <span class="err">curl-L</span> <span class="err">https:</span><span class="c1">//github.com/docker/machine/releases/download/v0.10.0/docker-machine-`uname -s`-`uname -m` &gt;/tmp/docker-machine &amp;&amp;chmod +x /tmp/docker-machine &amp;&amp;  sudo cp /tmp/docker-machine /usr/local/bin/docker-machine  
+</span></span></span></code></pre></div><h4 id="拉取docker镜像">拉取docker镜像</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull wordpress    
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 拉取管理工具  </span>
+</span></span><span class="line"><span class="cl">docker pull portainer/portainer    
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>换源之后就快很多了~！</p>
+<h4 id="运行容器">运行容器</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># wordpress  </span>
+</span></span><span class="line"><span class="cl">docker run -d --name wordpress --restart<span class="o">=</span>always -p 8880:80 wordpress  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># portainer  </span>
+</span></span><span class="line"><span class="cl">docker volume create portainer_data  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">docker run -d -p 9000:9000 --name pter --restart<span class="o">=</span>always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># nextcloud  </span>
+</span></span><span class="line"><span class="cl">docker run -d -p 9999:80 --name nextcloud --restart<span class="o">=</span>always -v /media/hardisk1:/inside_docker/hahardisk1 nextcloud  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>portainer根据所处环境选择是本地还是远程管理<br>
+参考文章：http://www.senra.me/docker-management-panel-series-portainer/<br>
+<a href="http://stc14.top:18080/?p=19">http://stc14.top:18080/?p=19</a></p>
+<h2 id="后续修改">后续修改</h2>
+<p>wordpress容器默认上传限制为2M，这实在是太少了，本文介绍如何修改docker中wordpress的上传限制。<br>
+步骤</p>
+<h6 id="1-进入wordpress容器">1. 进入wordpress容器</h6>
+<p>docker exec -it wordpress /bin/bash</p>
+<h6 id="wordpress是你wordpress的容器id或名称">wordpress是你wordpress的容器id或名称</h6>
+<h6 id="2-复制phpini">2. 复制php.ini</h6>
+<h6 id="复制配置文件以便php配置生效">复制配置文件，以便php配置生效</h6>
+<p>cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini</p>
+<h6 id="3-修改phpini">3. 修改php.ini</h6>
+<p>没有安装文本编辑软件的请参考：https://blog.csdn.net/j84491135/article/details/105938672</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /usr/local/etc/php/php.ini  
+</span></span></code></pre></div><p>找到以下三个关键值，修改成你想要的值，注意   <br>
+memory_limit&gt;post_max_size&gt;upload_max_filesize<br>
+PS：vim查找命令为:/要查找的字符串，n下一个，N上一个</p>
+<p>upload_max_filesize = 200M	#文件大小限制<br>
+post_max_size = 250M	#post大小限制<br>
+memory_limit = 500M		#内存占用限制</p>
+<p>如果还要修改其他配置如开启文件上传、上传超时等等去查配置文件即可，不再赘述。</p>
+<h6 id="4-重启容器">4. 重启容器</h6>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker restart wordpress  
+</span></span></code></pre></div><h3 id="容器内没有vim的情况">容器内没有vim的情况</h3>
+<p>因为该源是不用GPG验证的，可能不安全，但因为docker容器没有验证GPG的工具所以只能先用这个源然后安装GPG验证相关软件包再更换回正式源。<br>
+步骤</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mv /etc/apt/sources.list /etc/apt/sources.list.bak  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF &gt;/etc/apt/sources.list  
+</span></span></span><span class="line"><span class="cl"><span class="s">deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free  
+</span></span></span><span class="line"><span class="cl"><span class="s">deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free  
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">apt update  
+</span></span></code></pre></div><h3 id="添加docker启动项">添加docker启动项</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/rc.local  
+</span></span><span class="line"><span class="cl"><span class="c1"># 在exit 0之前加入  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">sudo docker start <span class="k">$(</span>docker ps -a <span class="p">|</span> awk <span class="s1">&#39;{ print $1}&#39;</span> <span class="p">|</span> tail -n +2<span class="k">)</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>另外：<br>
+docker中 启动所有的容器命令</p>
+<p>docker start $(docker ps -a | awk &lsquo;{ print $1}&rsquo; | tail -n +2)</p>
+<p>docker中    关闭所有的容器命令</p>
+<p>docker stop $(docker ps -a | awk &lsquo;{ print $1}&rsquo; | tail -n +2)</p>
+<p>docker中 删除所有的容器命令</p>
+<p>docker rm $(docker ps -a | awk &lsquo;{ print $1}&rsquo; | tail -n +2)</p>
+<p>docker中    删除所有的镜像</p>
+<p>docker rmi $(docker images | awk &lsquo;{print $3}&rsquo; |tail -n +2)</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>

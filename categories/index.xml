@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on NOTE</title>
+    <link>https://stc214.github.io/categories/</link>
+    <description>Recent content in Categories on NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Apr 2022 02:09:36 +0800</lastBuildDate><atom:link href="https://stc214.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>note</title>
+      <link>https://stc214.github.io/categories/note/</link>
+      <pubDate>Sun, 24 Apr 2022 02:09:36 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/categories/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>资源</title>
+      <link>https://stc214.github.io/categories/%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Thu, 04 Mar 2021 13:30:27 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/categories/%E8%B5%84%E6%BA%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>科学魔法</title>
+      <link>https://stc214.github.io/categories/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/</link>
+      <pubDate>Tue, 12 Jan 2021 19:09:08 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/categories/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

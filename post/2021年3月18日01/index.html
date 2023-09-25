@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server） - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="原文： https://liujunzhou.top/rpi-guide3/
+树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）
+引言
+树莓派4B在2020年中支持了从USB存储设备引导启动，这意味着给树莓派提供了更多的可玩性和更强大的存储性能，毕竟SD卡（TF卡）的读写速度太拉跨了，使用USB引导，我们就可以将系统从SSD或者HDD中启动。 EEPROM固件升级到2020-09-03版本，当然，得益于社区支持，以及树莓派4B目前是Ubuntu认证设备，升级EEPROM固件并不是一个复杂的工作，接下来我将会提供两个升级方式供大家选择。
+如果你有一张TF卡，并且已经写入了Ubuntu Server 20.04 （20.10）系统，我建议你采用方式1，如果手头的SD卡（TF）卡是空卡，则也可以使用方式2，如果是刚接触小板子的萌新，建议选择方式2。
+方式1:使用rpi-eeprom
+安装rpi-eeprom,如果已安装，建议先更新一下。 sudo apt install -y rpi-eeprom
+将当前引导加载程序配置写入到文本。 sudo vcgencmd bootloader_config &amp;gt; bootconf.txt
+此时通过cat命令你如果看到如下格式的内容，说明引导配置成功导出了。
+root@Raspberry-Pi4:/home# cat bootconf.txt
+[all]
+BOOT_UART=0
+WAKE_ON_GPIO=1
+POWER_OFF_ON_HALT=0
+DHCP_TIMEOUT=45000
+DHCP_REQ_TIMEOUT=4000
+TFTP_FILE_TIMEOUT=30000
+ENABLE_SELF_UPDATE=1
+DISABLE_HDMI=0
+BOOT_ORDER=0xf41
+修改引导模式的优先级，通过sed命令，将BOOT_ORDER选项的值改为0xf41，如果你喜欢nano或者vim也可以使用nano和vim对选项进行修改。 sed -i -e &amp;lsquo;/^BOOT_ORDER=/ s/=.*$/=0xf41/&amp;rsquo; bootconf.txt
+ps：其实2020-09-03版本的EEPROM，bootloader配置默认的BOOT_ORDER值就是0xf41,如果走到这一步你发现这个值已经是0xf41了 ,可以使用sudo vcgencmd bootloader_version命令确认下bootloader版本，如果是2020-09-03版本则无需再更新EEPROM了。命令输出的内容大致长下面这个样
+root@Raspberry-Pi4:/home# sudo vcgencmd bootloader_version
+Sep 3 2020 13:11:43
+version c305221a6d7e532693cc7ff57fddfc8649def167 (release)
+timestamp 1599135103
+update-time 0
+capabilities 0x00000000
+也可以使用sudo rpi-eeprom-update命令查看EEPROM固件版本。
+root@Raspberry-Pi4:/home# sudo rpi-eeprom-update" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8818%E6%97%A501/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server） - NOTE" />
+<meta name="twitter:description"
+  content="原文： https://liujunzhou.top/rpi-guide3/
+树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）
+引言
+树莓派4B在2020年中支持了从USB存储设备引导启动，这意味着给树莓派提供了更多的可玩性和更强大的存储性能，毕竟SD卡（TF卡）的读写速度太拉跨了，使用USB引导，我们就可以将系统从SSD或者HDD中启动。 EEPROM固件升级到2020-09-03版本，当然，得益于社区支持，以及树莓派4B目前是Ubuntu认证设备，升级EEPROM固件并不是一个复杂的工作，接下来我将会提供两个升级方式供大家选择。
+如果你有一张TF卡，并且已经写入了Ubuntu Server 20.04 （20.10）系统，我建议你采用方式1，如果手头的SD卡（TF）卡是空卡，则也可以使用方式2，如果是刚接触小板子的萌新，建议选择方式2。
+方式1:使用rpi-eeprom
+安装rpi-eeprom,如果已安装，建议先更新一下。 sudo apt install -y rpi-eeprom
+将当前引导加载程序配置写入到文本。 sudo vcgencmd bootloader_config &amp;gt; bootconf.txt
+此时通过cat命令你如果看到如下格式的内容，说明引导配置成功导出了。
+root@Raspberry-Pi4:/home# cat bootconf.txt
+[all]
+BOOT_UART=0
+WAKE_ON_GPIO=1
+POWER_OFF_ON_HALT=0
+DHCP_TIMEOUT=45000
+DHCP_REQ_TIMEOUT=4000
+TFTP_FILE_TIMEOUT=30000
+ENABLE_SELF_UPDATE=1
+DISABLE_HDMI=0
+BOOT_ORDER=0xf41
+修改引导模式的优先级，通过sed命令，将BOOT_ORDER选项的值改为0xf41，如果你喜欢nano或者vim也可以使用nano和vim对选项进行修改。 sed -i -e &amp;lsquo;/^BOOT_ORDER=/ s/=.*$/=0xf41/&amp;rsquo; bootconf.txt
+ps：其实2020-09-03版本的EEPROM，bootloader配置默认的BOOT_ORDER值就是0xf41,如果走到这一步你发现这个值已经是0xf41了 ,可以使用sudo vcgencmd bootloader_version命令确认下bootloader版本，如果是2020-09-03版本则无需再更新EEPROM了。命令输出的内容大致长下面这个样
+root@Raspberry-Pi4:/home# sudo vcgencmd bootloader_version
+Sep 3 2020 13:11:43
+version c305221a6d7e532693cc7ff57fddfc8649def167 (release)
+timestamp 1599135103
+update-time 0
+capabilities 0x00000000
+也可以使用sudo rpi-eeprom-update命令查看EEPROM固件版本。
+root@Raspberry-Pi4:/home# sudo rpi-eeprom-update" />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/img/0081.jpg">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server） - NOTE">
+<meta property="og:description"
+  content="原文： https://liujunzhou.top/rpi-guide3/
+树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）
+引言
+树莓派4B在2020年中支持了从USB存储设备引导启动，这意味着给树莓派提供了更多的可玩性和更强大的存储性能，毕竟SD卡（TF卡）的读写速度太拉跨了，使用USB引导，我们就可以将系统从SSD或者HDD中启动。 EEPROM固件升级到2020-09-03版本，当然，得益于社区支持，以及树莓派4B目前是Ubuntu认证设备，升级EEPROM固件并不是一个复杂的工作，接下来我将会提供两个升级方式供大家选择。
+如果你有一张TF卡，并且已经写入了Ubuntu Server 20.04 （20.10）系统，我建议你采用方式1，如果手头的SD卡（TF）卡是空卡，则也可以使用方式2，如果是刚接触小板子的萌新，建议选择方式2。
+方式1:使用rpi-eeprom
+安装rpi-eeprom,如果已安装，建议先更新一下。 sudo apt install -y rpi-eeprom
+将当前引导加载程序配置写入到文本。 sudo vcgencmd bootloader_config &amp;gt; bootconf.txt
+此时通过cat命令你如果看到如下格式的内容，说明引导配置成功导出了。
+root@Raspberry-Pi4:/home# cat bootconf.txt
+[all]
+BOOT_UART=0
+WAKE_ON_GPIO=1
+POWER_OFF_ON_HALT=0
+DHCP_TIMEOUT=45000
+DHCP_REQ_TIMEOUT=4000
+TFTP_FILE_TIMEOUT=30000
+ENABLE_SELF_UPDATE=1
+DISABLE_HDMI=0
+BOOT_ORDER=0xf41
+修改引导模式的优先级，通过sed命令，将BOOT_ORDER选项的值改为0xf41，如果你喜欢nano或者vim也可以使用nano和vim对选项进行修改。 sed -i -e &amp;lsquo;/^BOOT_ORDER=/ s/=.*$/=0xf41/&amp;rsquo; bootconf.txt
+ps：其实2020-09-03版本的EEPROM，bootloader配置默认的BOOT_ORDER值就是0xf41,如果走到这一步你发现这个值已经是0xf41了 ,可以使用sudo vcgencmd bootloader_version命令确认下bootloader版本，如果是2020-09-03版本则无需再更新EEPROM了。命令输出的内容大致长下面这个样
+root@Raspberry-Pi4:/home# sudo vcgencmd bootloader_version
+Sep 3 2020 13:11:43
+version c305221a6d7e532693cc7ff57fddfc8649def167 (release)
+timestamp 1599135103
+update-time 0
+capabilities 0x00000000
+也可以使用sudo rpi-eeprom-update命令查看EEPROM固件版本。
+root@Raspberry-Pi4:/home# sudo rpi-eeprom-update" />
+<meta property="og:url" content="https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8818%E6%97%A501/" />
+<meta property="og:site_name" content="树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）" />
+<meta property="og:image"
+  content="https://stc214.github.io/img/0081.jpg">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-03-18 23:35:32 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8818%E6%97%A501/">树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Thu, 18 Mar 2021 23:35:32 &#43;0800"
+                    class="no-wrap">
+                    Thu, 18 Mar 2021 23:35:32 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Thu, 18 Mar 2021 23:35:32 &#43;0800"
+                    class="no-wrap">
+                    Thu, 18 Mar 2021 23:35:32 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1641 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Note
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      笔记
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>原文： <a href="https://liujunzhou.top/rpi-guide3/">https://liujunzhou.top/rpi-guide3/</a></p>
+<p>树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）</p>
+<p>引言</p>
+<p>树莓派4B在2020年中支持了从USB存储设备引导启动，这意味着给树莓派提供了更多的可玩性和更强大的存储性能，毕竟SD卡（TF卡）的读写速度太拉跨了，使用USB引导，我们就可以将系统从SSD或者HDD中启动。 EEPROM固件升级到2020-09-03版本，当然，得益于社区支持，以及树莓派4B目前是Ubuntu认证设备，升级EEPROM固件并不是一个复杂的工作，接下来我将会提供两个升级方式供大家选择。</p>
+<p>如果你有一张TF卡，并且已经写入了Ubuntu Server 20.04 （20.10）系统，我建议你采用方式1，如果手头的SD卡（TF）卡是空卡，则也可以使用方式2，如果是刚接触小板子的萌新，建议选择方式2。</p>
+<h1 id="heading"></h1>
+<p>方式1:使用rpi-eeprom</p>
+<pre><code>安装rpi-eeprom,如果已安装，建议先更新一下。  
+</code></pre>
+<p>sudo apt install -y rpi-eeprom</p>
+<pre><code>将当前引导加载程序配置写入到文本。  
+</code></pre>
+<p>sudo vcgencmd bootloader_config &gt; bootconf.txt</p>
+<p>此时通过cat命令你如果看到如下格式的内容，说明引导配置成功导出了。</p>
+<p>root@Raspberry-Pi4:/home# cat bootconf.txt<br>
+[all]<br>
+BOOT_UART=0<br>
+WAKE_ON_GPIO=1<br>
+POWER_OFF_ON_HALT=0<br>
+DHCP_TIMEOUT=45000<br>
+DHCP_REQ_TIMEOUT=4000<br>
+TFTP_FILE_TIMEOUT=30000<br>
+ENABLE_SELF_UPDATE=1<br>
+DISABLE_HDMI=0<br>
+BOOT_ORDER=0xf41</p>
+<pre><code>修改引导模式的优先级，通过sed命令，将BOOT_ORDER选项的值改为0xf41，如果你喜欢nano或者vim也可以使用nano和vim对选项进行修改。  
+</code></pre>
+<p>sed -i -e &lsquo;/^BOOT_ORDER=/ s/=.*$/=0xf41/&rsquo; bootconf.txt</p>
+<p>ps：其实2020-09-03版本的EEPROM，bootloader配置默认的BOOT_ORDER值就是0xf41,如果走到这一步你发现这个值已经是0xf41了 ,可以使用sudo vcgencmd bootloader_version命令确认下bootloader版本，如果是2020-09-03版本则无需再更新EEPROM了。命令输出的内容大致长下面这个样</p>
+<p>root@Raspberry-Pi4:/home# sudo vcgencmd bootloader_version<br>
+Sep  3 2020 13:11:43<br>
+version c305221a6d7e532693cc7ff57fddfc8649def167 (release)<br>
+timestamp 1599135103<br>
+update-time 0<br>
+capabilities 0x00000000</p>
+<p>也可以使用sudo rpi-eeprom-update命令查看EEPROM固件版本。</p>
+<p>root@Raspberry-Pi4:/home# sudo rpi-eeprom-update<br>
+BCM2711 detected<br>
+VL805 firmware in bootloader EEPROM<br>
+BOOTLOADER: up-to-date<br>
+CURRENT: Thu Sep  3 12:11:43 UTC 2020 (1599135103)<br>
+LATEST: Thu Sep  3 12:11:43 UTC 2020 (1599135103)<br>
+FW DIR: /lib/firmware/raspberrypi/bootloader/default<br>
+VL805: up-to-date<br>
+CURRENT: 000138a1<br>
+LATEST: 000138a1</p>
+<p>这里插入点刘同学的碎碎念：这里我来解释下0xf41是个啥意思，毕竟啃了好大一会英文文档，如果不分享给大家，有点点不太好，哈哈哈。</p>
+<p>首先是0xf前缀，也就是RESTART模式，他会重复尝试配置的引导顺序，1代表从SD卡启动，4代表从USB存储设备上启动，启动顺序由启动代码从右到左开始尝试，0xf41意味着会优先尝试从SD卡启动，如果没插卡，或者卡上没有系统则尝试从USB存储设备启动，并且按照这个顺序持续尝试。</p>
+<p>附表<br>
+Value 	Mode 	Description<br>
+0x1 	SD CARD 	SD card (or eMMC on Compute Module 4)<br>
+0x2 	NETWORK 	Network boot<br>
+0x3 	RPIBOOT 	RPIBOOT - <a href="https://github.com/raspberrypi/usbboot">See usbboot</a><br>
+(since 2020-09-03)<br>
+0x4 	USB-MSD 	USB mass storage boot (since 2020-09-03)<br>
+0x5 	BCM-USB-MSD 	USB 2.0 boot from USB Type-C socket or USB Type-A socket on CM4 IO board. (since 2020-12-14)<br>
+0xe 	STOP 	Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state.<br>
+0xf 	RESTART 	Start again with the first boot order field. (since 2020-09-03)</p>
+<p>在树莓派基金会官网上，提供了详细的bootloader config文档，如果你有兴趣可以去阅读一下。</p>
+<blockquote>
+<p><a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md">Raspberry Pi 4 bootloader configuration</a></p>
+</blockquote>
+<pre><code>使用修改后的文本配置生成新的EEPROM副本。  
+</code></pre>
+<p>rpi-eeprom-config &ndash;out pieeprom-new.bin &ndash;config bootconf.txt /lib/firmware/raspberrypi/bootloader/critical/pieeprom-2020-09-03.bin</p>
+<pre><code>配置下次重启时输入新的EEPROM固件。  
+</code></pre>
+<p>sudo rpi-eeprom-update -d -f ./pieeprom-new.bin</p>
+<pre><code>重启以应用更改  
+</code></pre>
+<p>sudo reboot</p>
+<h1 id="heading-1"></h1>
+<p>方式2:使用Raspberry Pi Imager</p>
+<p><a href="https://www.raspberrypi.org/software/">Raspberry Pi Imager 可在树莓派基金会官网获取</a></p>
+<pre><code>打开Raspberry Pi Imager，点击CHOOSE OS选择Misc Utillty images  
+</code></pre>
+<p>选择Misc Utillty images</p>
+<pre><code>选择2020-9-14版本的EEPROM固件（实际就是2020-09-3版本）  
+</code></pre>
+<p>选择固件</p>
+<p>3.选择要写入的存储设备（必须是SD/TF卡），刷入，将卡插入树莓派，给树莓派通电即可，大约60s就能完成刷入，之后断电拔卡就行了。</p>
+<h1 id="heading-2"></h1>
+<p>哪些系统支持直接从USB存储设备启动？</p>
+<p>首先Raspberry PI OS 是肯定支持的。</p>
+<p>Ubuntu 系列，目前直接确认支持的有Ubuntu Server 20.10和Ubuntu Desktop 20.10</p>
+<p>至于Ubuntu Server 20.04.1则需要通过一些特殊的方式使其支持，至于这两天要发布的Ubuntu Server 20.04.2我还没测试过，不过大概率的会支持.</p>
+<h1 id="heading-3"></h1>
+<p>目前兼容的USB适配器有哪些？</p>
+<p>James A. Chambers测试并维护了一个支持列表，里面包含了目前已知工作良好以及无法工作的设备列表，我就不直接放列表了，放了页面地址，大家可以自行查看。</p>
+<p><a href="https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/">兼容的usb适配器列表</a></p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>

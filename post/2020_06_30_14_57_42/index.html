@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>Docker管理面板系列——Portainer(简单、美观、强大) - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="原文：http://www.senra.me/docker-management-panel-series-portainer/
+一.介绍
+Portainer是个轻量级的Docker管理面板，和Rancher这种重量级选手没法比，Portainer倾向于单机的管理(后来发现能够添加多个单机节点切换着管理)，当然，在Docker搞出Swarm之后Portainer也借此实现了集群管理。
+使用官方提供的Demo预览一下
+地址: http://demo.portainer.io/
+用户名: admin
+密码: tryportainer
+你会有一种眼前一亮的感觉，美观，而且功能全面(从边上这一长列就能感受出来)
+虽然选项很多，但是其实就是命令行操作的简化，如果你用过Docker的命令行操作你能很快熟悉Portainer，和Rancher那种多了很多新花样不一样，Rancher的很多东西你看上去是摸不着头脑的，必须看着文档试一下才能大概弄清楚这是个啥。
+二.安装
+是不是眼馋了？那么就让我们装一下玩玩吧。
+这是Portainer对Docker各版本的支持情况
+Portainer的安装方式主要有两种，一个是使用Docker安装，一个是二进制文件直接跑，我建议用Docker安装，比较方便点，也不用你自己去配置自启动啥的。
+其他的请参考官方文档 ——&amp;gt; 传送门
+首先，我们得先把Unix套接字或者TCP监听打开，来方便连接(不过似乎Unix套接字默认是启用的，TCP需要自己开)
+PS.这儿请务必注意，不能直接配0.0.0.0，因为如果不做ACL或者TLS认证会导致你的Docker被人扫到后直接控制，有可能被远程创建挖矿容器
+先确认你的机器中是否存在/etc/sysconfig/docker这个配置文件，如果存在的话请修改，在其中的配置选项中加入如下内容
+#这个仅允许本地连接，如果要远程的话改成0.0.0.0，但是如果是公网中远程请你自己配TLS认证或者防火墙加白名单
+-Htcp://127.0.0.1:2375 -H unix:///var/run/docker.sock 但是，很多情况下我们会不存在这个文件(较高版本的Docker不会自动创建这个)，所以我们可以选择另外一种方法，参照Docker文档——&amp;gt;传送门
+vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } 虽然其实你修改启动脚本在dockerd命令之后添加 -H unix:///var/run/docker.sock -H tcp://127.0.0.1 也可以，但是这样终归不怎么优雅。
+准备工作做完，然后开始安装，使用Docker安装有三种连接方式
+首先是全部都需要做的操作，添加一个数据卷，当然你也可以在docker run的时候手动指定数据挂载路径，效果是一样的，将下面docker run命令中的portainer_data换成宿主机上的具体路径就OK
+docker volume create portainer_data 使用Unix套接字连接单个Docker(本地) docker run -d -p 9000:9000 -v /var/run/docker." />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2020_06_30_14_57_42/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Docker管理面板系列——Portainer(简单、美观、强大) - NOTE" />
+<meta name="twitter:description"
+  content="原文：http://www.senra.me/docker-management-panel-series-portainer/
+一.介绍
+Portainer是个轻量级的Docker管理面板，和Rancher这种重量级选手没法比，Portainer倾向于单机的管理(后来发现能够添加多个单机节点切换着管理)，当然，在Docker搞出Swarm之后Portainer也借此实现了集群管理。
+使用官方提供的Demo预览一下
+地址: http://demo.portainer.io/
+用户名: admin
+密码: tryportainer
+你会有一种眼前一亮的感觉，美观，而且功能全面(从边上这一长列就能感受出来)
+虽然选项很多，但是其实就是命令行操作的简化，如果你用过Docker的命令行操作你能很快熟悉Portainer，和Rancher那种多了很多新花样不一样，Rancher的很多东西你看上去是摸不着头脑的，必须看着文档试一下才能大概弄清楚这是个啥。
+二.安装
+是不是眼馋了？那么就让我们装一下玩玩吧。
+这是Portainer对Docker各版本的支持情况
+Portainer的安装方式主要有两种，一个是使用Docker安装，一个是二进制文件直接跑，我建议用Docker安装，比较方便点，也不用你自己去配置自启动啥的。
+其他的请参考官方文档 ——&amp;gt; 传送门
+首先，我们得先把Unix套接字或者TCP监听打开，来方便连接(不过似乎Unix套接字默认是启用的，TCP需要自己开)
+PS.这儿请务必注意，不能直接配0.0.0.0，因为如果不做ACL或者TLS认证会导致你的Docker被人扫到后直接控制，有可能被远程创建挖矿容器
+先确认你的机器中是否存在/etc/sysconfig/docker这个配置文件，如果存在的话请修改，在其中的配置选项中加入如下内容
+#这个仅允许本地连接，如果要远程的话改成0.0.0.0，但是如果是公网中远程请你自己配TLS认证或者防火墙加白名单
+-Htcp://127.0.0.1:2375 -H unix:///var/run/docker.sock 但是，很多情况下我们会不存在这个文件(较高版本的Docker不会自动创建这个)，所以我们可以选择另外一种方法，参照Docker文档——&amp;gt;传送门
+vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } 虽然其实你修改启动脚本在dockerd命令之后添加 -H unix:///var/run/docker.sock -H tcp://127.0.0.1 也可以，但是这样终归不怎么优雅。
+准备工作做完，然后开始安装，使用Docker安装有三种连接方式
+首先是全部都需要做的操作，添加一个数据卷，当然你也可以在docker run的时候手动指定数据挂载路径，效果是一样的，将下面docker run命令中的portainer_data换成宿主机上的具体路径就OK
+docker volume create portainer_data 使用Unix套接字连接单个Docker(本地) docker run -d -p 9000:9000 -v /var/run/docker." />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Docker管理面板系列——Portainer(简单、美观、强大) - NOTE">
+<meta property="og:description"
+  content="原文：http://www.senra.me/docker-management-panel-series-portainer/
+一.介绍
+Portainer是个轻量级的Docker管理面板，和Rancher这种重量级选手没法比，Portainer倾向于单机的管理(后来发现能够添加多个单机节点切换着管理)，当然，在Docker搞出Swarm之后Portainer也借此实现了集群管理。
+使用官方提供的Demo预览一下
+地址: http://demo.portainer.io/
+用户名: admin
+密码: tryportainer
+你会有一种眼前一亮的感觉，美观，而且功能全面(从边上这一长列就能感受出来)
+虽然选项很多，但是其实就是命令行操作的简化，如果你用过Docker的命令行操作你能很快熟悉Portainer，和Rancher那种多了很多新花样不一样，Rancher的很多东西你看上去是摸不着头脑的，必须看着文档试一下才能大概弄清楚这是个啥。
+二.安装
+是不是眼馋了？那么就让我们装一下玩玩吧。
+这是Portainer对Docker各版本的支持情况
+Portainer的安装方式主要有两种，一个是使用Docker安装，一个是二进制文件直接跑，我建议用Docker安装，比较方便点，也不用你自己去配置自启动啥的。
+其他的请参考官方文档 ——&amp;gt; 传送门
+首先，我们得先把Unix套接字或者TCP监听打开，来方便连接(不过似乎Unix套接字默认是启用的，TCP需要自己开)
+PS.这儿请务必注意，不能直接配0.0.0.0，因为如果不做ACL或者TLS认证会导致你的Docker被人扫到后直接控制，有可能被远程创建挖矿容器
+先确认你的机器中是否存在/etc/sysconfig/docker这个配置文件，如果存在的话请修改，在其中的配置选项中加入如下内容
+#这个仅允许本地连接，如果要远程的话改成0.0.0.0，但是如果是公网中远程请你自己配TLS认证或者防火墙加白名单
+-Htcp://127.0.0.1:2375 -H unix:///var/run/docker.sock 但是，很多情况下我们会不存在这个文件(较高版本的Docker不会自动创建这个)，所以我们可以选择另外一种方法，参照Docker文档——&amp;gt;传送门
+vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
+&amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] #如果deamon.json不存在请添加完整的json格式
+{ &amp;#34;hosts&amp;#34;: [&amp;#34;tcp://127.0.0.1:2375&amp;#34;, &amp;#34;unix:///var/run/docker.sock&amp;#34;] } 虽然其实你修改启动脚本在dockerd命令之后添加 -H unix:///var/run/docker.sock -H tcp://127.0.0.1 也可以，但是这样终归不怎么优雅。
+准备工作做完，然后开始安装，使用Docker安装有三种连接方式
+首先是全部都需要做的操作，添加一个数据卷，当然你也可以在docker run的时候手动指定数据挂载路径，效果是一样的，将下面docker run命令中的portainer_data换成宿主机上的具体路径就OK
+docker volume create portainer_data 使用Unix套接字连接单个Docker(本地) docker run -d -p 9000:9000 -v /var/run/docker." />
+<meta property="og:url" content="https://stc214.github.io/post/2020_06_30_14_57_42/" />
+<meta property="og:site_name" content="Docker管理面板系列——Portainer(简单、美观、强大)" />
+<meta property="og:image"
+  content="https://stc214.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2020_06_30_14_57_42/">Docker管理面板系列——Portainer(简单、美观、强大)</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Fri, 22 Sep 2023 21:23:43 &#43;0800"
+                    class="no-wrap">
+                    Fri, 22 Sep 2023 21:23:43 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1720 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      note
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>原文：http://www.senra.me/docker-management-panel-series-portainer/</p>
+<p>一.介绍</p>
+<p>Portainer是个轻量级的Docker管理面板，和Rancher这种重量级选手没法比，Portainer倾向于单机的管理(后来发现能够添加多个单机节点切换着管理)，当然，在Docker搞出Swarm之后Portainer也借此实现了集群管理。</p>
+<p>使用官方提供的Demo预览一下</p>
+<p>地址: <a href="http://demo.portainer.io/">http://demo.portainer.io/</a><br>
+用户名: admin<br>
+密码: tryportainer</p>
+<p>你会有一种眼前一亮的感觉，美观，而且功能全面(从边上这一长列就能感受出来)</p>
+<p>虽然选项很多，但是其实就是命令行操作的简化，如果你用过Docker的命令行操作你能很快熟悉Portainer，和Rancher那种多了很多新花样不一样，Rancher的很多东西你看上去是摸不着头脑的，必须看着文档试一下才能大概弄清楚这是个啥。</p>
+<p>二.安装</p>
+<p>是不是眼馋了？那么就让我们装一下玩玩吧。</p>
+<p>这是Portainer对Docker各版本的支持情况</p>
+<p>Portainer的安装方式主要有两种，一个是使用Docker安装，一个是二进制文件直接跑，我建议用Docker安装，比较方便点，也不用你自己去配置自启动啥的。<br>
+其他的请参考官方文档 ——&gt; 传送门</p>
+<p>首先，我们得先把Unix套接字或者TCP监听打开，来方便连接(不过似乎Unix套接字默认是启用的，TCP需要自己开)</p>
+<p>PS.这儿请务必注意，不能直接配0.0.0.0，因为如果不做ACL或者TLS认证会导致你的Docker被人扫到后直接控制，有可能被远程创建挖矿容器</p>
+<p>先确认你的机器中是否存在/etc/sysconfig/docker这个配置文件，如果存在的话请修改，在其中的配置选项中加入如下内容<br>
+#这个仅允许本地连接，如果要远程的话改成0.0.0.0，但是如果是公网中远程请你自己配TLS认证或者防火墙加白名单</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-Htcp://127.0.0.1:2375 -H unix:///var/run/docker.sock  
+</span></span></code></pre></div><p>但是，很多情况下我们会不存在这个文件(较高版本的Docker不会自动创建这个)，所以我们可以选择另外一种方法，参照Docker文档——&gt;传送门</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /etc/docker/daemon.json  
+</span></span></code></pre></div><p>#添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号</p>
+<pre tabindex="0"><code>&#34;hosts&#34;: [&#34;tcp://127.0.0.1:2375&#34;, &#34;unix:///var/run/docker.sock&#34;]  
+</code></pre><p>#如果deamon.json不存在请添加完整的json格式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;tcp://127.0.0.1:2375&#34;</span><span class="p">,</span> <span class="s2">&#34;unix:///var/run/docker.sock&#34;</span><span class="p">]</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /etc/docker/daemon.json  
+</span></span></code></pre></div><p>#添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="s2">&#34;hosts&#34;</span>: <span class="o">[</span><span class="s2">&#34;tcp://127.0.0.1:2375&#34;</span>, <span class="s2">&#34;unix:///var/run/docker.sock&#34;</span><span class="o">]</span>  
+</span></span></code></pre></div><p>#如果deamon.json不存在请添加完整的json格式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;tcp://127.0.0.1:2375&#34;</span><span class="p">,</span> <span class="s2">&#34;unix:///var/run/docker.sock&#34;</span><span class="p">]</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  
+</span></span></code></pre></div><p>虽然其实你修改启动脚本在dockerd命令之后添加 -H unix:///var/run/docker.sock -H tcp://127.0.0.1 也可以，但是这样终归不怎么优雅。</p>
+<p>准备工作做完，然后开始安装，使用Docker安装有三种连接方式</p>
+<p>首先是全部都需要做的操作，添加一个数据卷，当然你也可以在docker run的时候手动指定数据挂载路径，效果是一样的，将下面docker run命令中的portainer_data换成宿主机上的具体路径就OK</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker volume create portainer_data  
+</span></span></code></pre></div><ol>
+<li>使用Unix套接字连接单个Docker(本地)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">	docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer  
+</span></span><span class="line"><span class="cl">	     
+</span></span><span class="line"><span class="cl">	     
+</span></span><span class="line"><span class="cl">	docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer  
+</span></span><span class="line"><span class="cl">	<span class="sb">```</span>  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">2. 使用TCP方式连接单个Docker<span class="o">(</span>本地或远程<span class="o">)</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#如果连接的是远程的docker，请把ip换掉(如果你改了dockerd监听的默认端口也记得修改2375)  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>shell  
+</span></span><span class="line"><span class="cl">docker run -d -p 9000:9000 portainer/portainer -H tcp://127.0.0.1:2375  
+</span></span><span class="line"><span class="cl">	<span class="sb">```</span>  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">#如果连接的是远程的docker，请把ip换掉(如果你改了dockerd监听的默认端口也记得修改2375)  </span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>shell  
+</span></span><span class="line"><span class="cl">docker run -d -p 9000:9000 portainer/portainer -H tcp://127.0.0.1:2375  
+</span></span></code></pre></div><ol start="3">
+<li>使用Unix套接字或TCP连接Swarm集群(本地或远程)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">	docker run -d -p 9000:9000 portainer/portainer -H tcp://SWARM集群管理IP:2375  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">	docker run -d -p 9000:9000 portainer/portainer -H tcp://SWARM集群管理IP:2375  
+</span></span><span class="line"><span class="cl">	<span class="sb">```</span>  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">下面这个算是另外一种了，是将Portainer以服务的形式部署在集群中，似乎也可以借助Swarm来实现HA?  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>shell  
+</span></span><span class="line"><span class="cl">docker service create <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--name portainer <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--publish 9000:9000 <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--replicas<span class="o">=</span><span class="m">1</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--constraint <span class="s1">&#39;node.role == manager&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--mount <span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span>//var/run/docker.sock,dst<span class="o">=</span>/var/run/docker.sock <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--mount <span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span>//opt/portainer,dst<span class="o">=</span>/data <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">portainer/portainer <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">-H unix:///var/run/docker.sock  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker service create <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--name portainer <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--publish 9000:9000 <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--replicas<span class="o">=</span><span class="m">1</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--constraint <span class="s1">&#39;node.role == manager&#39;</span> <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--mount <span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span>//var/run/docker.sock,dst<span class="o">=</span>/var/run/docker.sock <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">--mount <span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span>//opt/portainer,dst<span class="o">=</span>/data <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">portainer/portainer <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">-H unix:///var/run/docker.sock  
+</span></span></code></pre></div><p>第一次访问会让你创建账号</p>
+<p>然后选择连接的是本地还是远端的Docker</p>
+<p>全部设置完后我们就能进去了，新建容器的操作也很友好</p>
+<p>感觉还是挺棒的，至于Swarm的我就不说啥了，之后估计还有专门讲Swarm基本使用的文章，可以关注下。</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>

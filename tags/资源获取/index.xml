@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>资源获取 on NOTE</title>
+    <link>https://stc214.github.io/tags/%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96/</link>
+    <description>Recent content in 资源获取 on NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 12 Jan 2021 19:09:08 +0800</lastBuildDate><atom:link href="https://stc214.github.io/tags/%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>P站图片下载</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</link>
+      <pubDate>Tue, 12 Jan 2021 19:09:08 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</guid>
+      <description>logo
+Pixiv Batch Downloader&amp;rsquo;s Wiki
+Discord
+现在只有中文文档。其他语言的用户可以使用翻译程序查看，或者提交翻译。
+建议使用 Pull Requests 提交翻译：
+Fork 本项目 https://github.com/xuejianxianzun/PBDWiki 下载项目文件，复制 /docs/zh-cn 目录里的所有文件，粘贴到其他语言的目录下。 翻译文本，替换图片，并替换链接中的 zh-cn。 提交 Pull Requests。 如果你不会使用 Pull Requests，可以 联系我，把文件打包发送给你进行翻译。
+Currently there are only Chinese documents. Users in other languages can use the translation program to view or submit translations.
+It is recommended to use Pull Requests to submit translation:
+Fork this project https://github.com/xuejianxianzun/PBDWiki Download the project files, copy all the files in the /docs/zh-cn directory, and paste them into other language directories.</description>
+    </item>
+    
+  </channel>
+</rss>

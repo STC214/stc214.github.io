@@ -1,0 +1,1826 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>笔记 on NOTE</title>
+    <link>https://stc214.github.io/tags/%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 笔记 on NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Apr 2022 02:09:36 +0800</lastBuildDate><atom:link href="https://stc214.github.io/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用dokcer部署calibre-web管理漫画</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8824%E6%97%A501/</link>
+      <pubDate>Sun, 24 Apr 2022 02:09:36 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8824%E6%97%A501/</guid>
+      <description>00 视频参考
+https://www.bilibili.com/video/BV12v411W7Pw
+功能虽然强大但是相当费时间 不推荐
+01 docker pull linuxserver/calibre-web
+02 docker run -d \ --name=calibre-web \ -e PUID=0 \ -e PGID=0 \ -e TZ=Asia/Shanghai \ -p 8083:8083 \ -v /mnt/sdb1/Calibre_data/config:/config \ -v /mnt/sdb1/SHOTA/COMIC:/books \ --restart unless-stopped \ linuxserver/calibre-web 03 默认账号密码
+admin
+admin123
+04 默认数据库
+安装PC版（管理漫画必备）后在
+&amp;ldquo;E:\Programs\Calibre Portable\Calibre Library\metadata.db&amp;rdquo;
+或者类似路径中找到后复制到docker映射的config目录即可
+也可以在如下链接中获取
+链接：https://cloud.189.cn/t/AbeAvq6baMNf 访问码：0eay
+05 PC版下载地址：
+https://download.calibre-ebook.com/5.41.0/calibre-portable-installer-5.41.0.exe
+06 配置界面右上角admin字样即可配置密码
+每次更改有密码填写框配置的时候
+密码都必须填写</description>
+    </item>
+    
+    <item>
+      <title>安装官方ubooquity的docker镜像使用的命令</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8823%E6%97%A501/</link>
+      <pubDate>Sat, 23 Apr 2022 23:53:30 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8823%E6%97%A501/</guid>
+      <description>安装官方ubooquity的docker镜像使用的命令如下
+openwrt
+docker run -d \ --name=L_ubooquity \ -e PUID=0 \ -e PGID=0 \ -e TZ=Asia/Shanghai \ -e MAXMEM=1024 \ -p 2202:2202 \ -p 2203:2203 \ -v /mnt/sdb1/Comics_L/config:/config \ -v /mnt/sdb1/Comics_L/books:/books \ -v /mnt/sdb1/SHOTA/COMIC:/comics \ -v /mnt/sdb1/Comics_L/files:/files \ --restart unless-stopped \ linuxserver/ubooquity 正常运行之后
+后台地址：
+http://192.168.1.1:2203/ubooquity/admin
+主页地址：
+http://192.168.1.1:2202/ubooquity/
+镜像安装的位置需要有足够的冗余空间，否则可能会导致报错或者无法运行 </description>
+    </item>
+    
+    <item>
+      <title>driverboostr无法更新的解决办法</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8815%E6%97%A501/</link>
+      <pubDate>Fri, 15 Apr 2022 10:00:20 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B44%E6%9C%8815%E6%97%A501/</guid>
+      <description>step1. 使用ipaddress.com 得到cd4o.com的ip地址
+step2. 将
+ip cd4o.com
+的条目加入hosts
+step3. 将 dns改为opendns
+© OpenDNS, 2021208.67.222.222 · 208.67.220.220
+step4. 刷新系统缓存
+ipconfig /flushdns
+应该已经可以了 </description>
+    </item>
+    
+    <item>
+      <title>Python破解验证码技术，识别率高达百分之八十！</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B43%E6%9C%8815%E6%97%A501/</link>
+      <pubDate>Tue, 15 Mar 2022 13:43:30 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B43%E6%9C%8815%E6%97%A501/</guid>
+      <description>原文网址：https://mp.weixin.qq.com/s/YckeQsFKpLWRvWUY4&amp;ndash;a-A</description>
+    </item>
+    
+    <item>
+      <title>Miui13 第三方recovery</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B41%E6%9C%884%E6%97%A502/</link>
+      <pubDate>Tue, 04 Jan 2022 19:55:49 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B41%E6%9C%884%E6%97%A502/</guid>
+      <description>原帖地址：酷安原帖作者mi_block
+下载地址：
+AKR下载
+天翼云
+嘟嘟工具
+小米官方刷机包汇总下载网站
+核心注意点 安卓11用A11 安卓12用A12
+帖子内容：
+twrp v3.0.3 A11 和 A12 更新
+【865系列】：米10/米10pro/米10至尊纪念版/k30pro/k30s至尊纪念版
+【870系列】：米10s/k40
+AKR下载(无需注册不限速)：查看链接
+天翼云盘 查看链接
+请检验下载后的文件，防止错误/被篡改！！！
+特性：
+&amp;mdash;支持data解密(Android 11)
+&amp;mdash;支持兼容模式(Android 12)
+&amp;mdash;支持刷入＞4G的包
+&amp;mdash;MTP 支持传输＞4G的文件
+&amp;mdash;ADB sideload 支持＞4G的文件
+&amp;mdash;Fastbootd
+&amp;mdash;OTG 支持exfat
+&amp;mdash;MIUI 更新支持(见下图)
+&amp;mdash;震动
+VAB设备刷rom后可能会出现xx分区挂载失败，导致magisk安装出错，所以提供自动修补boot选项
+Magisk Alpha支持magiskhide，所以使用它来修补
+自动处理至未活动的槽位，省去重启的麻烦操作！
+比功能相当于magisk管理器的修补boot.img功能
+更新(天翼云盘)
+优化/更新
+同步上游代码
+1.magisk alpha修补boot增加选项，不懂有什么用的默认就好(下图默认)
+2.miuiota文件夹改为/data/skkk/miuiota以防止miui报错
+3.更新blobs(A12)
+4.为vab设备的gpt-utils添加缺失的分区
+修复
+1.再次修复设置系统分区读写vendor会失败
+注意：
+系统分区设为可读写增加scratch分区检测，不允许存在此分区时继续操作
+scratch是啥可以查安卓文档
+它会占用super的空间导致更新失败(包括miui官方rec)
+出现此分区需要删除，提供3种方法：
+&amp;ndash;进入miui-电脑连接usb使用执行adb命令：adb enable-verity
+&amp;ndash;线刷一次，线刷包有super.img可以解决问题
+&amp;ndash;进入最新twrp，高级-终端执行命令：lptools remove scratch
+vab设备不要使用lptools，如出现问题可刷完整包(a,b2个slot都要刷到)
+使用A11刷miui安卓12后需要接着刷A12的镜像
+将A12镜像刷入到recovery分区再重启以支持兼容模式
+注意：A11代表安卓11，A12代表安卓12
+2者不兼容</description>
+    </item>
+    
+    <item>
+      <title>blender教程-黑铁骑士Ⅱ</title>
+      <link>https://stc214.github.io/post/2022%E5%B9%B41%E6%9C%884%E6%97%A501/</link>
+      <pubDate>Tue, 04 Jan 2022 17:28:19 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2022%E5%B9%B41%E6%9C%884%E6%97%A501/</guid>
+      <description>本文转载自辣椒酱的个人主页和B站频道，仅用作自我记录，方便查询。
+辣椒酱个人网站：http://www.blendermagic.cn
+配套文件与交流：https://shimo.im/docs/ckYQ8xq6JhVtrGjh
+视频教程地址：https://www.bilibili.com/video/BV1zh411Y7LX
+黑铁骑士Ⅱ物品清单 声明以下内容均为根据开源协议进行的无偿分享，请勿用于商业售卖。 -课程配套文件链接：https://pan.baidu.com/s/13mBMXIn8uz54yY85asPslA 提取码：2333 ·Machin3工具中文手册（最新 0.9 辣椒分支下载）https://www.blendermagic.cn/#/article/5311ab7b-481b-11eb-95ed-0242ac110004 -Blender2.9快捷键合集在线版https://shimo.im/sheets/oSMugmKgw2M9nFCn/MODOC/
+交流群：733128283(有一些QQ异地登陆等原因，发送的申请会被腾讯标记为风险账号并过滤，所以如果长时间没通过，请写信给辣椒酱：1132692358@qq.com)-常见问题搜索因为封印和机器人的高频调用会影响到用户体验。
+所以在这里将搜索服务放到了辣椒的网站上网站地址：https://www.blendermagic.cn/#/</description>
+    </item>
+    
+    <item>
+      <title>docker 架设汉化版ubooquity</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B411%E6%9C%8825%E6%97%A501/</link>
+      <pubDate>Thu, 25 Nov 2021 18:22:46 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B411%E6%9C%8825%E6%97%A501/</guid>
+      <description>原文：
+https://www.bilibili.com/read/cv10595812/
+http://yuanfangblog.xyz/technology/236.html
+视频：
+https://www.bilibili.com/video/BV16z4y1Z7xu/
+docker镜像：dezhao/ubooquity
+拉取镜像 docekr pull dezhao/ubooquity
+使用镜像 1.文件夹配置 需要配置config 和漫画文件夹
+根据个人需求可以配置电子书目录
+-v /&amp;lt;docker外路径&amp;gt; : /&amp;lt;docker内路径&amp;gt; 如： -v /home/ubooquity/config:/config -v /home/ubooquity/comics:/comics 更换主题只需要在config/themes文件夹中解压即可识别。
+2.端口配置 2202 2203
+-p /&amp;lt;docker外端口&amp;gt; : /&amp;lt;docker内端口&amp;gt; 如： -p 2202:2202 其他配置可以根据个人需求微调
+3.运行命令： 如有图形界面仅需要根据个人情况配置即可完成
+docker run -d -t \ --restart unless-stopped \ --name ubooquity \ -p 2202:2202 \ -p 2203:2203 \ -v &amp;lt;path to data&amp;gt;:/config \ -v &amp;lt;path to books&amp;gt;:/books \ -v &amp;lt;path to comics&amp;gt;:/comics \ -e TZ=Asia/Shanghai \ -e MAXMEM=1.</description>
+    </item>
+    
+    <item>
+      <title>lanrargi docker版架设</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8831%E6%97%A501/</link>
+      <pubDate>Sun, 31 Oct 2021 15:15:40 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8831%E6%97%A501/</guid>
+      <description>原文为B站网友提供的思路
+使用命令和镜像如下：
+docker run -d -p 3000:3000 \ -v /mnt/sda3/lanraragi/database:/root/lanraragi/database \ -v /mnt/sdb1/SHOTA/COMIC:/root/lanraragi/content \ --name lanraragi_cn \ dezhao/lanraragi_cn 缺点：
+1.排序不变的情况下需要手动搜索想看的档案
+2.移动端的ios版本需要14+ 老的苹果手机不可以安装
+3.ios移动端chrom网页查看会导致一些奇怪的bug
+4.正确点击翻页需要设置无限卷动模式（可用夸克浏览器）
+考虑如何使用时间顺序排序</description>
+    </item>
+    
+    <item>
+      <title>树莓派官方系统安装docker</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8829%E6%97%A501/</link>
+      <pubDate>Fri, 29 Oct 2021 15:07:26 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8829%E6%97%A501/</guid>
+      <description>安装docker 原文： https://blog.csdn.net/crxk_/article/details/109755321
+两行代码即可
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+给docker换源 原文： https://blog.csdn.net/duanhwonline/article/details/107702731
+配置Docker 中国官方镜像加速
+（1） 创建或修改 /etc/docker/daemon.json 文件
+vi /etc/docker/daemon.json
+{ &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;http://hub-mirror.c.163.com&amp;#34;, &amp;#34;https://dockerhub.azk8s.cn&amp;#34;, &amp;#34;https://docker.mirrors.ustc.edu.cn&amp;#34;, &amp;#34;https://registry.docker-cn.com&amp;#34;, ] } 保存以上内容后，reload该json文件 systemctl daemon-reload
+重启docker systemctl restart docker.service</description>
+    </item>
+    
+    <item>
+      <title>树莓派用U盘安装openwrt并使用U盘引导（无需SD卡）</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8826%E6%97%A501/</link>
+      <pubDate>Tue, 26 Oct 2021 18:01:42 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8826%E6%97%A501/</guid>
+      <description>01.更新bootloader（此步骤需要SD卡） 安装最新rpsi官方系统到SD卡
+换源：https://tech.biko.pub/tool#/rpi-apt-sources （广告和引导页面根据个人能力处理）
+或者直接使用此脚本命令即可（限制Debian10，其他版本需要到上面链接中选择）
+wget -qO- https://tech.biko.pub/resource/rpi-replace-apt-source-buster.sh | sudo bash
+02.更新bootloader apt update apt upgrade -y 之后重启系统即可使用 raspi-config 中的更新功能更新到最新的Bootloader
+使用usb引导的话可以通过官方刷写工具中的bootloader来操作。
+03.openwrt直接写入U盘或者移动硬盘 https://github.com/QuentinHsu/Document-Page/issues/12
+使用uuid的话需要进入系统正常引导后才能操作。(不推荐，可能导致卡住过不去，老老实实/dev/sda2就好了)</description>
+    </item>
+    
+    <item>
+      <title>LSPosed ---- Edxposed 的最佳替代品</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8818%E6%97%A502/</link>
+      <pubDate>Wed, 18 Aug 2021 17:28:20 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8818%E6%97%A502/</guid>
+      <description>原文地址：https://www.bilibili.com/read/cv9603603/
+目录 1、什么是 Lsposed ？ 2、为什么需要 Lsposed ？ 3、如何使用 Lsposed ？
+一、什么是 Lsposed ？ Lsposed 是 Edxposed 的一个新的分支，Lsposed 与Edxposed 相互兼容，却比 Edxposed 更加简洁、易用和高效，是现如今饱受诟病的 Edxposed 的极佳替代品。
+与 Xposed 相同，LPSosed 可以在不真实修改任何应用和系统组件的情况下达到修改的目的，从而实现强大的功能。
+二、为什么需要 Lsposed ？ 1️⃣ Edxposed 面临着停更的风险，且稳定性欠佳， Lsposed 则可以保证长期更新，并会持续加入新的功能。 2️⃣ Lsposed 修复了 Edxoosed 的一系列bug（比如偶尔软重启），并提升了其稳定性和性能。由于 Lsposed 默认开启白名单模式，模块只受用于需要的应用，系统资源的消耗被大大减少，耗电量也有所改善。 3️⃣ 而且，对于绝大多数模块而言，Lsposed 只需重启该应用即可激活，而无需重启整个系统（部分涉及系统框架的模块除外） 4️⃣ 此外，Lsposed 的默认白名单设定使得用户的个人隐私得到保障，进一步加强了系统安全性。借助Magisk Hide 功能，Lsposed 可以很好地隐藏自己，避免被部分重要应用识别
+三、如何使用Lsposed？ 1️⃣ 确保您正在使用 Android 8～11，并安装好 Magisk v21+ 2️⃣ 在Magisk模块仓库中下载并安装 Riru v23+
+Riru
+3️⃣下载并在 Magisk 中安装 Lsposed 模块。在安装的过程中，Lsposed 会禁用 Edxposed（讨论区获取下载链接）</description>
+    </item>
+    
+    <item>
+      <title>VSCode 与 Cmder 配合使用</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8817%E6%97%A501/</link>
+      <pubDate>Tue, 17 Aug 2021 22:13:58 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8817%E6%97%A501/</guid>
+      <description>原文链接：
+https://blog.csdn.net/xcl13014673050/article/details/103118401 https://zhuanlan.zhihu.com/p/82348252
+链接1: #设置最终效果 在这里插入图片描述 步骤
+复制本地 Cmder路径 D:\0DevSoftware\cmder\Cmder.exe 打开vscode,如下; 在这里插入图片描述 3.输入 terminal.integrated.shell.windows ,如下图:
+在这里插入图片描述 4.添加如下配置信息
+&amp;ldquo;terminal.integrated.shell.windows&amp;rdquo;: &amp;ldquo;D:\0DevSoftware\cmder\Cmder.exe&amp;rdquo; 在这里插入图片描述 在这里插入图片描述
+over!
+链接2： 总结了一下配置的流程
+安装文件搜索工具：Everything
+在 VSCode 中 ctrl + shift + P 打开命令 搜索 settings
+选择 打开设置 (json) ，如图：
+然后打开这个连接：
+https://github.com/cmderdev/cmder/wiki/Seamless-VS-Code-Integration#use-cmder-embedded-git-in-vscode
+找到 Use Cmder Embedded Git in VSCode ，如图：
+将 三行代码复制到 VSCode 的 settings.json 文件中，如图：
+复制后需要将上面所有带有 [cmder_root] 的路径替换为 Cmder 的根目录
+打开 Everything 搜索 Cmder 找到 Cmder 的安装根目录文件夹
+然后右键复制完整路径和文件名，如图：
+注意：粘贴后需要将目录添加为双斜杠 ，配置后的三行命令应如下所示：</description>
+    </item>
+    
+    <item>
+      <title>miui12.5 最简单快捷root刷面具&#43;线刷降级&#43;卡米解决教程（测试机小米10至尊版）</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8815%E6%97%A501/</link>
+      <pubDate>Sun, 15 Aug 2021 15:43:50 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B48%E6%9C%8815%E6%97%A501/</guid>
+      <description>原文链接：https://blog.csdn.net/qq_39231769/article/details/116492652
+参考无twrp和root刷面具教程 修补boot的方法适用于任何版本任何手机
+本教程正常情况无需双清或重装系统，可以进行OTA升级。升级后重复教程即可重新root。但还是要记得备份数据后进行以下操作。注：刷机有风险，玩机需谨慎。 操作不当所造成后果与菜鸟小回无关！！！ 一、本教程适合开发或稳定版miui系统。需解BL锁，教程参考小米官网；相关文件分享，密码：6666；这里展示我的机型信息及成功截图 enter description here enter description here
+enter description here
+二、使用magisk制作修补文件。
+点击下载最新完整包（需要和你当前手机版本一致，不一致请先升级）。enter description here更新页面取消下载。去浏览器继续下载剩余部分。（防止自动解密）enter description here在这里插入图片描述解压下载好的安装包找到boot.img文件，位置如图enter description here下载并安装magisk，酷安下载或者从我的百度网盘取。安装enter description here选择一个修补文件（无root时没有直接安装选项，此处演示手机已root）enter description here选择boot.imgenter description here在download目录下生成文件，修改后缀为magisk.imgenter description here上传至电脑三、使用adb命令包安装magisk
+解压文件adb_Magisk.zip，并将magisk.img放至此目录。enter description here手机开发者模式，USB调试连接电脑（连接不上可能是没有安卓驱动可能要下载）。关机并按住音量下键和开机键。进入FastBoot模式。双击双击安装Magisk.bat。等待ok后自动重启即可。至此，ROOT完成，可以看到magisk中有了直接安装选项。enter description here四、如果需要安装magisk的相关模块，只需点击直接安装然后重启手机即可。
+五、后续，如果刷机卡米、死机，亦或你想降级miui。继续下方教程：
+恢复教程访问小米官网线刷：官网地址可能遇到错误 update sparse crc list failed解决：查看右下角你刷机要调用的bat文件。enter description here从解压的rom中找到该文件enter description here打开找到下面两句并删除fastboot %* flash crclist %~dp0images\crclist.</description>
+    </item>
+    
+    <item>
+      <title>Python使用pandas处理csv文件</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8822%E6%97%A501/</link>
+      <pubDate>Tue, 22 Jun 2021 16:43:08 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8822%E6%97%A501/</guid>
+      <description>原文：https://blog.csdn.net/weixin_39126107/article/details/105737387 ython中引入pandas包可以很方便的对csv格式的数据进行处理
+import pandas as pd csv文件的读写
+data = pd.read_csv(&amp;#39;D:\data\train.scv&amp;#39;,names=[&amp;#39;ID&amp;#39;,&amp;#39;index&amp;#39;],dtype={&amp;#39;ID&amp;#39;:pd.np.string_},index_col=0) #names指定列名，dtype指定读取的格式，index_col指定索引的位置 data.columns = [&amp;#39;ID&amp;#39;,&amp;#39;index&amp;#39;] #读入后指定列名 data.rename(columns={&amp;#39;ID&amp;#39;:&amp;#39;name&amp;#39;,&amp;#39;index&amp;#39;:&amp;#39;goal&amp;#39;}, inplace = True) #读入后更改列名 data.to_csv(&amp;#39;D:\data\train.scv&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;) #写入文件 csv文件的拼接
+对记录相同类型数据的csv文件进行简单的内容拼接
+df3 = pd.concat([df1,df2],axis=0) #axis=0表示行拼接，axis=1表示列拼接 concat只是进行简单的内容拼接，比如df1有100行，df2有100行，那么拼接后的df3有200行 csv文件的合并
+两个csv文件按照某一列的值进行合并，例如相同ID号的数据进行合并
+df3 = pd.merge(df1,df2,on=[&amp;#39;ID&amp;#39;],how=&amp;#39;left&amp;#39;) #将df1和df2中ID号相同的行进行合并 删除某些列
+将csv文件中的某些列删除
+df1 = df1.drop([&amp;#39;grid_x&amp;#39;,&amp;#39;grid_y&amp;#39;],axis=1) #grid_x,grid_y是要删除的列，axis=1表示列删除 删除重复行
+删除指定列值相同的行
+df1= df1.drop_duplicates(subset=[&amp;#39;ID&amp;#39;,&amp;#39;index&amp;#39;],keep=&amp;#39;first&amp;#39;) #删除ID，index的值相同的行，重复行保留第一个 改变列值的数据类型
+df1[&amp;#39;hour&amp;#39;] = df1[&amp;#39;hour&amp;#39;].astype(str) ##将df1中的hour属性的类型改为str 数据特定长度截断
+对某一列的数据的长度进行截取
+df1[&amp;#39;time&amp;#39;] = round(df1[&amp;#39;time&amp;#39;],6) #将time的数据保留6位，例如从20200424保留6位为202004 数据分组操作
+根据某一列数据的值对其分组并进行求和，求平均，求方差等操作
+dict_mean = dict(df1.groupby([&amp;#39;ID&amp;#39;]).mean()[&amp;#39;index&amp;#39;]) #按照ID号进行分组，将具有相同ID号的行分到一组并求index的均值 #并保存到一个字典中 dict_std = dict(df1.groupby([&amp;#39;ID&amp;#39;]).std()[&amp;#39;index&amp;#39;]) #按照ID号进行分组，将具有相同ID号的行分到一组并求index的方差 #并保存到一个字典中 选择特定行</description>
+    </item>
+    
+    <item>
+      <title>一段js加密处理程序</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8821%E6%97%A502/</link>
+      <pubDate>Mon, 21 Jun 2021 21:32:45 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8821%E6%97%A502/</guid>
+      <description>import configparser import os # 当前文件路径 proDir = os.path.split(os.path.realpath(__file__))[0] # 在当前文件路径下查找.ini文件 configPath = os.path.join(proDir, &amp;#34;ip.ini&amp;#34;) print(configPath) print(&amp;#39;#&amp;#39;*100) # 初始化ini读取模块 con = configparser.ConfigParser() # 读取文件 con.read(configPath) # 获得列表形式的目标文件中所有的sections res = con.sections() print(res) print(&amp;#39;#&amp;#39;*100) # 获取所有sections中的options for i in range(len(res)): # options ops = con.options(res[i]) print(ops) print(&amp;#39;#&amp;#39;*100) # 内容键值对(元组形式) its = con.items(res[i]) print(its) print(&amp;#39;#&amp;#39;*100) # 获得配置内容 gets = con.get(res[1], &amp;#39;extshort.weixin.qq.com&amp;#39;) print(gets) print(&amp;#39;#&amp;#39;*100) # 得到整形数字(需要类型符合) try: gets = con.getint(res[1], &amp;#39;extshort.weixin.qq.com&amp;#39;) print(gets) except Exception as e: print(e) # 添加一个sections try: con.</description>
+    </item>
+    
+    <item>
+      <title>Python中CSV文件读写</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8821%E6%97%A501/</link>
+      <pubDate>Mon, 21 Jun 2021 18:21:57 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8821%E6%97%A501/</guid>
+      <description>首先读写csv文件需要引入官方库
+import csv 本文使用的csv文件随便建立一个即可，使用wps等办公软件或者手撸一个utf-8格式的文件都可以 读文件： 普通编写的csv文件和wps、word编写的csv文件编码可能不同。
+按照习惯从空白文件编写的一般为utf-8编码。
+word之类的文字办公软件通常如果为中文的话。
+会选择gbk或者gb2312编码。
+这种时候读写时需要标注对应编码。
+f1 = open(&amp;#39;py_ssv/test.csv&amp;#39;, &amp;#39;r&amp;#39;, encoding=&amp;#39;utf-8&amp;#39;) with f1: reader = csv.reader(f1) for i in reader: for j in i: print(j) print(type(j)) print(&amp;#39;#&amp;#39;*50) f1 = open(&amp;#39;py_ssv/工作簿1.csv&amp;#39;, &amp;#39;r&amp;#39;, encoding=&amp;#39;gbk&amp;#39;) with f1: reader = csv.reader(f1) for i in reader: for j in i: print(j) print(type(j)) 写文件： 使用csv.writer.writerow可以写一行，通过可迭代的字典或者列表等对象形式，每个元素占用一个格子。
+使用csv.writer.writerow可以写多行，通过可迭代的字典或者列表等对象形式，每一行的元素必须是可迭代对象，可迭代对象中的每个元素占一格。每一个可迭代对象占一行。
+nms = [[1, 2, 3], [7, 8, 9], [10, 11, 12]] f = open(&amp;#39;py_ssv/工作簿1.csv&amp;#39;, &amp;#39;w&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;,newline=&amp;#39;&amp;#39;) with f: writer = csv.</description>
+    </item>
+    
+    <item>
+      <title>conda/MiniConda换源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A502/</link>
+      <pubDate>Sun, 20 Jun 2021 18:07:42 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A502/</guid>
+      <description>Windows下 1. conda源更换为清华源
+Anaconda 是一个用于科学计算的 Python 发行版，支持 Linux, Mac, Windows, 包含了众多流行的科学计算、数据分析的 Python 包。 Anaconda 安装包可以到 https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载。 清华大学开源软件镜像站 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+Windows 用户无法直接创建名为 .condarc 的文件，可先执行 conda config --set show_channel_urls yes 生成该文件之后再修改。
+TUNA 还提供了 Anaconda 仓库与第三方源（conda-forge、msys2、pytorch等，查看完整列表）的镜像，各系统都可以通过修改用户目录下的 .condarc 文件:
+channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true 2. 注意如果需要pytorch, 还需要添加pytorch的镜像：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 3. 如果需要换回conda的默认源，直接删除channels即可，命令如下：
+conda config --remove-key channels Linux下 将以上配置文件写在 ~/.condarc中 vim ~/.condarc
+channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ - https://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>Pr 快捷键大全</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A501/</link>
+      <pubDate>Sun, 20 Jun 2021 17:46:49 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A501/</guid>
+      <description>文件 Ctrl + Alt + N 新建项目
+Ctrl + O 打开项目
+Ctrl + Alt + O 在Brige 中浏览
+Ctrl + Shift + W 关闭项目
+Ctrl + W 关闭
+Ctrl + S 保存
+Ctrl + Shift + S 另存为
+F5 采集
+F6 批采集
+Ctrl + Alt + I 从媒体浏览器导入
+Ctrl + I 导入
+Ctrl + M 导出媒体
+Ctrl + Q 退出
+编辑 Ctrl + Z 还原
+Ctrl + Shift + Z 重做</description>
+    </item>
+    
+    <item>
+      <title>MAGIX VEGAS Movie Studio——下载地址</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%886%E6%97%A5/</link>
+      <pubDate>Sun, 06 Jun 2021 13:54:43 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%886%E6%97%A5/</guid>
+      <description>https://cloud.189.cn/t/uMBrIjyu6NVb</description>
+    </item>
+    
+    <item>
+      <title>iperf3 使用方法</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8825%E6%97%A502/</link>
+      <pubDate>Sun, 25 Apr 2021 15:50:02 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8825%E6%97%A502/</guid>
+      <description>原文链接：https://zhuanlan.zhihu.com/p/314727150
+iperf3是一款带宽测试工具，它支持调节各种参数，比如通信协议，数据包个数，发送持续时间，测试完会报告网络带宽，丢包率和其他参数。
+一、安装 操作系统：Ubuntu20.04LTS
+打开终端，直接输入
+#sudo apt install iperf3 二、使用方法 环境假设：
+假设两台云服务器A（内）和B（外），我们通过笔记本电脑终端分别ssh远程连接上云服务器A和B。
+A（内）IP地址：10.10.0.1
+B（外）IP地址：10.10.0.2
+目的一：测试TCP吞吐量
+1、先让B（外）做server端，开启iperf服务器模式，指定TCP端口1314：
+#iperf3 -s -i 1 -p 1314 2、然后打开A（内）做client端，连接服务器端1314端口：
+#iperf3 -c 10.10.0.2 -i 1 -t 60 -p 1314 经过60秒后，A（内）client端得到结果如下图：
+B（外）服务器监听1314端口得到的结果如下图：
+其中：
+① Interval表示时间间隔。
+② Transfer表示时间间隔里面转输的数据量。
+③ Bandwidth是时间间隔里的传输速率。
+目的二：测试UDP吞吐量
+1、B（外）server端开启iperf的服务器模式：
+#iperf3 -s -i 1 -p 1314 2、A（内）client端启动iperf的客户端模式，连接服务器端：
+#iperf3 -u -c 10.10.0.2 -b 100m -t 60 -p 1314 A(内)客户端模式测得到数据如下：
+B（外）服务器模式监听得到结果如下：
+目的三：进行上下行带宽测试（TCP双向传输）
+#iperf3 -c 192.168.0.120 -d -t 60 目的四：测试多线程TCP吞吐量</description>
+    </item>
+    
+    <item>
+      <title>树莓派唯一编码怎么看</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8825%E6%97%A501/</link>
+      <pubDate>Sun, 25 Apr 2021 15:45:40 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8825%E6%97%A501/</guid>
+      <description>树莓派的唯一编码就是他的cpuinfo内的序列号
+通常放在
+/proc/cpuinfo
+这个文件中
+cat /proc/cpuinfo
+找到
+Serial 10000000*******
+就是它了</description>
+    </item>
+    
+    <item>
+      <title>【docker】wordpress修改文件上传限制</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A504/</link>
+      <pubDate>Tue, 20 Apr 2021 23:40:19 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A504/</guid>
+      <description>原文链接：https://blog.csdn.net/j84491135/article/details/105977073
+前言 wordpress容器默认上传限制为2M，这实在是太少了，本文介绍如何修改docker中wordpress的上传限制。 步骤
+1.进入wordpress容器 docker exec -it wordpress /bin/bash
+wordpress是你wordpress的容器id或名称
+2.复制php.ini 复制配置文件，以便php配置生效
+cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+3.修改php.ini 没有安装文本编辑软件的请参考：
+写在前面 因为该源是不用GPG验证的，可能不安全，但因为docker容器没有验证GPG的工具所以只能先用这个源然后安装GPG验证相关软件包再更换回正式源。 步骤 mv /etc/apt/sources.list /etc/apt/sources.list.bak cat &amp;lt;&amp;lt;EOF &amp;gt;/etc/apt/sources.list deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free EOF apt update vim /usr/local/etc/php/php.ini
+找到以下三个关键值，修改成你想要的值，注意memory_limit&amp;gt;post_max_size&amp;gt;upload_max_filesize PS：vim查找命令为:/要查找的字符串，n下一个，N上一个
+upload_max_filesize = 200M	#文件大小限制 post_max_size = 250M	#post大小限制 memory_limit = 500M	#内存占用限制
+如果还要修改其他配置如开启文件上传、上传超时等等去查配置文件即可，不再赘述。
+4.重启容器 docker restart wordpress ———————————————— 版权声明：本文为CSDN博主「微笑丶1998」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。 原文链接：https://blog.csdn.net/j84491135/article/details/105977073
+mv /etc/apt/sources.list /etc/apt/sources.</description>
+    </item>
+    
+    <item>
+      <title>docker安装mysql-server</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A503/</link>
+      <pubDate>Tue, 20 Apr 2021 23:02:51 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A503/</guid>
+      <description>原文链接：https://cloud.tencent.com/developer/article/1439653
+MySQL Server 5.5 (tag: 5.5, 5.5.61, 5.5.61-1.1.7) (mysql-server/5.5/Dockerfile) MySQL Server 5.6 (tag: 5.6, 5.6.41, 5.6.41-1.1.7) (mysql-server/5.6/Dockerfile) MySQL Server 5.7 (tag: 5.7, 5.7.23, 5.7.23-1.1.7) (mysql-server/5.7/Dockerfile) MySQL Server 8.0, the latest GA (tag: 8.0, 8.0.12, 8.0.12-1.1.7, latest) (mysql-server/8.0/Dockerfile) MySQL Server 8.0 for AArch64 (ARM64) (tag: 8.0-aarch64, 8.0.12-aarch64) 上面是可以安装的版本。那么我肯定是安装latest的。
+安装 那么执行代码如下:
+docker pull mysql/mysql-server 如果想要安装5.7版本的，可以执行以下命令：
+docker pull mysql/mysql-server:5.7 好了等待之后，就安装成功了，接下来，我们看看我们在本地存储的镜像。
+$ docker image lsREPOSITORY TAG IMAGE ID CREATED SIZEmysql/mysql-server latest 1fdf3806e715 5 weeks ago 309MB 接下来执行创建容器的命令。</description>
+    </item>
+    
+    <item>
+      <title>docker修改镜像存放目录三方法（推荐1）</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A502/</link>
+      <pubDate>Tue, 20 Apr 2021 19:10:12 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A502/</guid>
+      <description>原文链接：https://www.cnblogs.com/zmdComeOn/p/11977649.html
+docker info ：查看docker的存储等相关信息。
+将路径修改至挂载磁盘中
+前提：磁盘已挂载成功
+方法一：
+1、停止docker 服务
+service docker stop 2、备份数据到新的存放路径
+cp -r /var/lib/docker/* /mnt/docker 3、备份 /var/lib/docker 路径
+mv /var/lib/docker /var/lib/dockerbak} 4、创建软连接
+ln -s /mnt/docker /var/lib/docker 5、启动docker
+service docker start 如果docker完整，并可用，可删除原来的备份文件
+此方法，启动Docker时发现存储目录依旧是/var/lib/docker，但是实际上是存储在数据盘的，你可以在数据盘上看到容量变化。
+方法二：
+关闭docker
+在 Ubuntu 中的位置是：/etc/default/docker，在 CentOS 中的位置是：/etc/sysconfig/docker。
+在OPTIONS加上下面那段代码： &amp;ndash;graph=/local/docker 新的存储目录
+OPTIONS=&amp;rsquo;&amp;ndash;selinux-enabled &amp;ndash;log-driver=journald &amp;ndash;signature-verification=false &amp;ndash;graph=/local/docker &amp;ndash;insecure-registry=0.0.0.0/0&#39;
+重启docker后，docker info 就可以看到目录换了
+方法三：（建议：装好docker后及时修改默认路径，不要等到应用级的镜像pull进来后再去修改默认存储路径，不然各种错误让你应接不暇，这点我深有体会）
+最好是先关闭docker再进行操作
+如果docker是1.12或以上的版本，可以修改（或新建）daemon.json文件。修改后会立即生效，不需重启docker服务。
+vim /etc/docker/daemon.json { &amp;#34;graph&amp;#34;: &amp;#34;/new-path/docker&amp;#34; } 注意：如果之前有镜像和对应的数据，执行完这一步，默认存储路径是改掉了，但是会导致之前的镜像找不到，可以把/var/lib/docker/目录下的所有文件 cp -R 到挂载有数据分区的目录下 即：cp -R /var/lib/docker/* /data/tootls/docker/
+再测试下镜像是否能找到</description>
+    </item>
+    
+    <item>
+      <title>树莓派使用移动硬盘当系统盘启动需要注意设置的一个点</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A501/</link>
+      <pubDate>Tue, 20 Apr 2021 18:54:12 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A501/</guid>
+      <description>1. 系统刷入 树莓派更新eeprom和frameware固件之后,直接按照刷入sd卡的方式将目标系统刷入移动硬盘即可（PS:清空警告）
+官方刷写工具： https://downloads.raspberrypi.org/imager/imager_latest.exe
+eeprom 最新版：https://github.com/raspberrypi/rpi-eeprom
+此项可以直接通过解压对应的启动方式所代表的文件夹内丢入sd卡等后插入树莓派开机等几秒即可完成刷写和设置
+frameware最新版：https://github.com/raspberrypi/firmware/releases
+对于某些无法直接开机的系统可以直接将解压后的boot文件夹内的文件全部覆盖到boot分区内
+2.一些细节 如果刷入后系统可以直接开启则无需其他操作。
+如果刷入后系统无法正常启动的话Linux系统只需要按照上述方法解压frameware内的boot文件夹并复制其中所有文件到boot分区即可
+openwrt系统的话这么操作是不可以的 需要先备份boot分区内的cmdline.txt
+之后打开将其中启动字段修改
+原 root=/dev/mm******03
+改 root=/dev/sda2
+其他内容原封不动即可
+具体是sda还是sdb根据树莓派启动时具体提示来写</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 20.04系统上安装Cinnamon桌面环境的方法</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A504/</link>
+      <pubDate>Fri, 19 Mar 2021 21:46:01 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A504/</guid>
+      <description>原文：https://ywnz.com/linuxmh/7348.html
+本文介绍在Ubuntu 20.04系统上安装Cinnamon桌面环境（Cinnamon Desktop Environment）的方法。Cinnamon桌面布局与Gnome 2相似，并通过易于使用和舒适的桌面体验使用户感到宾至如归。
+前言
+Cinnamon是X Window系统的免费使用的桌面环境，最初是从GNOME桌面派生的，它是Linux桌面的最佳桌面环境之一，该桌面环境旨在实现速度、灵活性和高级创新功能，具有基于GNOME核心应用程序的X-Apps。
+Cinnamon Desktop Environment由许多较小的相互关联的项目组成：
+Cinnamon：这是Cinnamon的“shell”，可提供用户界面，例如面板、菜单等。
+CJS：它通过GObject Introspection提供对GNOME库的绑定。
+Cinnamon Control Center：从GNOME控制中心派生的Cinnamon设置中的Cinnamon官方控制中心。
+Cinnamon Desktop：这是GNOME桌面的一个分支，为Cinnamon提供了某些有用的资源。
+MDM：Cinnamon显示管理器。
+Cinnamon Menus：它包含libcinnamon-menu，Cinnamon菜单的布局配置文件以及一个简单的菜单编辑器。
+Muffin：Cinnamon的窗口管理器。
+Nemo：从Nautilus分叉的Cinnamon的文件管理器。
+Cinnamon Screensaver：长时间保持会话空闲时看到的屏幕锁。
+Cinnamon Session：负责启动Cinnamon会议。
+Cinnamon Settings Daemon：它提供了许多会话范围的服务和功能，需要长时间运行。
+Cinnamon Spices：修改您的Cinnamon桌面环境，并使用Cinnamon Spices扩展其功能。
+Cinnamon Translations：Cinnamon翻译是一个包装，其中包含Cinnamon中使用的翻译。
+在Ubuntu 20.04上安装Cinnamon桌面环境
+操作系统存储库中提供了适用于Ubuntu 20.04的Cinnamon Desktop Environment软件包，您只需要更新缓存并开始安装即可：
+sudo apt update sudo apt install cinnamon-desktop-environment 有数十个软件包要安装，如果您的互联网速度不是很好，您可能需要耐心等待才行，会返回如下信息，请按y键安装：
+mate-icon-theme mate-themes media-player-info mesa-utils mesa-va-drivers mesa-vdpau-drivers metacity-common muffin muffin-common nautilus-extension-brasero nemo nemo-data nemo-fileroller netpbm ocl-icd-libopencl1 patchutils pidgin pidgin-data policykit-1-gnome python-backports.</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A503/</link>
+      <pubDate>Fri, 19 Mar 2021 21:21:31 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A503/</guid>
+      <description>原文链接：https://ywnz.com/linuxjc/5099.html
+你是否正在寻找一种在Ubuntu Linux机器上禁用IPv6连接的方法？在本文中，我将教你如何做到这一点，还介绍如何启用或重新启用IPv6，参考在Linux服务器上禁用IPv6的方法。
+在Ubuntu上禁用IPv6[仅限高级用户]
+下面我将介绍如何在Ubuntu计算机上禁用IPv6协议，打开一个终端（默认：CTRL+ALT+T），需要root权限（参考在Ubuntu系统上为用户授予和删除sudo权限的方法）。
+1、使用Sysctl禁用IPv6
+首先，可以检查是否启用了IPv6：
+ip a
+如果启用了IPv6地址（你的网卡名称可能不同），应该会看到它：
+在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
+要禁用IPv6，你只需输入3个命令：
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+然后你可以检查它是否有用：
+ip a
+应该看不到IPv6条目了，如下图：
+在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
+但是，这只会暂时禁用IPv6，下次系统引导时，将再次启用IPv6。
+所以需要修改/etc/sysctl.conf，我将使用vim编辑文件，但你可以使用任何你喜欢的编辑器，确保拥有管理员权限（使用sudo）：
+在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
+将以下行添加到文件中：
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+要使设置生效，请使用：
+sudo sysctl -p
+如果重新启动后仍启用IPv6，则必须创建（使用root权限）文件/etc/rc.local，并将其填入：
+#!/bin/bash
+/etc/rc.local /etc/sysctl.d
+/etc/init.d/procps restart
+exit 0
+现在使用chmod命令使文件可执行：
+sudo chmod 755 /etc/rc.local
+从sysctl配置文件中手动读取内核参数。
+2、使用GRUB禁用IPv6
+另一种方法是将GRUB配置为在引导时传递内核参数，你必须编辑/etc/default/grub，再次确保你拥有管理员权限：
+在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
+现在，你需要修改GRUB_CMDLINE_LINUX_DEFAULT和GRUB_CMDLINE_LINUX以在启动时禁用IPv6：
+GRUB_CMDLINE_LINUX_DEFAULT=&amp;ldquo;quiet splash ipv6.disable=1&amp;rdquo;
+GRUB_CMDLINE_LINUX=&amp;ldquo;ipv6.disable=1&amp;rdquo;
+保存文件并运行：
+sudo update-grub
+设置将在重新启动后有效。
+在Ubuntu上重新启用IPv6的方法
+要重新启用IPv6，你必须撤消所做的更改，要在重新启动之前启用IPv6，请输入：
+sudo sysctl -w net.</description>
+    </item>
+    
+    <item>
+      <title>树莓派ubuntu20.10默认源和替换源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A502/</link>
+      <pubDate>Fri, 19 Mar 2021 21:09:48 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A502/</guid>
+      <description>默认源：
+## Note, this file is written by cloud-init on first boot of an instance ## modifications made here will not survive a re-bundle. ## if you wish to make changes you can: ## a.) add &amp;#39;apt_preserve_sources_list: true&amp;#39; to /etc/cloud/cloud.cfg ## or do the same in user-data ## b.) add sources in /etc/apt/sources.list.d ## c.) make changes to template file /etc/cloud/templates/sources.list.tmpl # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to # newer versions of the distribution.</description>
+    </item>
+    
+    <item>
+      <title>ubuntu一键换源脚本</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A501/</link>
+      <pubDate>Fri, 19 Mar 2021 19:33:32 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A501/</guid>
+      <description>这脚本在对于非x86平台的支持并不一定友好，如果出现update各种无法get到的情况 则需要使用其他方法 1.下载脚本
+wget https://raw.githubusercontent.com/sneeuw8/Linux_scripts/master/Ubuntu_source.sh
+运行脚本 bash Ubntu_source.sh
+一键命令
+bash &amp;lt;(curl -sL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirror.sh)
+1附：如果提示Command &#39;curl&#39; not found则说明当前未安装curl软件包，安装命令如下apt install -y curl
+1.创建sh后缀的shell脚本
+vim u_source.sh
+写入如下内容：
+#!/bin/bash #Author:孤_存 SYSTEM_NAME=`lsb_release -is` SYSTEM_VERSION=`lsb_release -cs` SYSTEM_VERSION_NUMBER=`lsb_release -rs` echo -e &amp;#39;\033[37m##################################################### \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; echo -e &amp;#39;\033[37m 提供以下国内更新源可供选择： \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; echo -e &amp;#39;\033[37m##################################################### \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; echo -e &amp;#39;\033[37m * 1) 中科大 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 2) 华为云 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 3) 阿里云 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 4) 网易 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 4) 搜狐 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 6) 清华大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 7) 浙江大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 8) 南京大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 9) 重庆大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 10) 兰州大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 11) 上海交通大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 12) 北京交通大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 13) 北京理工大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 14) 南京邮电大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 15) 华中科技大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 16) 哈尔滨工业大学 \033[0m&amp;#39; echo -e &amp;#39;\033[37m * 17) 北京外国语大学 \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; echo -e &amp;#39;\033[37m##################################################### \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; echo -e &amp;#34;\033[37m 当前操作系统 $SYSTEM_NAME $SYSTEM_VERSION_NUMBER \033[0m&amp;#34; echo -e &amp;#34;\033[37m 当前系统时间 $(date +%Y-%m-%d) $(date +%H:%M) \033[0m&amp;#34; echo -e &amp;#39;&amp;#39; echo -e &amp;#39;\033[37m##################################################### \033[0m&amp;#39; echo -e &amp;#39;&amp;#39; CHOICE=$(echo -e &amp;#39;\033[32m请输入您想使用的国内更新源 [ 1~17 ]：\033[0m&amp;#39;) read -p &amp;#34;$CHOICE&amp;#34; INPUT case $INPUT in 1) SOURCE=&amp;#34;mirrors.</description>
+    </item>
+    
+    <item>
+      <title>树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8818%E6%97%A501/</link>
+      <pubDate>Thu, 18 Mar 2021 23:35:32 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8818%E6%97%A501/</guid>
+      <description>原文： https://liujunzhou.top/rpi-guide3/
+树莓派4B食用指南（三、从USB存储设备启动Ubuntu Server）
+引言
+树莓派4B在2020年中支持了从USB存储设备引导启动，这意味着给树莓派提供了更多的可玩性和更强大的存储性能，毕竟SD卡（TF卡）的读写速度太拉跨了，使用USB引导，我们就可以将系统从SSD或者HDD中启动。 EEPROM固件升级到2020-09-03版本，当然，得益于社区支持，以及树莓派4B目前是Ubuntu认证设备，升级EEPROM固件并不是一个复杂的工作，接下来我将会提供两个升级方式供大家选择。
+如果你有一张TF卡，并且已经写入了Ubuntu Server 20.04 （20.10）系统，我建议你采用方式1，如果手头的SD卡（TF）卡是空卡，则也可以使用方式2，如果是刚接触小板子的萌新，建议选择方式2。
+方式1:使用rpi-eeprom
+安装rpi-eeprom,如果已安装，建议先更新一下。 sudo apt install -y rpi-eeprom
+将当前引导加载程序配置写入到文本。 sudo vcgencmd bootloader_config &amp;gt; bootconf.txt
+此时通过cat命令你如果看到如下格式的内容，说明引导配置成功导出了。
+root@Raspberry-Pi4:/home# cat bootconf.txt
+[all]
+BOOT_UART=0
+WAKE_ON_GPIO=1
+POWER_OFF_ON_HALT=0
+DHCP_TIMEOUT=45000
+DHCP_REQ_TIMEOUT=4000
+TFTP_FILE_TIMEOUT=30000
+ENABLE_SELF_UPDATE=1
+DISABLE_HDMI=0
+BOOT_ORDER=0xf41
+修改引导模式的优先级，通过sed命令，将BOOT_ORDER选项的值改为0xf41，如果你喜欢nano或者vim也可以使用nano和vim对选项进行修改。 sed -i -e &amp;lsquo;/^BOOT_ORDER=/ s/=.*$/=0xf41/&amp;rsquo; bootconf.txt
+ps：其实2020-09-03版本的EEPROM，bootloader配置默认的BOOT_ORDER值就是0xf41,如果走到这一步你发现这个值已经是0xf41了 ,可以使用sudo vcgencmd bootloader_version命令确认下bootloader版本，如果是2020-09-03版本则无需再更新EEPROM了。命令输出的内容大致长下面这个样
+root@Raspberry-Pi4:/home# sudo vcgencmd bootloader_version
+Sep 3 2020 13:11:43
+version c305221a6d7e532693cc7ff57fddfc8649def167 (release)
+timestamp 1599135103
+update-time 0
+capabilities 0x00000000
+也可以使用sudo rpi-eeprom-update命令查看EEPROM固件版本。
+root@Raspberry-Pi4:/home# sudo rpi-eeprom-update</description>
+    </item>
+    
+    <item>
+      <title>python程序制作成docker镜像之后体积过大如何精简</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8819%E6%97%A501/</link>
+      <pubDate>Fri, 19 Feb 2021 17:11:15 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8819%E6%97%A501/</guid>
+      <description>1.找到对应版本的docker镜像
+2.在对应的镜像下找到体积最理想的标签
+3.编写Dockerfile,模板如下
+# Use an official Python runtime as a parent image FROM python:3.7.10-alpine3.13 # Set the working directory to /app WORKDIR /app # Copy the current directory contents into the container at /app COPY . /app # Install any needed packages specified in requirements.txt RUN pip install --trusted-host pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt # Make port 80 available to the world outside this container EXPOSE 80 # Define environment variable ENV NAME daily189 # Run app.</description>
+    </item>
+    
+    <item>
+      <title>目前已经验证过的在树莓派ubuntu中安装docker的脚本和方法</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A502/</link>
+      <pubDate>Thu, 18 Feb 2021 16:15:35 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A502/</guid>
+      <description>原文链接：https://yq.aliyun.com/articles/576056
+概述
+其实树莓派安装docker和平时安装docker没什么区别，但是我就是喜欢记录下，这次安装docker的原因就是因为为了方便使用，练习写dockerfile什么的
+安装docker
+首先官方的方式我是不推荐的，安装完docker之后因为中国的网络缘故我们还要修改docker的镜像仓库地址
+废话不多说直接开始安装
+首先打开这个地址
+dev.aliyun.com
+其实就是阿里云的docker镜像仓库地址
+接着点击管理中心-&amp;gt;镜像加速器，里面就有配置镜像仓库的方法，输入下面这句话安装docker
+curl -fsSL https://get.docker.com | bash -s docker &amp;ndash;mirror Aliyun
+~ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun # Executing docker install script, commit: e749601 + sh -c &amp;#39;apt-get update -qq &amp;gt;/dev/null&amp;#39; + sh -c &amp;#39;apt-get install -y -qq apt-transport-https ca-certificates curl &amp;gt;/dev/null&amp;#39; + sh -c &amp;#39;curl -fsSL &amp;#34;https://mirrors.aliyun.com/docker-ce/linux/raspbian/gpg&amp;#34; | apt-key add -qq - &amp;gt;/dev/null&amp;#39; + sh -c &amp;#39;echo &amp;#34;deb [arch=armhf] https://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>openwrt设置samba</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A501/</link>
+      <pubDate>Thu, 18 Feb 2021 14:57:05 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A501/</guid>
+      <description>1. 安装Samba服务(当前步骤最新版固件一般都可以省略) 执行如下命令安装Samba服务：
+opkg update opkg install samba36-server 2. 配置全局共享参数 配置文件路径为
+/etc/samba/smb.conf.template
+将 [global] 中的 invalid users = root 注掉，像下面的样子：
+[global] netbios name = |NAME| display charset = |CHARSET| interfaces = |INTERFACES| server string = |DESCRIPTION| unix charset = |CHARSET| workgroup = |WORKGROUP| browseable = yes deadtime = 30 domain master = yes encrypt passwords = true enable core files = no guest account = nobody guest ok = yes # invalid users = root local master = yes load printers = no map to guest = Bad User max protocol = SMB2 min receivefile size = 16384 null passwords = yes obey pam restrictions = yes os level = 20 passdb backend = smbpasswd preferred master = yes printable = no security = user smb encrypt = disabled smb passwd file = /etc/samba/smbpasswd socket options = TCP_NODELAY IPTOS_LOWDELAY syslog = 2 use sendfile = yes writeable = yes 3.</description>
+    </item>
+    
+    <item>
+      <title>使用Portainer管理Docker容器</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A503/</link>
+      <pubDate>Wed, 17 Feb 2021 02:58:25 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A503/</guid>
+      <description>官网：https://portainer.io/Portainer
+Portainer和Shipyard一样，同样是一个给予Swarm技术衍生出来的负责管理Docker容器的Web UI界面. 演示Live： Github地址： 官方文档：https://portainer.readthedocs.io/ 部署教程：https://portainer.readthedocs.io/en/latest/deployment.html Installation
+首先你得安装好docker,这个可以看看我之前的那篇文章.
+我们创建一个属于我们自己的数据卷 docker volume create portainer_data
+运行容器
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer View On http://serverip:9000 没错 就是这么简单 使用
+首次登录会让你设置一个管理员账号 [图片上传失败&amp;hellip;(image-f17c-1510939718923)]
+接着会询问你管理的主机是本地的Local还是远程的Remote [图片上传失败&amp;hellip;(image-c7c08-1510939718923)]
+然后就进入到主界面 [图片上传失败&amp;hellip;(image-4ddab3-1510939718923)]
+可以尝试体验一下这个Portainer平台.
+换源：选择Registries-&amp;gt;点击Add registry-&amp;gt;Custom registry 输入你的URL镜像源即可. 原文链接：https://www.jianshu.com/p/aff1512746b4</description>
+    </item>
+    
+    <item>
+      <title>docker 更换镜像源地址</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A502/</link>
+      <pubDate>Wed, 17 Feb 2021 02:42:18 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A502/</guid>
+      <description>好像国内的镜像好多都访问不了，可以试试这个
+{ “registry-mirrors”: [“https://docker.mirrors.ustc.edu.cn/”] } 然后还发一个规律就是第一次下载很慢，可以ctrl+c暂停掉，然后再下载一次，就变快了很多。
+文章参考:
+Docker 中国官方镜像加速
+参考链接：
+https://www.docker-cn.com/registry-mirror
+https://blog.csdn.net/Mr_OOO/article/details/67016309
+不同版本的docker更换镜像的方法不一样
+这里用的docker18版本
+查看版本命令
+[root@localhost docker]# docker --version Docker version 18.04.0-ce-rc1, build 0c7f7c6 在/etc/docker/目录下新建daemon.json文件，如果有就修改
+/etc/docker/daemon.json
+在daemon.json文件添加如下内容：
+{ &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://registry.docker-cn.com&amp;#34;] } 然后重启
+[root@localhost docker]# service docker restart 试试pull是不是变快了…
+直接设置docker的daemon进程的默认镜像地址…,可以试试…
+$ docker --registry-mirror=https://registry.docker-cn.com daemon 直接指定镜像地址下载image也是可以的
+$ docker pull registry.docker-cn.com/library/ubuntu:16.04 后面的library/ubuntu:16.04就是
+原文链接：链接：https://www.jianshu.com/p/34d3b4568059
+不得不说 docker的火爆程度已经达到的地步，
+由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里：
+正主：Docker 官方镜像加速：http://www.docker-cn.com/registry-mirror
+在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～
+在 Linux上 安装 Docker
+curl -sSL https://get.daocloud.io/docker | sh 适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源
+当然有时候不知道为什么daocloud响应不了，用阿里云的：
+用阿里云的：
+安装最新版本的Docker Engine</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt 挂载FAT32 / exFat 硬盘</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A501/</link>
+      <pubDate>Wed, 17 Feb 2021 02:37:51 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A501/</guid>
+      <description>更新列表，安装必要到依赖包
+# opkg update # opkg install kmod-usb-storage block-mount kmod-fs-vfat kmod-nls-cp437 kmod-nls-iso8859-1 kmod-fs-exfat usbutils 连接USB设备，用以下命令确认链接
+lsusb -t 如果连接正常，会出现类似以下数据
+/: Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 5000M /: Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/2p, 480M |** Port 1: Dev 5, If 0, Class=Mass Storage, Driver=usb-storage, 480M 查看系统已知的块设备（block devices）列表
+ls -l /dev/sd* 正常清情况会出现以下类似数据。这里挂载了一个硬盘，分别有sda1 与 sda1两个块
+brw------- 1 root root 8, 0 Mar 6 17:19 /dev/sda brw------- 1 root root 8, 1 Mar 6 17:19 /dev/sda1 brw------- 1 root root 8, 2 Mar 6 17:19 /dev/sda2 用 block工具获取更多已存在分区的信息</description>
+    </item>
+    
+    <item>
+      <title>在Win10下用Qemu模拟器模拟或虛拟树莓派并设置网卡桥接</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A503/</link>
+      <pubDate>Mon, 08 Feb 2021 02:49:32 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A503/</guid>
+      <description>原文：
+https://blog.csdn.net/chilwb/article/details/106474387
+PS:原文部分设置和本人本机设定不同，注意命令细节
+为什么要用Qemu模拟树莓派，因为模拟出来后，可以带着到处走，U盘一拷，有电脑的地方就可以调试。调试出了问题，想重新来过，只要把之前的副本复制过去就可以了。等一切弄好后，再写入SD，进行实机测试，使用。这样避免了带着树莓派跑来跑去，调试错了，反复拨卡、写卡、设置、插卡等操作。为什么要用Qemu模拟拟树莓派，官网不是有VMware等虚拟机版的桌面版了么？因为桌面版就一个，更新也不及时，用Qemu，可虚拟任何版本的树莓派系统，如Ubuntu树莓派版，等等。这是因为桌面版是虚拟系统，只支持X86电脑，Qemu虚拟的是硬件本身，支持的是ARM指令，凡硬件能装的系统，Qemu就能模拟拟使用。
+我的系统是2019年的windows 10，使用的镜像是2020年6月1日可在树莓派官网下载的各种镜像。
+在Qemu官网下载最新的4.2版Qemu，地址：https://www.qemu.org/download/
+下载Qemu kernel for emulating Rpi on QEMU，https://github.com/dhruvvyas90/qemu-rpi-kernel 这里有不同版本，可下载最新版，我下载的是：kernel-qemu-4.19.50-buster ，下载网址：https://github.com/dhruvvyas90/qemu-rpi-kernel/blob/master/kernel-qemu-4.19.50-buster
+在树莓派官网下载你喜欢的镜像。我下载的是2020-05-27-raspios-buster
+安装Qemu，其实是解压，放到一个文件夹里，我的是Qemu文件夹。再解压qemu-rpi-kernel-master.zip，针对我的kernel-qemu-4.19.50-buster镜像，我找了其中的两个文件：kernel-qemu-4.19.50-buster、versatile-pb-buster.dtb。该用哪些文件，可查看README.md文件，直接用文本打开就行。
+为方便，把kernel-qemu-4.19.50-buster、versatile-pb-buster.dtb和2020-05-27-raspios-buster镜像文件都一起放到安装Qemu 时解压出来的Qemu文件夹。你也可以放其它地方，但在调用它们时，记得加上地址。
+按win+R，运行，输入cmd，打开命令提示符。进入上面的Qemu文件夹，输入以下命令（中间不换行）：
+qemu-system-arm -kernel kernel-qemu-4.19.50-buster -cpu arm1176 -m 256 -M versatilepb -dtb versatile-pb-buster.dtb -no-reboot -append “root=/dev/sda2 panic=1 rootfstype=ext4 rw” -net nic -net user,hostfwd=tcp::5022-:22 -hda 2020-05-27-raspios-buster-armhf.img 就可以启动树莓派了，后面的操作就跟实机操作一样了。
+在这里插入图片描述
+现在解释一下上面的命令：
+-kernel kernel-qemu-4.19.50-buster #内核文件用的是kernel-qemu-4.19.50-buster文件，qemu-rpi-kernel-master.zip解压出来后，挑出来的文件，没有扩展名。如果文件不在QEMU文件夹，要加上地址。 -cpu arm1176 #CPU用的是arm1176 -m 256 #内存是256M，有点偏小，但实际仿真，感觉没影响。据https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki 解释，是因为versatilepb上有个bug,不允许大于256M。 -M versatilepb #用的开发板是versatilepb，可以用qemu-system-arm -M help命令来查看支持的arm开发板。用qemu-system-arm -M versatilepb -cpu help #查看versatilepb开发板所用的CPU型号。树莓派用的型号是ARM 1176。 -dtb versatile-pb-buster.dtb #dtb文件是versatile-pb-buster.</description>
+    </item>
+    
+    <item>
+      <title>ubuntu 20.10&#43;系统默认占用磁盘空间</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A502/</link>
+      <pubDate>Mon, 08 Feb 2021 01:49:56 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A502/</guid>
+      <description>ubuntu 20.10+系统默认占用磁盘空间约为
+10GB不到
+通常虚拟机分配20GB空间足以运行大多数任务。 </description>
+    </item>
+    
+    <item>
+      <title>Win10桥接网卡使得qemu虚拟机可以正常访问内网</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A501/</link>
+      <pubDate>Mon, 08 Feb 2021 01:37:06 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A501/</guid>
+      <description>在Windows上使用qemu虚拟机，通过此配置，可以使qemu中的虚拟机能连接互联网，并且也可以和Windows主机通信。此方式类似于Vmware和VitrualBox中的桥接网卡。配置方法如下：
+在Windows主机上安装TAP网卡驱动: 可下载openvpn客户端软件，只安装其中的TAP驱动；在网络连接中，会看到一个新的网卡，属性类似于TAP-Win32 Adapter&amp;hellip;，将其名称修改为tap0。 将tap0虚拟网卡和Windows上连接互联网的真实网卡桥接: 选中这两块网卡，右键，桥接。此时，Windows主机将不能连接互联网，需要在网桥上配置IP地址和域名等信息，才能使Windows主机连接互联网。 qemu配置: 在虚拟机启动命令行添加以下参数： -net nic -net tap,ifname=tap0
+启动虚拟机，并配置虚拟机中的网卡，则虚拟机也可以和Windows主机一样，连接互联网和Windows主机。
+通过SMB等方法可以访问内网资源。方便进行资源交换。
+在win10安装qemu程序。 使用win10的 cmd进入qemu程序的目录 使用类似如下命令打开树莓派虚拟机进行操作：
+cd /&amp;lt;qemu_path&amp;gt;/ .\qemu-system-arm -kernel kernel-qemu-4.19.50-buster -cpu arm1176 -m 256 -M versatilepb -dtb versatile-pb-buster.dtb -no-reboot -append “root=/dev/sda2 panic=1 rootfstype=ext4 rw” -net nic -net tap,ifname=tap0 -hda 2021-01-11-raspios-buster-armhf-lite.img PS： 必须要用cmd 其他的shell或者终端程序在win10中运行同样的指令反而不能运行。原因未知。同时还有一个奇怪的现象就是其他debian镜像用这个指令也无法打开。。 正常启动之后最好直接通过 sudo passwd pi ... sudo passwd root ... sudo passwd --unlock root 打开root权限和账号
+第二部是通过 raspi-config
+来修改系统的语言、地区、键盘布局
+第三步通过更换系统软件的国内源来增加使用体验
+第四步是安装
+apt install vim openssh-server
+第五步是打开ssh远程连接权限</description>
+    </item>
+    
+    <item>
+      <title>树莓派debian系统修改时区、语言、键盘布局</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%887%E6%97%A501/</link>
+      <pubDate>Sun, 07 Feb 2021 00:14:55 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%887%E6%97%A501/</guid>
+      <description>原文：
+https://blog.csdn.net/qq_37098948/article/details/78002214
+https://blog.csdn.net/c80486/article/details/8460271
+先进入root权限，然后进入高级配置界面。
+raspi-config 中文设置 在之前进入配置界面的基础上，选择第四个，本地化选项（Localisation Options）。再选择第一个，更改语言环境（Change Locale）。因为树莓派系统不同的原因，这些选项不一定刚好在相同位置，确定是相同的功能再选择。
+键盘上下移动找到 en_GB.UTF-8 UTF-8，按空格取消前面的星号*。接着找到 en_US.UTF-8 UTF-8，zh_CN UTF-8 UTF-8和zh_CN GBK GBK，按空格添加前面的星号*。按Tab到ok，回车确认。然后选择zh_CN UTF-8 UTF-8确认完成。
+更改键盘布局 树莓派(raspberry pi)用了几次后，发现键盘老是按错，一些字符打不出来或打错
+这个问题，折腾我半天。还是把心得分享一下吧
+上网查，发现是键盘布局不对，树莓派(raspberry pi)是英国产品，默认键盘布局是英国(GB)，我们用的键盘布局一般是美国(US)的
+更改键盘布局，命令如下：
+sudo dpkg-reconfigure keyboard-configuration
+进入后，选通用的101键PC键盘
+按tab键，到OK，按Enter确定
+在键盘layout选择中，选Other
+按tab键，到OK，按Enter确定
+然后在选项中，选English(US)
+按tab键，到OK，按Enter确定
+再选English(US, alternative international)
+按tab键，到OK，按Enter确定
+然后一路按OK
+退出后，重启系统
+sudo reboot
+重新启动时，由于修改了键盘布局，在读取键盘布局的阶段会比平常慢一些
+OK了， 终于可以打出所有字符了</description>
+    </item>
+    
+    <item>
+      <title>linux（debian10）安装pip3方法，并修改安装源为国内源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A517/</link>
+      <pubDate>Sat, 06 Feb 2021 23:37:54 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A517/</guid>
+      <description>原文链接：
+https://blog.csdn.net/weixin_39465823/article/details/103111263
+1，安装pip3
+sudo apt install python3-pip
+验证安装是否成功
+pip3 &amp;ndash;version
+guoyz@debian:~/pip-9.0.1$ pip3 &amp;ndash;version
+pip 18.1 from /usr/lib/python3/dist-packages/pip (python 3.7)
+然后安装构建python 模块所需的开发工具，
+sudo apt install build-essential python3-dev python3-setuptools
+2，新建pip.conf文件
+guoyanzhang@debian:~$ pwd /home/guoyanzhang guoyanzhang@debian:~$ mkdir .pip guoyanzhang@debian:~$ vim .pip/pip.conf 添加内容：
+[global] index-url=http://mirrors.aliyun.com/pypi/simple/ [install] trusted-host=mirrors.aliyun.com 参考：https://www.cnblogs.com/yanxiatingyu/p/10160712.html
+https://www.cnblogs.com/yanxiatingyu/p/10160712.html</description>
+    </item>
+    
+    <item>
+      <title>如何给树莓派更换软件源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A516/</link>
+      <pubDate>Sat, 06 Feb 2021 23:31:49 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A516/</guid>
+      <description>原文链接：https://zhuanlan.zhihu.com/p/98079246
+在开始树莓派的各种 DIY 之前，我们还需要做一件很重要的事情：更换软件源。
+这里我简单解释下什么是软件源，以及为什么要更换软件源。
+软件源是指 debian 系操作系统的应用程序安装包仓库，很多的软件都会这收录到这个仓库里面。而树莓派的 raspberrypi 操作系统也是基于 debian 的，所以树莓派也有自己的软件源，用来收录各种树莓派应用程序。
+默认情况下，树莓派软件源地址是 http://archive.raspbian.org/，位于欧洲，在国内访问是非常慢的，经常只有几 k 每秒的下载速率。所以我们在玩转树莓派之前，强烈推荐替换成国内的软件源。
+树莓派的所有软件源地址可以从这里找到：https://www.raspbian.org/RaspbianMirrors
+一般我们找个国内的就行了，比如清华大学的（下图表格的第一行）
+更换软件源
+这一步要开始更换软件源了。确保树莓派 WiFi 已经连上。
+接下来的操作需要一点点命令行知识，如果不了解命令行也没关系，按照步骤进行就 ok。
+首先点击桌面左上角的命令行按钮，进入命令行窗口
+然后在命令行窗口内输入 sudo nano /etc/apt/sources.list 并回车，进入编辑器。
+sudo 是指用系统管理员权限启动，nano 是树莓派内置的轻量文本编辑器，而 /etc/apt/sources.list 就是软件源的配置文件地址了。 接着编辑这个文件，如下图所示，把原来的内容注释掉（最前面加 # 号），在文件最顶部添加下面的内容：
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib 按 ctrl-o 保存，按 ctrl-x 关闭。
+同样的方法，把 /etc/apt/sources.list.d/raspi.list 文件也替换成下面的内容：
+deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui 至此，树莓派软件源就替换好了。是不是很简单，就改两行配置即可。
+最后，你可以试下执行 sudo apt-get update，会发现更新速度快了很多。
+参考：https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/help/raspbian/</description>
+    </item>
+    
+    <item>
+      <title>LINUX下挂载(mount)查看树莓派镜像文件</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A515/</link>
+      <pubDate>Sat, 06 Feb 2021 18:54:19 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A515/</guid>
+      <description>原文： https://blog.csdn.net/bona020/article/details/77882812
+fdisk -lu 20170507.img 可查看扇区信息 62914560=扇区大小*主分区起始扇区
+sudo mount -t ext4 -o loop,offset=72004560 rpi-20140907.img /mnt/loop/
+如果要把映像内容复制到别的地方（以便作为nfs启动的rootfs），应该用cp -ra，不要只用cp</description>
+    </item>
+    
+    <item>
+      <title>使用 rpi-backup 脚本进行备份</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A514/</link>
+      <pubDate>Sat, 06 Feb 2021 12:39:29 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A514/</guid>
+      <description>原文链接：https://shumeipai.nxez.com/2020/10/28/backup-the-raspberry-pi-system-as-an-img-file.html
+只进行部分提取
+最好的树莓派系统备份解决方案，解决了备份文件体积大，恢复也方便，这个脚本备份文件的体积为 已用空间×1.2，我的系统占用了不到 10G 的空间，备份文件大概是 11G 多一些，这相比于全盘备份的 128G 已经小太多了，在使用7z进行极限压缩后甚至只有 1.7G，进行日常归档备份完全可以接受。
+该脚本进行系统恢复时也很方便，将 img 文件像安装系统一样刷入 tf卡 后对分区进行简单拓展后即可。接下来就来演示怎么使用该脚本进行备份。 备份演示
+首先 clone 该脚本：
+git clone https://github.com/nanhantianyi/rpi-backup.git &amp;amp;&amp;amp; cd rpi-backup
+然后要安装依赖项，这里我用的是 Manjaro-arm 系统。在 Manjaro 系统中该脚本无法自动安装依赖项，需要运行这行命令 sudo pacman -Sy &amp;amp;&amp;amp; pacman -S dosfstools parted multipath-tools rsync 来安装依赖。 如果你是用 apt 进行安装软件的系统，可以跳过这一步，该脚本会自动安装依赖项。
+然后运行
+sudo ./back.sh youImageName.img
+该脚本就会开始备份，如果不指定文件名则会自动命名。 如果你的内存卡剩余空间不够的话就挂载 U 盘，将 img 直接保存在 U 盘中，要注意U盘务必挂载到 /media 目录下，不要挂载到 /mnt，因为脚本会对 /mnt 目录进行备份操作，会导致递归性的备份，总之就是不要挂载到 /mnt 目录，切记！
+脚本运行结束后就得到了备份镜像。 备份的恢复
+备份镜像恢复可以直接用烧录软件直接烧录，这里我使用的是 Etcher，我也推荐大家使用这个软件，站内有这个软件的文章：使用 Etcher 给 SD 卡安装树莓派系统，界面简洁明了，选择镜像，选择要刷入的磁盘，Flash！</description>
+    </item>
+    
+    <item>
+      <title>linux smbclient命令参数及用法详解--linux访问samba共享资源命</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A513/</link>
+      <pubDate>Sat, 06 Feb 2021 03:52:49 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A513/</guid>
+      <description>smbclient命令属于samba套件，它提供一种命令行使用交互式方式访问samba服务器的共享资源。
+语法
+smbclient(选项)(参数)
+选项
+-B&amp;lt;ip地址&amp;gt;：传送广播数据包时所用的IP地址； -d&amp;lt;排错层级&amp;gt;：指定记录文件所记载事件的详细程度； -E：将信息送到标准错误输出设备； -h：显示帮助； -i&amp;lt;范围&amp;gt;：设置NetBIOS名称范围； -I&amp;lt;IP地址&amp;gt;：指定服务器的IP地址； -l&amp;lt;记录文件&amp;gt;：指定记录文件的名称； -L：显示服务器端所分享出来的所有资源； -M&amp;lt;NetBIOS名称&amp;gt;：可利用WinPopup协议，将信息送给选项中所指定的主机； -n&amp;lt;NetBIOS名称&amp;gt;：指定用户端所要使用的NetBIOS名称； -N：不用询问密码； -O&amp;lt;连接槽选项&amp;gt;：设置用户端TCP连接槽的选项； -p&amp;lt;TCP连接端口&amp;gt;：指定服务器端TCP连接端口编号； -R&amp;lt;名称解析顺序&amp;gt;：设置NetBIOS名称解析的顺序； -s&amp;lt;目录&amp;gt;：指定smb.conf所在的目录； -t&amp;lt;服务器字码&amp;gt;：设置用何种字符码来解析服务器端的文件名称； -T&amp;lt;tar选项&amp;gt;：备份服务器端分享的全部文件，并打包成tar格式的文件； -U&amp;lt;用户名称&amp;gt;：指定用户名称； -w&amp;lt;工作群组&amp;gt;：指定工作群组名称。 参数
+smb服务器：指定要连接的smb服务器。
+实例
+列出某个IP地址所提供的共享文件夹
+smbclient -L 198.168.0.1 -U username%password
+像ftp客户端一样使用smbclient
+smbclient //192.168.0.1/tmp -U username%password
+执行smbclient命令成功后，进入smbclient环境，出现提示符：smb:/&amp;gt;
+这里有许多命令和ftp命令相似，如cd 、lcd、get、megt、put、mput等。通过这些命令，我们可以访问远程主机的共享资源。
+直接一次性使用smbclient命令
+smbclient -c &amp;ldquo;ls&amp;rdquo; //192.168.0.1/tmp -U username%password
+和
+smbclient //192.168.0.1/tmp -U username%password smb:/&amp;gt;ls 功能一样的。
+创建一个共享文件夹
+smbclient -c &amp;ldquo;mkdir share1&amp;rdquo; //192.168.0.1/tmp -U username%password
+如果用户共享//192.168.0.1/tmp的方式是只读的，会提示NT_STATUS_ACCESS_DENIED making remote directory /share1
+smbclient用法 :
+参　数： [网络资源] [网络资源]的格式为//服务器名称/资源分享名称。 [密码] 输入存取网络资源所需的密码。 -B&amp;lt;IP地址&amp;gt; 传送广播数据包时所用的IP地址。 -d&amp;lt;排错层级&amp;gt; 指定记录文件所记载事件的详细程度。 -E 将信息送到标准错误输出设备。 -h 显示帮助。 -i&amp;lt;范围&amp;gt; 设置NetBIOS名称范围。 -I&amp;lt;IP地址&amp;gt; 指定服务器的IP地址。 -l&amp;lt;记录文件&amp;gt; 指定记录文件的名称。 -L 显示服务器端所分享出来的所有资源。 -M&amp;lt;NetBIOS名称&amp;gt; 可利用WinPopup协议，将信息送给选项中所指定的主机。 -n&amp;lt;NetBIOS名称&amp;gt; 指定用户端所要使用的NetBIOS名称。 -N 不用询问密码。 -O&amp;lt;连接槽选项&amp;gt; 设置用户端TCP连接槽的选项。 -p&amp;lt;TCP连接端口&amp;gt; 指定服务器端TCP连接端口编号。 -R&amp;lt;名称解析顺序&amp;gt; 设置NetBIOS名称解析的顺序。 -s&amp;lt;目录&amp;gt; 指定smb.</description>
+    </item>
+    
+    <item>
+      <title>如何从主机粘贴到KVM客户机？</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A512/</link>
+      <pubDate>Sat, 06 Feb 2021 03:20:52 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A512/</guid>
+      <description>原文：https://www.kutu66.com/ubuntu/article_165749
+我有一个使用Virtual Machine Manager创建的QEMU/KVM虚拟机。
+我希望在主机上复制文本并能够将它粘贴到guest中。
+如何在主机和guest之间共享剪贴板？
+答案1
+解决方案很简单。只需在来宾虚拟机中安装spice-vdagent软件包：
+sudo apt install spice-vdagent
+剪贴板会自动共享 - 现在可以在主机和来宾之间复制和粘贴了。</description>
+    </item>
+    
+    <item>
+      <title>树莓派备份系统镜像并压缩</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A511/</link>
+      <pubDate>Sat, 06 Feb 2021 03:14:51 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A511/</guid>
+      <description>原文：https://cloud.tencent.com/developer/article/1731767
+前言
+手上的pi zero w用了一段时间,上面也部署了相当多的服务应用,都是心血啊,可不想啥时候系统损坏了重装一遍,于是想到备份一波系统镜像 备份
+1.本地新建一个文件,将格式改为.img2.如 pizero.img3.树莓派系统内存卡插上电脑4.打开win32 disk imager,镜像文件选择好刚才新建的镜像,驱动选择插上的内存卡5.点击 read (读取)!!!!,千万不要选错.6.这样算是备份好了,但是有个问题,这样相当于将内存卡复制了一份,大小会和原先内存卡一样大.因此我们需要进行压缩 压缩
+PiShrink压缩脚本是GitHub的一位大佬写的
+(需要Linux环境,将以上的镜像文件将其挂载至Linux)
+https://github.com/Drewsif/PiShrink
+下载脚本,移动到bin目录是为了全局都可以直接使用脚本
+wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh chmod +x pishrink.sh sudo mv pishrink.sh /usr/local/bin 用法也相当简单
+sudo pishrink.sh pizero.img e2fsck 1.42.9 (28-Dec-2013) Pass 1: Checking inodes, blocks, and sizes Pass 2: Checking directory structure Pass 3: Checking directory connectivity Pass 4: Checking reference counts Pass 5: Checking group summary information /dev/loop1: 88262/1929536 files (0.2% non-contiguous), 842728/7717632 blocks resize2fs 1.42.9 (28-Dec-2013) resize2fs 1.</description>
+    </item>
+    
+    <item>
+      <title>linux搭建smb、挂载smb、Windows共享</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/</link>
+      <pubDate>Sat, 06 Feb 2021 02:45:32 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/</guid>
+      <description>原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
+安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
+sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
+服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
+/etc/samba/smb.conf
+配置文件参数解释
+[global]
+#全局参数。
+workgroup = MYGROUP
+#工作组名称
+server string = Samba Server Version %v
+#服务器介绍信息，参数%v为显示
+SMB版本号
+log file = /var/log/samba/log.%m
+#定义日志文件的存放位置与名称，
+参数%m为来访的主机名
+max log size = 50
+#定义日志文件的最大容量为50KB
+security = user
+#安全验证的方式，总共有4种
+#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
+使用user模式，map to guest=bad user代替
+#user：需验证来访主机提供的口令后才可以访问；提升了安全性</description>
+    </item>
+    
+    <item>
+      <title>Debian(Linux)系统Samba安装和配置</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A509/</link>
+      <pubDate>Sat, 06 Feb 2021 02:24:20 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A509/</guid>
+      <description>原文链接： https://blog.csdn.net/jinzhu1911/article/details/100592496
+samba安装
+root用户下直接使用以下命令 apt-get install samba 若是普通用户下使用以下命令 sudo apt-get install smaba samba配置
+samba的配置文件在/etc/samba/路径下，文件名为smb.conf，注意需要root用户权限才能编辑该文件，我是用root用户下使用vim进行编辑修改的。
+在文件末尾添加以下内容
+[test]
+comment = samba test
+path = /home/d/share //共享文件路径
+browseable = yes
+read only = no
+guest ok = yes
+writable = yes
+添加samba用户
+smbpasswd -a 用户名
+接着需要两次输入密码
+此处设置的用户和密码，是用来登录用的
+可能出现的错误
+执行smbpasswd有可能会出现以下错误： bash: smbpasswd: command not found 解决办法：出现该错误表示samba-client没有安装 执行命令apt-get install samba-client 执行samba-client命令可能会出现以下错误： smbclient: Depends: libwbclient0 (= 2:4.5.16+dfsg-1+deb9u1) but 2:4.5.16+dfsg-1+deb9u2 is to be installed 解决办法： 执行命令 apt-get autoremove libwbclient0 //卸载之前安装的版本 执行命令 apt-get install libwbclient0=2:4.</description>
+    </item>
+    
+    <item>
+      <title>VSCode 多行批量添加内容</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A508/</link>
+      <pubDate>Sat, 06 Feb 2021 02:11:15 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A508/</guid>
+      <description>原文链接：https://blog.csdn.net/helpmsg/article/details/105931038
+问题描述：有一个json文件一个键值对就是一行，但是每一行的逗号弄丢了，现在我要补充这些逗号，但是数量太多，有几百条，于是就想批量在每一行键值对后面加一个逗号。 首先不要急，一步一步慢慢来。
+第一步：调起替换窗口，快捷键：CTRL + H 第二部：开启正则表达式，快捷键：ALT + R 第三部：在替换窗口的查找输入框输入$，这时全文的所有行最后都一个选中标记 第四部：输入要在行末尾加入的字符 第五步：选择全部替换
+上面的替换有个问题，如果有一些空行，也会在空行后面加逗号，所以需要去除空行，正则表达式：
+^\s*(?=\r?$)\n
+^ 字符串首部 $ 字符串尾部 </description>
+    </item>
+    
+    <item>
+      <title>使用QEMU扩展树莓派镜像增加剩余使用空间</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A507/</link>
+      <pubDate>Sat, 06 Feb 2021 02:02:39 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A507/</guid>
+      <description>原文链接：
+https://blog.csdn.net/talkxin/article/details/81264605 https://blog.csdn.net/weixin_34124939/article/details/92783554 前言
+当我们使用qemu加载了一个树莓派官方镜像时，因为官方在构建镜像的时候人为的控制了root分区的大小，如果我们加载完镜像需要进行一些自己的操作时，就需要使用qemu-img工具来扩容空间啦。
+1、检查树莓派镜像
+首先，我们检查一下现有树莓派镜像的空间，使用qemu-img的info命令:
+qemu-img info 2017-11-29-raspbian-stretch.img
+如果找不到qemu-img命令的话需要安装对应的qemu版本
+通过 sudo apt-get install qemu 命令安装过qemu后，在terminal输入qemu显示如下： znn@znn-virtual-machine:~$ qemu No command &amp;#39;qemu&amp;#39; found, did you mean: Command &amp;#39;qtemu&amp;#39; from package &amp;#39;qtemu&amp;#39; (universe) Command &amp;#39;aqemu&amp;#39; from package &amp;#39;aqemu&amp;#39; (universe) qemu: command not found 转至usr/bin目录，输入q，按tab键匹配有： znn@znn-virtual-machine:/usr/bin$ q qdbus qemu-ifup qemu-system-i386 quirks-handler qemu-ga qemu-img qemu-system-x86_64 quote qemu-i386 qemu-io qemu-x86_64 quote_readline qemu-ifdown qemu-nbd qpdldecode 解决方案： 使用qemu-system-i386或qemu-system-x86_64指令替换qemu指令。 可以建立一条软链接，这样就还可以使用qemu命令了： &amp;gt; sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu 经过如上设置之后就可以正常使用命令了</description>
+    </item>
+    
+    <item>
+      <title>使用QEMU模拟树莓派Raspberry Pi</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A506/</link>
+      <pubDate>Sat, 06 Feb 2021 01:35:37 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A506/</guid>
+      <description>原文： https://cloud.tencent.com/developer/article/1685107
+如果在ubuntu中提示vnc的部分出错
+那就使用下边这条删掉相关设置项的已编辑好的命令
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda /home/ustc/debian_img/2021-01-11-raspios-buster-armhf-lite.img -dtb /home/ustc/debian_img/versatile-pb-buster.dtb -kernel /home/ustc/debian_img/kernel-qemu-4.19.50-buster -append &amp;#39;root=/dev/sda2 panic=1&amp;#39; -no-reboot -netdev user,id=unet -device virtio-net-pci,netdev=unet 原文：
+被誉为 “世界上最流行最便宜的小型电脑” 的「树莓派」Raspberry Pi 是一款性价比超高的迷你电脑主机 (仅有信用卡大小)， 深受全球开发者、极客、技术爱好者们的追捧和喜爱
+树莓派可以安装多种 Linux 系统发行版 (官方为 Debian 的衍生版)，可当服务器搭建各种网站、应用服务来使用， 也能用来学习编程、控制硬件或日常办公。由于树莓派的体积很小很轻，并且功能极其丰富强大，这也使得它的应用范围和潜力几乎是无限的
+下面介绍在之前的编译安装Qemu5.1的文章基础下安装raspberrypi树莓派
+Fedora32下编译安装Qemu5.1并创建ARM版本Linux虚拟机
+1、下载树莓派系统
+最新版本下载地址 http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+2、下载kernel-qemu
+https://github.com/dhruvvyas90/qemu-rpi-kernel
+下载如下这两个文件
+kernel-qemu-4.19.50-buster
+versatile-pb-buster.dtb
+3、qemu命令行启动
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda ./2020-02-13-raspbian-buster.img -dtb ./versatile-pb-buster.dtb -kernel ./kernel-qemu-4.19.50-buster -append &amp;lsquo;root=/dev/sda2 panic=1&amp;rsquo; -no-reboot -display vnc=10.20.90.56:1 -netdev user,id=unet -device virtio-net-pci,netdev=unet</description>
+    </item>
+    
+    <item>
+      <title>Docker 镜像加速</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A505/</link>
+      <pubDate>Sat, 06 Feb 2021 01:24:25 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A505/</guid>
+      <description>原文链接：https://www.runoob.com/docker/docker-mirror-acceleration.html
+国内从 DockerHub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。Docker 官方和国内很多云服务商都提供了国内加速器服务，例如：
+科大镜像：https://docker.mirrors.ustc.edu.cn/ 网易：https://hub-mirror.c.163.com/ 阿里云：https://&amp;lt;你的ID&amp;gt;.mirror.aliyuncs.com 七牛云加速器：https://reg-mirror.qiniu.com 当配置某一个加速器地址之后，若发现拉取不到镜像，请切换到另一个加速器地址。国内各大云服务商均提供了 Docker 镜像加速服务，建议根据运行 Docker 的云平台选择对应的镜像加速服务。
+阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆后，左侧菜单选中镜像加速器就可以看到你的专属地址了：
+之前还有 Docker 官方加速器 https://registry.docker-cn.com ，现在好像已经不能使用了，我们可以多添加几个国内的镜像，如果有不能使用的，会切换到可以使用个的镜像来拉取。
+Ubuntu14.04、Debian7Wheezy
+对于使用 upstart 的系统而言，编辑 /etc/default/docker 文件，在其中的 DOCKER_OPTS 中配置加速器地址：
+DOCKER_OPTS=&amp;quot;&amp;ndash;registry-mirror=https://registry.docker-cn.com&amp;quot;
+重新启动服务:
+$ sudo service docker restart
+Ubuntu16.04+、Debian8+、CentOS7
+对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）：
+{&amp;ldquo;registry-mirrors&amp;rdquo;: [&amp;ldquo;https://docker.mirrors.ustc.edu.cn&amp;rdquo;]}
+之后重新启动服务：
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+Windows 10
+对于使用 Windows 10 的系统，在系统右下角托盘 Docker 图标内右键菜单选择 Settings，打开配置窗口后左侧导航菜单选择 Daemon。在 Registrymirrors 一栏中填写加速器地址 https://docker.mirrors.ustc.edu.cn/ ，之后点击 Apply 保存后 Docker 就会重启并应用配置的镜像地址了。</description>
+    </item>
+    
+    <item>
+      <title>MacOS Docker 安装</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A504/</link>
+      <pubDate>Sat, 06 Feb 2021 01:23:24 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A504/</guid>
+      <description>原文链接：https://www.runoob.com/docker/macos-docker-install.html
+使用 Homebrew 安装
+macOS 我们可以使用 Homebrew 来安装 Docker。
+Homebrew 的 Cask 已经支持 Docker for Mac，因此可以很方便的使用 Homebrew Cask 来进行安装：
+$ brew install &amp;ndash;cask &amp;ndash;appdir=/Applications docker
+==&amp;gt; Creating Caskroom at /usr/local/Caskroom
+==&amp;gt; We&amp;rsquo;ll set permissions properly so we won&amp;rsquo;t need sudo in the future
+Password: # 输入 macOS 密码
+==&amp;gt; Satisfying dependencies
+==&amp;gt; Downloading https://download.docker.com/mac/stable/21090/Docker.dmg
+######################################################################## 100.0%
+==&amp;gt; Verifying checksum for Cask docker
+==&amp;gt; Installing Cask docker
+==&amp;gt; Moving App &amp;lsquo;Docker.app&amp;rsquo; to &amp;lsquo;/Applications/Docker.</description>
+    </item>
+    
+    <item>
+      <title>Windows Docker 安装</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A503/</link>
+      <pubDate>Sat, 06 Feb 2021 01:19:19 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A503/</guid>
+      <description>原文链接： https://www.runoob.com/docker/windows-docker-install.html
+Docker 并非是一个通用的容器工具，它依赖于已存在并运行的 Linux 内核环境。
+Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文件环境，因此它执行的效率几乎等同于所部署的 Linux 主机。
+因此，Docker 必须部署在 Linux 内核的系统上。如果其他系统想部署 Docker 就必须安装一个虚拟 Linux 环境。
+在 Windows 上部署 Docker 的方法都是先安装一个虚拟机，并在安装 Linux 系统的的虚拟机中运行 Docker。
+Win10 系统
+Docker Desktop 是 Docker 在 Windows 10 和 macOS 操作系统上的官方安装方式，这个方法依然属于先在虚拟机中安装 Linux 然后再安装 Docker 的方法。
+Docker Desktop 官方下载地址： https://hub.docker.com/editions/community/docker-ce-desktop-windows
+注意：此方法仅适用于 Windows 10 操作系统专业版、企业版、教育版和部分家庭版！
+安装 Hyper-V
+Hyper-V 是微软开发的虚拟机，类似于 VMWare 或 VirtualBox，仅适用于 Windows 10。这是 Docker Desktop for Windows 所使用的虚拟机。
+但是，这个虚拟机一旦启用，QEMU、VirtualBox 或 VMWare Workstation 15 及以下版本将无法使用！如果你必须在电脑上使用其他虚拟机（例如开发 Android 应用必须使用的模拟器），请不要使用 Hyper-V！</description>
+    </item>
+    
+    <item>
+      <title>CentOS Docker 安装</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A502/</link>
+      <pubDate>Sat, 06 Feb 2021 01:19:15 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A502/</guid>
+      <description>原文链接：https://www.runoob.com/docker/centos-docker-install.html
+Docker 支持以下的 64 位 CentOS 版本：
+CentOS 7 CentOS 8 更高版本... 使用官方安装脚本自动安装
+安装命令如下：
+curl -fsSL https://get.docker.com | bash -s docker &amp;ndash;mirror Aliyun
+也可以使用国内 daocloud 一键安装命令：
+curl -sSL https://get.daocloud.io/docker | sh
+手动安装
+卸载旧版本
+较旧的 Docker 版本称为 docker 或 docker-engine 。如果已安装这些程序，请卸载它们以及相关的依赖项。
+$ sudo yum remove docker \
+docker-client \
+docker-client-latest \
+docker-common \
+docker-latest \
+docker-latest-logrotate \
+docker-logrotate \
+docker-engine
+安装 Docker Engine-Community
+使用 Docker 仓库进行安装
+在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu Docker 安装</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A501/</link>
+      <pubDate>Sat, 06 Feb 2021 01:19:10 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A501/</guid>
+      <description>原文： https://yq.aliyun.com/articles/762674
+本文最先发布在：https://www.itcoder.tech/posts/how-to-install-and-use-docker-on-ubuntu-20-04/
+Docker 是一个开源的容器化平台，它允许你构建，测试，并且作为可移动的容器去部署应用，这些容器可以在任何地方运行。一个容器表示一个应用的运行环境，并且包含软件运行所需要的所有依赖软件。
+Docker 是现代软件开发，持续集成，持续交付的一部分。
+这篇教程将会涉及如何在 Ubuntu 上安装 Docker。
+Docker 在标准的 Ubuntu 20.04 软件源中可用，但是可能不是最新的版本。我们将会从 Docker 的官方软件源中安装最新的 Docker 软件包。
+一、在 Ubuntu 20.04 上安装 Docker
+在 Ubuntu 上安装 Docker 非常直接。我们将会启用 Docker 软件源，导入 GPG key，并且安装软件包。
+首先，更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：
+sudo apt update sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common 使用下面的 curl 导入源仓库的 GPG key：
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 将 Docker APT 软件源添加到你的系统：
+sudo add-apt-repository &amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&amp;#34; 现在，Docker 软件源被启用了，你可以安装软件源中任何可用的 Docker 版本。</description>
+    </item>
+    
+    <item>
+      <title>Debian Docker 安装</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A508/</link>
+      <pubDate>Fri, 05 Feb 2021 23:37:57 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A508/</guid>
+      <description>原文： https://www.runoob.com/docker/debian-docker-install.html
+Docker 支持以下的 Debian 版本：
+Buster 10
+Stretch 9 (stable) / Raspbian Stretch
+Docker Engine-Community 在 x86_64（或 amd64 ）armhf，和 arm64 体系结构上受支持。
+使用官方安装脚本自动安装
+安装命令如下：
+curl -fsSL https://get.docker.com | bash -s docker &amp;ndash;mirror Aliyun
+也可以使用国内 daocloud 一键安装命令：
+curl -sSL https://get.daocloud.io/docker | sh
+手动安装
+卸载旧版本
+Docker 的旧版本被称为 docker，docker.io 或 docker-engine，如果已安装，请卸载它们：
+$ sudo apt-get remove docker docker-engine docker.io containerd runc
+安装 Docker Engine-Community
+使用 Docker 仓库进行安装
+在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。</description>
+    </item>
+    
+    <item>
+      <title>树莓派磁盘扩容</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A507/</link>
+      <pubDate>Fri, 05 Feb 2021 23:07:22 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A507/</guid>
+      <description>原文： https://blog.csdn.net/wuli_dear_wang/article/details/84586039
+解决方法：
+使用树莓派自建的工具可以快速将树莓派挂载所有的SD卡空间。
+命令行输入：sudo raspi-config 然后在选择 Advancd Options -&amp;gt; Expand Filesystem 至于为什么 Linux （树莓派）从 SD 卡启动要设为 mmcblk0：
+详见 ：http://bbs.chinaunix.net/thread-4137992-1-1.html
+因为在电脑上，你的SD卡是插在usb读卡器上的，在电脑上是走的usb总线，是u盘那一套流程，所以是sdb
+而在板子上你是直接插在mmc/sd/sdio插槽上的，直接就是走的mmc总线，所以是mmcblk0
+你可以把SD卡插在USB读卡器上，再把读卡器插在板子上，你就可以看到USB读卡器里的SD卡在板子上也是sda了</description>
+    </item>
+    
+    <item>
+      <title>树莓派入门系列04</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A506/</link>
+      <pubDate>Fri, 05 Feb 2021 22:58:38 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A506/</guid>
+      <description>原文链接：https://blog.csdn.net/zhshh123/article/details/85065035
+盘启动步骤
+简述 方法一 方法二 注意事项 简述
+如果需要从U盘启动，需要向树莓派的SOC里的OTP（One Time Programmable一次性编程器）设置修复位，使之支持usb boot mode模式。该过程是不可逆的。
+方法一
+连接树莓派，执行命令： echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+这行代码将program_usb_boot_mode=1插入到/boot/cinfig.txt文件的末尾。
+检查设置是否成功,输入命令： vcgencmd otp_dump | grep 17
+如果输出的结果和下图一直，说明设置成功
+在这里插入图片描述
+方法二
+在sd卡boot盘的cmdline.txt文件中追加一行命令：
+program_usb_boot_mode=1
+然后插入树莓派，通电60s，便设置成功了。以后就可以不使用sd卡，直接把镜像写到u盘中。
+注意事项
+1、USB Boot Mode模式实质是向SOC里的OTP（One Time Programmable）设置修复位使之支持，该操作是不可逆的；
+2、该模式仅支持树莓派3B机型；
+3、因为仍然优先检测SD卡是否存在，所以usb boot会有5~10秒延迟来启动usb设备；可以插上一张空白sd卡来减低延迟。
+4、因为usb和网卡共用smsc lan9514芯片，所以该模式同时打开network boot模式，即允许通过网络安装启动系统；
+5、有些U盘可能不支持，以下是官方测试通过的U盘：
+Sandisk Cruzer Fit 16GB Sandisk Cruzer Blade 16Gb 三星32GB USB 3.0硬盘 MeCo 16GB USB 3.0 https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md
+https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/</description>
+    </item>
+    
+    <item>
+      <title>树莓派入门系列03</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A505/</link>
+      <pubDate>Fri, 05 Feb 2021 22:54:20 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A505/</guid>
+      <description>原文地址：https://blog.csdn.net/zhshh123/article/details/85064579
+树莓派基本设置
+更改时区 修改root、pi密码 更换apt为阿里云源 使用lrzsz，上传下载文件 更改时区
+输入命令 sudo dpkg-reconfigure tzdata 上下箭头移动光标，选择Asia亚洲，回车进入下一项。 在这里插入图片描述 选择Shanghai地区，回车确认。 在这里插入图片描述 成功更改为北京时间 在这里插入图片描述 修改root、pi密码
+默认密码： 账户：root，密码：raspberry 账户：pi，密码：raspberry 修改密码： sudo passwd root sudo passwd pi 输入两次密码，修改成功 在这里插入图片描述 更换apt为阿里云源
+编辑文件 sudo vim /etc/apt/sources.list 用#注释掉原理的源地址，输入阿里云源的地址 deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free rpi deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free rpi 更新一下 sudo apt-get update sudo apt-get upgrade -y 第一步中，也可以不用vim，直接写入新的源 echo -e &amp;#34;deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free rpi\ndeb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free rpi&amp;#34; | sudo tee /etc/apt/sources.</description>
+    </item>
+    
+    <item>
+      <title>树莓派入门系列02</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/</link>
+      <pubDate>Fri, 05 Feb 2021 22:46:52 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/</guid>
+      <description>原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916
+系统备份步骤
+简述 全卡备份 创建img文件 使用软件备份 压缩备份 原理 备份流程 安装工具 存储镜像到U盘 创建img文件 对img文件分区 格式化img文件中的分区 备份boot分区 备份root分区 清理工作 完整的压缩备份脚本 简述
+我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。
+树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。
+全卡备份
+全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。
+创建img文件
+在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。
+在这里插入图片描述 在这里插入图片描述
+使用软件备份
+选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。
+在这里插入图片描述
+压缩备份
+压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml
+原理
+树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。
+官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。
+官方镜像
+备份流程
+读取当前系统boot、root分区的大小 创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。 备份boot、root分区 和原来一样的方式，烧录备份的系统到sd卡，正常使用。 安装工具
+rsync：镜像备份工具
+dosfstools：fat32分区格式化工具
+parted &amp;amp; kpartx：虚拟磁盘工具
+pv：显示进度
+sudo apt-get -y install rsync dosfstools parted kpartx pv 存储镜像到U盘
+img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。
+#mount USB device usbmount=/mnt mkdir -p $usbmount if [ -z $1 ]; then echo &amp;#34;no argument, assume the mount device is /dev/sda1 ?</description>
+    </item>
+    
+    <item>
+      <title>树莓派入门系列01</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A503/</link>
+      <pubDate>Fri, 05 Feb 2021 22:39:14 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A503/</guid>
+      <description>原文：
+https://blog.csdn.net/zhshh123/article/details/85051969
+下载固件装机步骤
+简述 安装官方镜像 下载镜像 格式化内存卡 烧录镜像到内存卡 启动树莓派 无显示器启动方式 安装Centos镜像 下载镜像 格式化内存卡 烧录镜像到内存卡 启动树莓派 设置 简述
+本节我们将讲解树莓派如何烧录镜像，这也是使用树莓派的第一步。
+我们这次分别讲解Raspbian官方系统和Centos系统的安装。
+树莓派还有很多版本的系统，可以查看http://shumeipai.nxez.com/download#os。
+安装官方镜像
+下载镜像
+官方镜像下载地址：https://www.raspberrypi.org/downloads/raspbian/
+下载界面
+这里有三种版本的镜像：
+1.带图形桌面和推荐软件：Raspbian Stretch with desktop and recommended software
+2.带图形桌面：Raspbian Stretch with desktop
+3.最简版：Raspbian Stretch Lite
+大家可以根据需要选择相应的版本，这里我们先选择第二种。
+格式化内存卡
+SD Formatter 4.0 软件 下载地址：https://pan.baidu.com/s/1l54wL7f8TjQE1nll0bC4Qg
+将内存卡放入读卡器，插入电脑。
+打开SD Formatter软件，选择内存卡，点击格式化。
+格式化内存卡
+一直确定，直到格式化成功。
+格式化成功
+注：这也是内存卡刻录镜像后，恢复内存卡原大小的方法。
+烧录镜像到内存卡
+Win32DiskImager软件 下载地址：https://pan.baidu.com/s/1Qt8km7Rdyqbk-uQp8AhSWg
+打开Win32DiskImager软件，Image File处选择刚刚下载的img格式镜像文件，并且Device处选择内存卡的盘符，点击write开始烧录。
+烧录镜像
+在烧录完成后，如果系统提示格式化内存卡，点击取消，不要进行格式化。直接桌面右下角弹出内存卡。
+启动树莓派
+如果你有HDMI接口显示器的话，可以把内存卡直接插到树莓派上，连接显示器鼠标，直接通电启动。
+如果你没有显示器的话，可以参考下一步，采用无显示器的方式启动。
+默认账户：
+用户名pi，密码raspberry 用户名root，密码raspberry
+无显示器启动方式
+在内存卡boot盘中新建一个ssh的空文件，为了打开ssh功能。 在内存卡boot盘中新建一个wpa_supplicant.conf文本文件，写入wifi配置： country=CN ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev update_config=1 network={ ssid=&amp;#34;你的无线网名称&amp;#34; psk=&amp;#34;你的无线网密码&amp;#34; key_mgmt=WPA-PSK priority=1 } 如果没有路由器可以手机开热点，让树莓派连接热点，手机上看树莓派的ip。 如果有路由器，直接登录路由器管理界面，查看树莓派ip。 在这里插入图片描述 使用xshell，直接连接树莓派，使用默认账户登录。 安装Centos镜像</description>
+    </item>
+    
+    <item>
+      <title>linux（debian10）安装pip3方法，并修改安装源为国内源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A502/</link>
+      <pubDate>Fri, 05 Feb 2021 22:10:50 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A502/</guid>
+      <description>原文： https://blog.csdn.net/weixin_39465823/article/details/103111263
+1，安装pip3
+sudo apt install python3-pip
+验证安装是否成功
+pip3 &amp;ndash;version
+guoyz@debian:~/pip-9.0.1$ pip3 --version pip 18.1 from /usr/lib/python3/dist-packages/pip (python 3.7) 然后安装构建python 模块所需的开发工具，
+sudo apt install build-essential python3-dev python3-setuptools
+2，新建pip.conf文件
+guoyanzhang@debian:~$ pwd /home/guoyanzhang guoyanzhang@debian:~$ mkdir .pip guoyanzhang@debian:~$ vim .pip/pip.conf 添加内容：
+[global] index-url=http://mirrors.aliyun.com/pypi/simple/ [install] trusted-host=mirrors.aliyun.com 参考：https://www.cnblogs.com/yanxiatingyu/p/10160712.html
+ubuntu 下安装pip3
+https://www.cnblogs.com/yanxiatingyu/p/10160712.html</description>
+    </item>
+    
+    <item>
+      <title>如何在Debian 9上安装Python 3.7？</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A501/</link>
+      <pubDate>Fri, 05 Feb 2021 22:07:34 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A501/</guid>
+      <description>原文：https://www.php.cn/python-tutorials-416979.html
+Python是世界上最流行的编程语言之一，是一种多功能的编程语言；它简单易学，可以使用它来完成我们想要的任何操作，编写小脚本，构建游戏，开发网站等等。而Python 3.7是Python语言的最新主要版本，下面本篇文章将介绍关于在Debian系统上如何安装Python 3.7版本，希望对大家有所帮助。
+在Debian上构建Python 3.7是一个相对简单的过程，不需要花费多长时间。
+1、首先安装构建Python源所需的包：
+$ sudo apt update
+$ sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+2、使用curl命令从python下载页下载所需版本的源代码
+下面的命令是下载Python 3.7.3版本：
+$ curl -O https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+如果下载不动最好是弄个魔法或者离线安装包吧
+3、下载完成后，使用tar命令解压缩：
+$ tar -xf Python-3.7.3.tar.xz
+4、导航到python源目录并运行configure脚本
+该configure脚本将执行许多检查，以确保系统上的所有依赖项都存在。
+$ cd Python-3.7.3
+$ ./configure &amp;ndash;enable-optimizations
+说明：&amp;ndash;enable-optimizations选项将通过运行多个测试来优化Python二进制文件，这将使构建过程变慢。
+5、运行make以启动构建过程：
+$ make -j 8
+为了缩短构建时间，需要根据处理器修改-j标志。如果不知道处理器的核心数量，可以通过键入nproc来找到它。本文以8个内核为例，则使用的是-j8标志。
+6、安装python二进制文件
+构建完成后，以具有sudo访问权限的用户身份运行以下命令，安装python二进制文件：
+$ sudo make altinstall
+注：不要使用标准make install，因为它将覆盖默认python3系统d的二进制文件。
+7、验证
+此时，Python 3.7已安装在Debian系统上并可以使用了。我们可以输入以下命令来验证一下：
+$ python3.7 &amp;ndash;version
+输出
+Python 3.7.3</description>
+    </item>
+    
+    <item>
+      <title>2021年2月份求生之路2望夜插件整合包使用说明（自行填充版）</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%884%E6%97%A501/</link>
+      <pubDate>Thu, 04 Feb 2021 03:34:56 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%884%E6%97%A501/</guid>
+      <description>如果出现好友进入不了的情况
+需要在控制台输入
+sv_consistency 0
+以关闭一致性检查
+原帖地址：
+https://bbs.3dmgame.com/thread-4920489-1-1.html https://bbs.3dmgame.com/thread-6086728-1-1.html
+整合插件下载地址：
+https://cloud.189.cn/t/bAZJJfJbEfAz (访问码:h4qz)
+https://stc214.lanzous.com/b05yskled 提取码：9cr4
+插件大全：
+http://mlui.ys168.com/
+插件安装录像:https://www.bilibili.com/video/BV1BK411P7Tg/
+说明: 2020-9-29支持版本 2201 及更新(旧版本不保证,请自行测试) -by 望夜
+【仅保证本整合的插件不出错】
+PS:请根据求生版本选择对应版本的插件.
+◆◆注意:仅基于合作模式制作整合的插件◆◆
+PS:还不太通用,所以没有集成电击,witch修正,解锁全近战
+★重申:这是插件不是外挂,也没有修改相关脚本,所以本插件不会被ban,只是你进不了入开了VAC(Valve Anti-cheating反作弊)的服而已,你想进也进不去,要先关了插件才行★
+JSGME里没特别写的其他插件都集成在(插件平台x-x-x)里,不需要的自行删除, 路径 求生目录\left4dead2\addons\sourcemod\plugins\ 下
+★插件平台★
+【sourcemod】stable branch 最新1.10.0-git6497
+【metamod】stable branch 最新1.11.0-git1143
+【l4dtoolz】1.0.0.9h (去除人数限制):by ivailosp
+【可选】
+【电击&amp;amp;Witch目标修正:by Lux】
+【近战解锁修正:by Silvers】
+【修正所用dhooks-2.2.0:by Peace-Maker】 ◆◆◆支持玩家数打开 游戏目录\left4dead2\cfg\sourcemod\R_smc.cfg 默认8,请自行修改◆◆◆
+R_smc_mp &amp;ldquo;8&amp;rdquo;
+或者在游时聊天窗输入 !sset 可随时设置变更游戏人数
+JSGME:
+【插件平台x-x-x】里的
+★多人控制★ R_smc.smx
+★角色选择★ R_csm.smx
+★武器解锁★ l4d2_WeaponUnlock.smx
+★信息显示★ R_info.smx
+★显示特感生命值★ l4d_infectedhp.smx
+★给于物品★ l4d_gear_transfer.</description>
+    </item>
+    
+    <item>
+      <title>docker运行本身就是持续循环运行的任务需要注意的一个点</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A505/</link>
+      <pubDate>Wed, 03 Feb 2021 03:02:06 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A505/</guid>
+      <description>如果制作成容器之前程序本身就是常驻或者定时运行 则运行指令通常仅仅加一个 -d 命令就足够了
+如：
+docker run -d -p 80:80 &amp;ndash;restart=always &amp;ndash;name tmp_docker img_name</description>
+    </item>
+    
+    <item>
+      <title>docker 拷贝镜像文件</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A504/</link>
+      <pubDate>Wed, 03 Feb 2021 02:21:40 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A504/</guid>
+      <description>原文：https://www.cnblogs.com/bigben0123/p/7592970.html
+1、概述
+我们制作好镜像后，有时需要将镜像复制到另一台服务器使用。
+能达到以上目的有两种方式，一种是上传镜像到仓库中（本地或公共仓库），但是另一台服务器很肯能只是与当前服务器局域网想通而没有公网的，所以如果使用仓库的方式，只能自己搭建私有仓库，这会在另一篇文章中介绍。
+如果我们仅仅是要复制到另外少数的服务器，搭建私有仓库显然没有这个必要，而将镜像保存为文件上传到其他服务器再从文件中载入镜像也是一个不错的选择。
+可以使用Docker save和Docker load命令来存储和载入镜像。
+2、保存镜像为文件
+如果要讲镜像保存为本地文件，可以使用Docker save命令。
+命令格式：
+docker save -o 要保存的文件名 要保存的镜像
+首先查看当前的镜像列表：
+docker images
+比如这里,我们将java8的镜像保存为文件：
+docker save -o java8.tar lwieske/java-8
+完成后通过 ls 命令即可看到文件。
+3、从文件载入镜像
+从文件载入镜像可以使用Docker load命令。
+命令格式：
+docker load &amp;ndash;input 文件
+或者
+docker load &amp;lt; 文件名
+此时会导入镜像以及相关的元数据信息等。
+首先使用SSH工具将文件上传到另一台服务器。
+然后通过命令载入镜像：
+docker load &amp;lt; java8.tar
+导入后可以使用docker images命令查看:
+docker images
+原文链接：http://blog.csdn.net/anxpp/article/details/51810776
+Docker 创建镜像、修改、上传镜像
+–创建镜像有很多方法，用户可以从 Docker Hub 获取已有镜像并更新，也可以利用本地文件系统创建一个。
+一、创建镜像
+创建镜像有很多方法，用户可以从 Docker Hub 获取已有镜像并更新，也可以利用本地文件系统创建一个。
+二、修改已有镜像
+1、先使用下载的镜像启动容器。
+$ docker run -t -i training/sinatra /bin/bash root@0b2616b0e5a8:/#</description>
+    </item>
+    
+    <item>
+      <title>对openwrt系统分区进行扩容</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A503/</link>
+      <pubDate>Wed, 03 Feb 2021 02:09:29 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A503/</guid>
+      <description>原文链接：
+https://blog.csdn.net/zhangzejin3883/article/details/108904399
+OpenWrt全硬盘安装方法（免Overlay扩容） 写在前面
+正常我们硬盘安装OpenWrt是将img文件写入硬盘就结束了，但是进入到OpenWrt系统中会发现系统分区只有几百兆的大小，安装几个插件还好说，一旦打开各种日志写入功能就会发现，硬盘空间完全不够用；之后找到的方法只能是利用未分区的空间新建分区，然后将Overlay挂载到新的分区，将体积大的目录用软链接的方式转移到新分区里面，但是这样治标不治本，久而久之你的系统分区早晚会爆满的。
+因此本篇将介绍一个全硬盘安装OpenWrt的方法，实现系统分区大小等于你的硬盘大小，从此一劳永逸的解决空间不够用的烦恼。
+需要注意的是，此方法为硬盘全新安装，已安装过的将格盘重新安装，请注意数据备份。 准备工作
+首先需要有一个带有PE的启动U盘，然后将一下文件放入U盘中：
+DiskGenius V5.3.0 PE免费版 physdiskwrite V0.5.3 openwrt-x86-64-generic-squashfs-combined.img 这里需要说明的是DiskGenius需要使用新版本，有些PE自带的DiskGenius比较旧可能没有对应的菜单，可以在DiskGenius官网下载PE免费版即可。
+安装OpenWrt镜像
+使用PE启动U盘进入PE系统，然后用管理员全新运行CMD：
+CMD
+进入你U盘的目录下：
+U盘目录
+输入以下命令进入写盘工具：（这里替换成你自己的IMG文件名）
+physdiskwrite.exe -u openwrt-x86-64-generic-squashfs-combined.img
+physdiskwrite
+接下来选择你要写入的硬盘序号，我这里是0，你要看好自己要写入的硬盘需要再填写
+输入硬盘序号
+最后确认填写的信息正确，然后输入y
+确认信息
+等待写入结束，如下图界面：
+写入完成
+扩容系统分区
+打开DiskGenius软件，选择你的刚刚写入的硬盘，然后再选中上面灰色未使用的分区，右击菜单中选择 “将空间分配给” -&amp;gt; “分区：未格式化(D:)”
+DiskGenius
+确认选择正确的分区，然后点击“是”
+确认分区
+调整分区完成后点击“完成”
+调整分区完成
+完成后如下图所示表示成功扩容系统分区
+成功扩容
+最后重启计算机并拔掉PE启动U盘。
+查看系统分区情况
+重启软路由并等待代码跑完后，按回车进入命令行模式，输入df -h，如下图overlayfs:overlay已经为硬盘体积。
+查看系统分区情况
+总结
+整个过程相比于挂载新分区简单很多，只是再写入img文件后马上进行分区扩容即可。
+另外需要说明的是，将img文件写入硬盘后必须马上去扩容分区，如果你重启进入过OpenWrt系统后再进行分区将不会有任何效果。</description>
+    </item>
+    
+    <item>
+      <title>使用schedule模块定时执行任务</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A502/</link>
+      <pubDate>Wed, 03 Feb 2021 02:06:49 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A502/</guid>
+      <description>原文： https://blog.csdn.net/liao392781/article/details/80521194
+python中有一个轻量级的定时任务调度的库：schedule。他可以完成每分钟，每小时，每天，周几，特定日期的定时任务。因此十分方便我们执行一些轻量级的定时任务。
+代码如下：
+import schedule import time def job(): print(&amp;quot;I&#39;m working...&amp;quot;) schedule.every(10).minutes.do(job) schedule.every().hour.do(job) schedule.every().day.at(&amp;quot;10:30&amp;quot;).do(job) schedule.every(5).to(10).days.do(job) schedule.every().monday.do(job) schedule.every().wednesday.at(&amp;quot;13:15&amp;quot;).do(job) while True: schedule.run_pending() time.sleep(1) 上面的意思就是：
+每隔十分钟执行一次任务
+每隔一小时执行一次任务
+每天的10:30执行一次任务
+每隔5到10天执行一次任务
+每周一的这个时候执行一次任务
+每周三13:15执行一次任务
+run_pending：运行所有可以运行的任务
+当然，如果函数中带有参数怎么办呢？
+很简单，如下所示：
+import schedule import time def job(name): print(&amp;quot;her name is : &amp;quot;, name) name = xiaona schedule.every(10).minutes.do(job, name) schedule.every().hour.do(job, name) schedule.every().day.at(&amp;quot;10:30&amp;quot;).do(job, name) schedule.every(5).to(10).days.do(job, name) schedule.every().monday.do(job, name) schedule.every().wednesday.at(&amp;quot;13:15&amp;quot;).do(job, name) while True: schedule.run_pending() time.sleep(1) 疑问解答：
+最近有人问我while True之类的是什么意思，很简单，如果你去掉while True这个死循环的话，schedule.run_pending()是没有办法持续运行的，那么schedule.run_pending()是个什么东西呢——
+schedule其实就只是个定时器。在while True死循环中，schedule.run_pending()是保持schedule一直运行，去查询上面那一堆的任务，在任务中，就可以设置不同的时间去运行。跟linux中设置crontab定时任务是类似的。
+所以，schedule有一定的局限性，所以只能用来执行一些小型的定时任务，它的局限性在哪呢——</description>
+    </item>
+    
+    <item>
+      <title>使用docker打包python程序</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A501/</link>
+      <pubDate>Wed, 03 Feb 2021 01:14:03 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A501/</guid>
+      <description>准备工作 一个可以正常执行的py文件 docker环境 python环境 进入项目文件夹 运行一次py文件对程序进行打包前的测试
+在项目主目录下编写Dockerfile文件
+内容模板如下：
+需要注意的是这个文件的写法并非如此固定，根据需要可以自行编辑
+# Use an official Python runtime as a parent image FROM python:3.7.6 # Set the working directory to /app WORKDIR /app # Copy the current directory contents into the container at /app COPY . /app # Install any needed packages specified in requirements.txt # 此部分使用了清华源加快了速度 # 清华源使用只需要将域名改成 pypi.tuna.tsinghua.edu.cn/simple 即可 # 如果是手动敲命令 RUN pip install --trusted-host pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt # Make port 80 available to the world outside this container EXPOSE 80 # Define environment variable ENV NAME daily189 # Run app.</description>
+    </item>
+    
+    <item>
+      <title>Github Action自动签到抽奖天翼云盘，每日100&#43;MB</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8829%E6%97%A501/</link>
+      <pubDate>Fri, 29 Jan 2021 22:57:38 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8829%E6%97%A501/</guid>
+      <description>原文：https://haoduck.com/462.html
+使用方法
+打开 https://github.com/peng4740/Cloud189Checkin-Actions
+一 Fork此仓库
+Github Action自动签到抽奖天翼云盘，每日100+MB
+二 设置账号密码
+添加名为USER、PWD的变量
+值分别为账号、密码
+多账号时账号密码一行一个一一对应
+示例：
+USER
+123456 24678 PWD
+cxkjntm jntmcxk Github Action自动签到抽奖天翼云盘，每日100+MB
+Github Action自动签到抽奖天翼云盘，每日100+MB
+Github Action自动签到抽奖天翼云盘，每日100+MB
+三 启用Action
+1 点击Action，再点击I understand my workflows, go ahead and enable them
+2 修改任意文件后提交一次
+Github Action自动签到抽奖天翼云盘，每日100+MB
+四 查看运行结果
+Actions &amp;gt; Cloud189Checkin &amp;gt; build
+能看到如下图所示，表示成功（已经看不到了。。只能通过是否自动签到判断）
+Github Action自动签到抽奖天翼云盘，每日100+MB
+此后，将会在每天10:00自动运行</description>
+    </item>
+    
+    <item>
+      <title>Conda 换清华源</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8823%E6%97%A502/</link>
+      <pubDate>Sat, 23 Jan 2021 15:56:45 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8823%E6%97%A502/</guid>
+      <description>关键命令
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ 方法 https://blog.csdn.net/qq_43198568/article/details/105626024 Anaconda之conda换国内源
+前言 方法一：使用 Anaconda Navigator 换源（最简单） 方法二：使用 Anaconda Prompt 换源（最常用） 方法三：修改 .condarc 文件（最强硬） 前言
+我知道，网上的教 conda 换国内源的教程数不胜数，但是很多都是一个方法翻来覆去的讲。
+本文，一共讲述的 conda 换源的三种方法，非常简单易懂。
+方法一：使用 Anaconda Navigator 换源（最简单）
+打开 Anaconda Navigator
+在这里插入图片描述
+出现如下界面，点击 Channels
+在这里插入图片描述
+点击 Add…，输入 https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/，点击 Enter
+在这里插入图片描述
+在这里插入图片描述
+相同的操作，输入 https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 与 https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/，最终得到如下效果，并点击 Update channels
+在这里插入图片描述
+等待更新完毕即可。
+方法二：使用 Anaconda Prompt 换源（最常用）
+打开 Anaconda Prompt</description>
+    </item>
+    
+    <item>
+      <title>Xshell 免费版的下载页面</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8823%E6%97%A501/</link>
+      <pubDate>Sat, 23 Jan 2021 15:18:36 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8823%E6%97%A501/</guid>
+      <description>官方地址（需要填写信息和邮箱） https://www.netsarang.com/zh/free-for-home-school/
+第三方汇总地址(速度可能更快？) https://51.ruyo.net/test/download_xshell_xftp.html</description>
+    </item>
+    
+    <item>
+      <title>Win10 开始菜单备份方法和工具</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8818%E6%97%A501/</link>
+      <pubDate>Mon, 18 Jan 2021 18:27:06 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8818%E6%97%A501/</guid>
+      <description>原文：https://blog.csdn.net/pxmxx/article/details/88881281 每一次重装系统都要为一些常用的软件快捷方式添加到开始菜单界面,一个个的加比较烦人
+所以就找到了下面这款软件
+BackupSML
+官网： https://www.sordum.org/10997/backup-start-menu-layout-v1-4/
+这个官网可能要fq,所以就移到了网盘,下面有下载的链接
+下载:https://www.lanzous.com/i3l5lgb 密码:fgm2
+下面是教程:
+系统是64位的打开64位的软件</description>
+    </item>
+    
+    <item>
+      <title>将win10的默认记事本工具替换为notepad3</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8816%E6%97%A502/</link>
+      <pubDate>Sat, 16 Jan 2021 13:04:14 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8816%E6%97%A502/</guid>
+      <description>原文链接 https://www.cnblogs.com/ziyue7575/p/13638397.html
+content 下载安装包：
+https://www.rizonesoft.com/download/3939/
+1.使用安装选项中的替换功能替换
+2.修改注册表替换
+win+R 输入 regedit 打开注册表 输入计算机\HKEY_CLASSES_ROOT\txtfile\shell\open\command 进入记事本的注册表 修改默认的值,原来的值是 %SystemRoot%\system32\NOTEPAD.EXE %1 ,改为自己解压后的exe的位置(中间不要有中文和空格) 我改后是 E:\software\Notepad3\Notepad3.exe %1 在路径输入 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options,设置默认值为软件路径,比如我是 E:\software\Notepad3\Notepad3.exe PS：使用系统优化软件可能会导致系统修复的时候修复记事本替换项目 重新安装notepad3进行替换即可。 </description>
+    </item>
+    
+    <item>
+      <title>80or443等端口被占用解决方法</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8813%E6%97%A502/</link>
+      <pubDate>Wed, 13 Jan 2021 22:25:48 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8813%E6%97%A502/</guid>
+      <description>运行
+cmd/powershell,执行
+netstat -aon|findstr :80|findstr LISTEN 同理,查找占用443端口的进程也是相同操作,将80换成443即可
+得到返回,最右一列为进程PID 19892.接下来打开任务管理器
+可以看到进程PID为19892的进程即为占用该端口的进程,将其结束
+有时候会遇到比较棘手的情况,就是占用的进程为PID 4 即系统服务(SYSTEM)
+可以自行搜索并查找出相关服务,或者干脆直接用以下命令直接停用常见的相关服务
+管理员权限运行cmd/powershell,直接粘贴进去运行即可
+net stop ReportServer /y net stop MsDepSvc /y net stop PeerDistSvc /y net stop SyncShareSvc /y net stop W3SVC /y net stop WAS /y net stop IISADMIN /y net stop http /y 443端口若被vmware-hostd.exe占用,可以直接打开vmwre-&amp;gt;首选项-&amp;gt;共享虚拟机-&amp;gt;禁用共享,或者自行修改为其他端口
+针对VMWARE16/更新版本,可以编辑C:\ProgramData\VMware\hostd\proxy.xml
+httpsPort改成非443/80即可
+手动排查端口占用可参考: https://www.devside.net/wamp-server/opening-up-port-80-for-apache-to-use-on-windows
+若使用
+netstat -aon|findstr :80|findstr LISTEN
+查询不到端口被任何进程占用,且仍然无法监听,可能是LSP被劫持的原因
+管理员权限运行cmd/powershell , 输入netsh winsock reset
+回车后一般就OK了.如果出现断网重启电脑即可
+原文地址： https://www.dogfight360.com/blog/knowledge-base/%e8%a7%a3%e5%86%b3%e5%b8%b8%e8%a7%81%e7%9a%8480-443%e7%ab%af%e5%8f%a3%e8%a2%ab%e5%8d%a0%e7%94%a8%e9%97%ae%e9%a2%98/</description>
+    </item>
+    
+    <item>
+      <title>使用Hugo建立的博客使用Dream主题时开启搜索功能</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8813%E6%97%A501/</link>
+      <pubDate>Wed, 13 Jan 2021 18:13:37 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8813%E6%97%A501/</guid>
+      <description>其他详细设置看官方说明： https://g1eny0ung.site/hugo-theme-dream/
+Dream主题中内置了搜索功能 只需要简单的设置即可开启这个功能
+打开根目录下的 config.toml
+在配置项中加入如下内容
+原来配置文件中有[params]则在其中加入第二行即可
+[params] enableSearch = true 之后添加如下内容
+[outputs] home = [&amp;#34;HTML&amp;#34;, &amp;#34;RSS&amp;#34;, &amp;#34;JSON&amp;#34;] 原文：https://g1eny0ung.site/hugo-theme-dream/#/search
+Search You can enable the search feature by setting the enableSeach param to true in [params] [params] enableSearch = true Also, you need to set Hugo outputs to include JSON: # in your config.toml [outputs] home = [&amp;#34;HTML&amp;#34;, &amp;#34;RSS&amp;#34;, &amp;#34;JSON&amp;#34;] Then you will see a search icon appear on the top of the nav.</description>
+    </item>
+    
+    <item>
+      <title>把图片放入markdown文档中</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A503/</link>
+      <pubDate>Tue, 12 Jan 2021 23:47:12 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A503/</guid>
+      <description>原文链接： https://www.jianshu.com/p/280c6a6f2594
+插图最基础的格式就是： ![Alt text](图片链接 &amp;quot;optional title&amp;quot;) Alt text：图片的Alt标签，用来描述图片的关键词，可以不写。最初的本意是当图片因为某种原因不能被显示时而出现的替代文字，后来又被用于SEO，可以方便搜索引擎根据Alt text里面的关键词搜索到图片。 图片链接：可以是图片的本地地址或者是网址。&amp;quot;optional title&amp;quot;：鼠标悬置于图片上会出现的标题文字，可以不写。 插入本地图片 只需要在基础语法的括号中填入图片的位置路径即可，支持绝对路径和相对路径。
+例如：
+![avatar](/home/picture/1.png) 不灵活不好分享，本地图片的路径更改或丢失都会造成markdown文件调不出图。 插入网络图片 只需要在基础语法的括号中填入图片的网络链接即可，现在已经有很多免费/收费图床和方便传图的小工具可选。
+例如：
+![avatar](http://baidu.com/pic/doge.png) 将图片存在网络服务器上，非常依赖网络。 把图片存入markdown文件 用base64转码工具把图片转成一段字符串，然后把字符串填到基础格式中链接的那个位置。
+基础用法： ![avatar](data:image/png;base64,iVBORw0......) 这个时候会发现插入的这一长串字符串会把整个文章分割开，非常影响编写文章时的体验。如果能够把大段的base64字符串放在文章末尾，然后在文章中通过一个id来调用，文章就不会被分割的这么乱了。 高级用法 比如： ![avatar][base64str] [base64str]:data:image/png;base64,iVBORw0...... 最后，base64的图片编码如何得来？
+使用python将图片转化为base64字符串 import base64 f=open(&amp;#39;723.png&amp;#39;,&amp;#39;rb&amp;#39;) #二进制方式打开图文件 ls_f=base64.b64encode(f.read()) #读取文件内容，转换为base64编码 f.close() print(ls_f) base64字符串转化为图片 import base64 bs=&amp;#39;iVBORw0KGgoAAAANSUhEUg....&amp;#39; # 太长了省略 imgdata=base64.b64decode(bs) file=open(&amp;#39;2.jpg&amp;#39;,&amp;#39;wb&amp;#39;) file.write(imgdata) file.close() </description>
+    </item>
+    
+    <item>
+      <title>给hugo增加搜索功能</title>
+      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A502/</link>
+      <pubDate>Tue, 12 Jan 2021 23:15:58 +0800</pubDate>
+      
+      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A502/</guid>
+      <description>原文： https://blog.humblepg.com/post/2019/06/hugo-search.html
+Hugo 这种静态站点默认没有搜索功能，大概因为没了数据库实现反而不方便。Search for your Hugo Website 列出了一些可选项，要么自己生成索引用开源的工具搜索，要么用第三方搜索服务如 algolia。
+其实 algolia 也是运营几年的熟脸，提供的免费方案小网站也够用，但是还是第三方依赖，配置的动作同样还是要做的，不如自己来。
+自己来的方案里我选择 Github Gist for Fuse.js integration，因为它不需要另外引入 Node.js、 Grunt 或 Gulp，而是利用 Hugo 内置的功能在 build 的时候生成索引输出到 JSON，看起来更简单的样子。
+以下内容参照以上链接，我重新演绎一下。
+输出索引文件
+第一步：修改配置文件 Config.toml，添加以下内容
+[outputs] home = [&amp;#34;HTML&amp;#34;, &amp;#34;RSS&amp;#34;, &amp;#34;JSON&amp;#34;] 第二步：创建 layouts/_default/index.json
+{{- $.Scratch.Add &amp;#34;index&amp;#34; slice -}} {{- range .Site.RegularPages -}} {{- $.Scratch.Add &amp;#34;index&amp;#34; (dict &amp;#34;title&amp;#34; .Title &amp;#34;tags&amp;#34; .Params.tags &amp;#34;categories&amp;#34; .Params.categories &amp;#34;contents&amp;#34; .Plain &amp;#34;permalink&amp;#34; .Permalink) -}} {{- end -}} {{- $.Scratch.Get &amp;#34;index&amp;#34; | jsonify -}} 完成后可以从 /index.</description>
+    </item>
+    
+  </channel>
+</rss>

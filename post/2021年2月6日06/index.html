@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://stc214.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://stc214.github.io/css/syntax.css' />
+    <title>使用QEMU模拟树莓派Raspberry Pi - NOTE</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="原文： https://cloud.tencent.com/developer/article/1685107
+如果在ubuntu中提示vnc的部分出错
+那就使用下边这条删掉相关设置项的已编辑好的命令
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda /home/ustc/debian_img/2021-01-11-raspios-buster-armhf-lite.img -dtb /home/ustc/debian_img/versatile-pb-buster.dtb -kernel /home/ustc/debian_img/kernel-qemu-4.19.50-buster -append &amp;#39;root=/dev/sda2 panic=1&amp;#39; -no-reboot -netdev user,id=unet -device virtio-net-pci,netdev=unet 原文：
+被誉为 “世界上最流行最便宜的小型电脑” 的「树莓派」Raspberry Pi 是一款性价比超高的迷你电脑主机 (仅有信用卡大小)， 深受全球开发者、极客、技术爱好者们的追捧和喜爱
+树莓派可以安装多种 Linux 系统发行版 (官方为 Debian 的衍生版)，可当服务器搭建各种网站、应用服务来使用， 也能用来学习编程、控制硬件或日常办公。由于树莓派的体积很小很轻，并且功能极其丰富强大，这也使得它的应用范围和潜力几乎是无限的
+下面介绍在之前的编译安装Qemu5.1的文章基础下安装raspberrypi树莓派
+Fedora32下编译安装Qemu5.1并创建ARM版本Linux虚拟机
+1、下载树莓派系统
+最新版本下载地址 http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+2、下载kernel-qemu
+https://github.com/dhruvvyas90/qemu-rpi-kernel
+下载如下这两个文件
+kernel-qemu-4.19.50-buster
+versatile-pb-buster.dtb
+3、qemu命令行启动
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda ./2020-02-13-raspbian-buster.img -dtb ./versatile-pb-buster.dtb -kernel ./kernel-qemu-4.19.50-buster -append &amp;lsquo;root=/dev/sda2 panic=1&amp;rsquo; -no-reboot -display vnc=10.20.90.56:1 -netdev user,id=unet -device virtio-net-pci,netdev=unet" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A506/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="使用QEMU模拟树莓派Raspberry Pi - NOTE" />
+<meta name="twitter:description"
+  content="原文： https://cloud.tencent.com/developer/article/1685107
+如果在ubuntu中提示vnc的部分出错
+那就使用下边这条删掉相关设置项的已编辑好的命令
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda /home/ustc/debian_img/2021-01-11-raspios-buster-armhf-lite.img -dtb /home/ustc/debian_img/versatile-pb-buster.dtb -kernel /home/ustc/debian_img/kernel-qemu-4.19.50-buster -append &amp;#39;root=/dev/sda2 panic=1&amp;#39; -no-reboot -netdev user,id=unet -device virtio-net-pci,netdev=unet 原文：
+被誉为 “世界上最流行最便宜的小型电脑” 的「树莓派」Raspberry Pi 是一款性价比超高的迷你电脑主机 (仅有信用卡大小)， 深受全球开发者、极客、技术爱好者们的追捧和喜爱
+树莓派可以安装多种 Linux 系统发行版 (官方为 Debian 的衍生版)，可当服务器搭建各种网站、应用服务来使用， 也能用来学习编程、控制硬件或日常办公。由于树莓派的体积很小很轻，并且功能极其丰富强大，这也使得它的应用范围和潜力几乎是无限的
+下面介绍在之前的编译安装Qemu5.1的文章基础下安装raspberrypi树莓派
+Fedora32下编译安装Qemu5.1并创建ARM版本Linux虚拟机
+1、下载树莓派系统
+最新版本下载地址 http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+2、下载kernel-qemu
+https://github.com/dhruvvyas90/qemu-rpi-kernel
+下载如下这两个文件
+kernel-qemu-4.19.50-buster
+versatile-pb-buster.dtb
+3、qemu命令行启动
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda ./2020-02-13-raspbian-buster.img -dtb ./versatile-pb-buster.dtb -kernel ./kernel-qemu-4.19.50-buster -append &amp;lsquo;root=/dev/sda2 panic=1&amp;rsquo; -no-reboot -display vnc=10.20.90.56:1 -netdev user,id=unet -device virtio-net-pci,netdev=unet" />
+<meta name="twitter:site" content="https://stc214.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://stc214.github.io/img/0057.jpg">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="使用QEMU模拟树莓派Raspberry Pi - NOTE">
+<meta property="og:description"
+  content="原文： https://cloud.tencent.com/developer/article/1685107
+如果在ubuntu中提示vnc的部分出错
+那就使用下边这条删掉相关设置项的已编辑好的命令
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda /home/ustc/debian_img/2021-01-11-raspios-buster-armhf-lite.img -dtb /home/ustc/debian_img/versatile-pb-buster.dtb -kernel /home/ustc/debian_img/kernel-qemu-4.19.50-buster -append &amp;#39;root=/dev/sda2 panic=1&amp;#39; -no-reboot -netdev user,id=unet -device virtio-net-pci,netdev=unet 原文：
+被誉为 “世界上最流行最便宜的小型电脑” 的「树莓派」Raspberry Pi 是一款性价比超高的迷你电脑主机 (仅有信用卡大小)， 深受全球开发者、极客、技术爱好者们的追捧和喜爱
+树莓派可以安装多种 Linux 系统发行版 (官方为 Debian 的衍生版)，可当服务器搭建各种网站、应用服务来使用， 也能用来学习编程、控制硬件或日常办公。由于树莓派的体积很小很轻，并且功能极其丰富强大，这也使得它的应用范围和潜力几乎是无限的
+下面介绍在之前的编译安装Qemu5.1的文章基础下安装raspberrypi树莓派
+Fedora32下编译安装Qemu5.1并创建ARM版本Linux虚拟机
+1、下载树莓派系统
+最新版本下载地址 http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip
+2、下载kernel-qemu
+https://github.com/dhruvvyas90/qemu-rpi-kernel
+下载如下这两个文件
+kernel-qemu-4.19.50-buster
+versatile-pb-buster.dtb
+3、qemu命令行启动
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda ./2020-02-13-raspbian-buster.img -dtb ./versatile-pb-buster.dtb -kernel ./kernel-qemu-4.19.50-buster -append &amp;lsquo;root=/dev/sda2 panic=1&amp;rsquo; -no-reboot -display vnc=10.20.90.56:1 -netdev user,id=unet -device virtio-net-pci,netdev=unet" />
+<meta property="og:url" content="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A506/" />
+<meta property="og:site_name" content="使用QEMU模拟树莓派Raspberry Pi" />
+<meta property="og:image"
+  content="https://stc214.github.io/img/0057.jpg">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-02-06 01:35:37 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://stc214.github.io/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://stc214.github.io/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://stc214.github.io/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://stc214.github.io/">
+                  <img class=" avatar-user"
+                    src="https://stc214.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://stc214.github.io/">STC214</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A506/">使用QEMU模拟树莓派Raspberry Pi</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Sat, 06 Feb 2021 01:35:37 &#43;0800"
+                    class="no-wrap">
+                    Sat, 06 Feb 2021 01:35:37 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sat, 06 Feb 2021 01:35:37 &#43;0800"
+                    class="no-wrap">
+                    Sat, 06 Feb 2021 01:35:37 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1475 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/note">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Note
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      笔记
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>原文： <a href="https://cloud.tencent.com/developer/article/1685107">https://cloud.tencent.com/developer/article/1685107</a></p>
+<p>如果在ubuntu中提示vnc的部分出错<br>
+那就使用下边这条删掉相关设置项的已编辑好的命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">qemu-system-arm   -M versatilepb   -cpu arm1176  -m <span class="m">256</span>   -hda /home/ustc/debian_img/2021-01-11-raspios-buster-armhf-lite.img  -dtb /home/ustc/debian_img/versatile-pb-buster.dtb   -kernel /home/ustc/debian_img/kernel-qemu-4.19.50-buster   -append <span class="s1">&#39;root=/dev/sda2 panic=1&#39;</span>   -no-reboot -netdev user,id<span class="o">=</span>unet -device virtio-net-pci,netdev<span class="o">=</span>unet  
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><hr>
+<p>原文：</p>
+<p>被誉为 “世界上最流行最便宜的小型电脑” 的「树莓派」Raspberry Pi 是一款性价比超高的迷你电脑主机 (仅有信用卡大小)， 深受全球开发者、极客、技术爱好者们的追捧和喜爱</p>
+<p>树莓派可以安装多种 Linux 系统发行版 (官方为 Debian 的衍生版)，可当服务器搭建各种网站、应用服务来使用， 也能用来学习编程、控制硬件或日常办公。由于树莓派的体积很小很轻，并且功能极其丰富强大，这也使得它的应用范围和潜力几乎是无限的</p>
+<p>下面介绍在之前的编译安装Qemu5.1的文章基础下安装raspberrypi树莓派</p>
+<p>Fedora32下编译安装Qemu5.1并创建ARM版本Linux虚拟机<br>
+1、下载树莓派系统</p>
+<p>最新版本下载地址 <a href="http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip">http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip</a><br>
+2、下载kernel-qemu</p>
+<p><a href="https://github.com/dhruvvyas90/qemu-rpi-kernel">https://github.com/dhruvvyas90/qemu-rpi-kernel</a></p>
+<p>下载如下这两个文件</p>
+<p>kernel-qemu-4.19.50-buster</p>
+<p>versatile-pb-buster.dtb<br>
+3、qemu命令行启动</p>
+<p>qemu-system-arm   -M versatilepb   -cpu arm1176   -m 256   -hda ./2020-02-13-raspbian-buster.img  -dtb ./versatile-pb-buster.dtb   -kernel ./kernel-qemu-4.19.50-buster   -append &lsquo;root=/dev/sda2 panic=1&rsquo;   -no-reboot -display vnc=10.20.90.56:1  -netdev user,id=unet -device virtio-net-pci,netdev=unet</p>
+<p>-M versatilepb</p>
+<p>-cpu arm1176</p>
+<p>-m 256</p>
+<p>-hda ./2020-02-13-raspbian-buster.img</p>
+<p>-dtb ./versatile-pb-buster.dtb</p>
+<p>-kernel ./kernel-qemu-4.19.50-buster   -append &lsquo;root=/dev/sda2 panic=1&rsquo;</p>
+<p>-no-reboot</p>
+<p>-display vnc=10.20.90.56:1</p>
+<p>-netdev user,id=unet -device virtio-net-pci,netdev=unet<br>
+4、体验树莓派系统</p>
+<p>vnc登录5901端口</p>
+<p>lscpu+uname -a可以看到cpu为arm架构，内核也为arm版本内核<br>
+5、当然你也可以下载x86架构的镜像</p>
+<p><a href="https://www.raspberrypi.org/downloads/raspberry-pi-desktop/">https://www.raspberrypi.org/downloads/raspberry-pi-desktop/</a></p>
+<p>本文分享自微信公众号 - WalkingCloud（WalkingCloud2018），作者：yuanfan2012</p>
+<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:yunjia_community@tencent.com">yunjia_community@tencent.com</a> 删除。</p>
+<p>原始发表时间：2020-08-21</p>
+<p>本文参与腾讯云自媒体分享计划，欢迎正在阅读的你也加入，一起分享。<br>
+举报<br>
+我来说两句<br>
+0 条评论<br>
+登录 后参与评论<br>
+相关文章</p>
+<pre><code>【CentOS7操作系统安全加固系列】第(1)篇  
+
+规则描述：设置口令认证失败后的锁定策略 为了保障用户系统的安全，建议用户设置口令出错次数的阈值，以及由于口令尝试被锁定用户的自动解锁时间。用户锁定期间，任何输入...  
+yuanfan2012  
+Kali Linux的安装与初体验  
+
+Kali Linux 在渗透测试和白帽子方面是业界领先的 Linux 发行版。默认情况下，该发行版附带了大量入侵和渗透的工具和软件,集合了许多优秀的安全工具  
+yuanfan2012  
+Centos7下使用SSM管理LVM卷  
+
+SSM系统存储管理器系（简称ssm）是RHEL7/CentOS7 新增的功能，是一种统一的存储管理命令界面，由红帽公司开发，用于管理各种各样的存储设备。目前，有...  
+yuanfan2012  
+菜鸟手册（2）：给Jetson Nano安装树莓派摄像头  
+
+因为JetBot上用的是树莓派摄像头，所以我们也首选考虑使用树莓派摄像头，当然USB摄像头是亲测可用的。  
+GPUS Lady  
+.NET Core TDD 前传: 编写易于测试的代码 -- 全局状态  
+
+全局状态, 也可以叫做应用程序状态, 它是一组变量, 这些变量维护着应用程序的高级状态.  
+solenovex  
+记一次uboot升级过程的两个坑  
+
+之前做过一次uboot的升级，当时留下了一些记录，本文摘录其中比较有意思的两个问题。  
+zqb_all  
+Pycharm中无法导入(import)自己写的模块或脚本  
+Aidol  
+HDU 3746 Cyclic Nacklace(KMP求循环节)  
+
+题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3746  
+Ch_Zaqdt  
+创新工场汪华：移动支付与人工智能助推，中国互联网进入OMO时代  
+
+转载自 创新工场公众号 很多人说，中国互联网已经进入下半场，人口红利消失，留给创业者的机会不多了。 但在我看来，中国互联网的下半场还远没到来，我们仍在上半场的开...  
+量子位  
+JVM（一）史上最佳入门指南  
+
+提到Java虚拟机（JVM），可能大部分人的第一印象是“难”，但当让我们真正走入“JVM世界”的时候，会发现其实问题并不像我们想象中的那么复杂。唯一真正令我们恐...  
+Java中文社群-磊哥  
+</code></pre>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://stc214.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://stc214.github.io/css/toc.css' />
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://stc214.github.io/css/gitalk.css'>
+<script src='https://stc214.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Your client ID',
+    clientSecret: 'Your client secret',
+    repo: 'stc214.github.io',
+    owner: 'STC214',
+    admin: ['STC214'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://stc214.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://stc214.github.io/js/github-style.js"></script>
+
+
+
+
+</html>
