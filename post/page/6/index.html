@@ -598,6 +598,74 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/">linux搭建smb、挂载smb、Windows共享</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
+安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
+sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
+服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
+/etc/samba/smb.conf
+配置文件参数解释
+[global]
+#全局参数。
+workgroup = MYGROUP
+#工作组名称
+server string = Samba Server Version %v
+#服务器介绍信息，参数%v为显示
+SMB版本号
+log file = /var/log/samba/log.%m
+#定义日志文件的存放位置与名称，
+参数%m为来访的主机名
+max log size = 50
+#定义日志文件的最大容量为50KB
+security = user
+#安全验证的方式，总共有4种
+#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
+使用user模式，map to guest=bad user代替
+#user：需验证来访主机提供的口令后才可以访问；提升了安全性
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Sat, 06 Feb 2021 02:45:32 &#43;0800" class="no-wrap"
+                title=" Sat, 06 Feb 2021 02:45:32 &#43;0800">
+                Sat, 06 Feb 2021 02:45:32 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
                 <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A509/">Debian(Linux)系统Samba安装和配置</a>
               </h3>
             </div>
@@ -1120,68 +1188,6 @@ sudo add-apt-repository &#34;deb [arch=amd64] https://download.docker.com/linux/
               <relative-time datetime=" Sat, 06 Feb 2021 01:19:10 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 01:19:10 &#43;0800">
                 Sat, 06 Feb 2021 01:19:10 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A508/">Debian Docker 安装</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文： https://www.runoob.com/docker/debian-docker-install.html
-Docker 支持以下的 Debian 版本：
-Buster 10
-Stretch 9 (stable) / Raspbian Stretch
-Docker Engine-Community 在 x86_64（或 amd64 ）armhf，和 arm64 体系结构上受支持。
-使用官方安装脚本自动安装
-安装命令如下：
-curl -fsSL https://get.docker.com | bash -s docker &ndash;mirror Aliyun
-也可以使用国内 daocloud 一键安装命令：
-curl -sSL https://get.daocloud.io/docker | sh
-手动安装
-卸载旧版本
-Docker 的旧版本被称为 docker，docker.io 或 docker-engine，如果已安装，请卸载它们：
-$ sudo apt-get remove docker docker-engine docker.io containerd runc
-安装 Docker Engine-Community
-使用 Docker 仓库进行安装
-在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Fri, 05 Feb 2021 23:37:57 &#43;0800" class="no-wrap"
-                title=" Fri, 05 Feb 2021 23:37:57 &#43;0800">
-                Fri, 05 Feb 2021 23:37:57 &#43;0800
               </relative-time>
             </div>
           </div>

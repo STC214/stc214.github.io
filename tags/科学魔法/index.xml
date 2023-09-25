@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>科学魔法 on NOTE</title>
-    <link>https://stc214.github.io/tags/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/</link>
-    <description>Recent content in 科学魔法 on NOTE</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Jan 2021 19:09:08 +0800</lastBuildDate><atom:link href="https://stc214.github.io/tags/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>P站图片下载</title>
-      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</link>
-      <pubDate>Tue, 12 Jan 2021 19:09:08 +0800</pubDate>
-      
-      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</guid>
-      <description>logo
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>科学魔法 on NOTE</title><link>https://stc214.github.io/tags/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/</link><description>Recent content in 科学魔法 on NOTE</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 12 Jan 2021 19:09:08 +0800</lastBuildDate><atom:link href="https://stc214.github.io/tags/%E7%A7%91%E5%AD%A6%E9%AD%94%E6%B3%95/index.xml" rel="self" type="application/rss+xml"/><item><title>P站图片下载</title><link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</link><pubDate>Tue, 12 Jan 2021 19:09:08 +0800</pubDate><guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8812%E6%97%A501/</guid><description>logo
 Pixiv Batch Downloader&amp;rsquo;s Wiki
 Discord
 现在只有中文文档。其他语言的用户可以使用翻译程序查看，或者提交翻译。
@@ -21,16 +6,7 @@ Discord
 Fork 本项目 https://github.com/xuejianxianzun/PBDWiki 下载项目文件，复制 /docs/zh-cn 目录里的所有文件，粘贴到其他语言的目录下。 翻译文本，替换图片，并替换链接中的 zh-cn。 提交 Pull Requests。 如果你不会使用 Pull Requests，可以 联系我，把文件打包发送给你进行翻译。
 Currently there are only Chinese documents. Users in other languages can use the translation program to view or submit translations.
 It is recommended to use Pull Requests to submit translation:
-Fork this project https://github.com/xuejianxianzun/PBDWiki Download the project files, copy all the files in the /docs/zh-cn directory, and paste them into other language directories.</description>
-    </item>
-    
-    <item>
-      <title>Nginx_反向代理达到科学索引的目的</title>
-      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A502/</link>
-      <pubDate>Tue, 12 Jan 2021 18:17:06 +0800</pubDate>
-      
-      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A502/</guid>
-      <description>需要科学但是尚未进入名单的地址 1.打开 https://www.ipaddress.com/
+Fork this project https://github.com/xuejianxianzun/PBDWiki Download the project files, copy all the files in the /docs/zh-cn directory, and paste them into other language directories.</description></item><item><title>Nginx_反向代理达到科学索引的目的</title><link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A502/</link><pubDate>Tue, 12 Jan 2021 18:17:06 +0800</pubDate><guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A502/</guid><description>需要科学但是尚未进入名单的地址 1.打开 https://www.ipaddress.com/
 2.填入目标域名获取目标ip
 3.得到的结果写入host
 4.刷新dns缓存（重启，清理浏览器缓存,ipconfig /flushdns 等方法都可以）
@@ -40,16 +16,7 @@ Fork this project https://github.com/xuejianxianzun/PBDWiki Download the project
 4.排除vm、kinhdown等工具对80端口的占用后打开可执行文件
 5.打开Nginx，根据情况刷新dns缓存和浏览器缓存
 工具地址： https://github.com/mashirozx/Pixiv-Nginx https://gitee.com/mashirozx/Pixiv-Nginx
-7.注意证书添加</description>
-    </item>
-    
-    <item>
-      <title>Gitclone速度太慢的解决方法</title>
-      <link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A501/</link>
-      <pubDate>Mon, 11 Jan 2021 21:54:52 +0800</pubDate>
-      
-      <guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A501/</guid>
-      <description>原文参考 https://mp.weixin.qq.com/s/ptFBjWXj88fsI3Oh6PghRA 1. GitHub 镜像访问(强烈建议，测试有效) 这里提供两个最常用的镜像地址：
+7.注意证书添加</description></item><item><title>Gitclone速度太慢的解决方法</title><link>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A501/</link><pubDate>Mon, 11 Jan 2021 21:54:52 +0800</pubDate><guid>https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8810%E6%97%A501/</guid><description>原文参考 https://mp.weixin.qq.com/s/ptFBjWXj88fsI3Oh6PghRA 1. GitHub 镜像访问(强烈建议，测试有效) 这里提供两个最常用的镜像地址：
 https://github.com.cnpmjs.org
 https://hub.fastgit.org
 也就是说上面的镜像就是一个克隆版的Github，你可以访问上面的镜像网站，网站的内容跟Github是完整同步的镜像，然后在这个网站里面进行下载克隆等操作。
@@ -66,22 +33,9 @@ https://pan.baidu.com/s/1qGiIUzqNlN1ZczTNFbPg0A
 提取码：stsv
 如果可以直接访问谷歌商店，可以访问GitHub 加速谷歌商店安装。
 6. GitHub raw 加速 GitHub raw 域名并非 github.com 而是 raw.githubusercontent.com，上方的 GitHub 加速如果不能加速这个域名，那么可以使用 Static CDN 提供的反代服务。
-将 raw.githubusercontent.com 替换为 raw.staticdn.net 即可加速。</description>
-    </item>
-    
-    <item>
-      <title>开启 cmd cmder 代理</title>
-      <link>https://stc214.github.io/post/2020_06_30_14_48_30/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://stc214.github.io/post/2020_06_30_14_48_30/</guid>
-      <description>win10安装了ShadowSocks软件，浏览器通过代理后就可以***，但有时候需要通过cmd科学下载安装一些组件，就需要设置一下cmd的代理
+将 raw.githubusercontent.com 替换为 raw.staticdn.net 即可加速。</description></item><item><title>开启 cmd cmder 代理</title><link>https://stc214.github.io/post/2020_06_30_14_48_30/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://stc214.github.io/post/2020_06_30_14_48_30/</guid><description>win10安装了ShadowSocks软件，浏览器通过代理后就可以***，但有时候需要通过cmd科学下载安装一些组件，就需要设置一下cmd的代理
 cmd如果要设置代理的话，需要在执行其他命令之前，先执行一下
 set http_proxy=http://127.0.0.1:7008 set https_proxy=http://127.0.0.1:7008 cmder如果使用的是bash模式，则先执行一下
 export http_proxy=http://127.0.0.1:7008 export https_proxy=http://127.0.0.1:7008 PowerShell ：
 $env:http_proxy=http://127.0.0.1:7008 $env:https_proxy=http://127.0.0.1:7008 上面命令的作用是设置环境变量，不用担心，这种环境变量只会持续到cmd窗口关闭，不是系统环境变量
-测试是否成功用 curl https://www.google.com, 别用ping</description>
-    </item>
-    
-  </channel>
-</rss>
+测试是否成功用 curl https://www.google.com, 别用ping</description></item></channel></rss>

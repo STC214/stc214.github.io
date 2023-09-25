@@ -598,6 +598,40 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A503/">使用git Action部署博客</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                参考网址： https://zhuanlan.zhihu.com/p/403221054
+https://zhuanlan.zhihu.com/p/240522090
+https://zhuanlan.zhihu.com/p/109057290
+https://client.sspai.com/post/73512#!
+https://immmmm.com/hugo-github-actions/
+01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &#39;账号邮箱&#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
+pravite_key用在源文件设置 settings&ndash; Secrets and variables&ndash; Actions&ndash;New &ndash;title(ACTIONS_DEPLOY_KEY)-key
+Actions 源码仓库 Actions- New workflow -new file- main.yaml
+name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &#34;0 0 * * *&#34; jobs: build-deploy: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 # v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &#39;0.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Mon, 25 Sep 2023 19:06:03 &#43;0800" class="no-wrap"
+                title=" Mon, 25 Sep 2023 19:06:03 &#43;0800">
+                Mon, 25 Sep 2023 19:06:03 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
                 <a href="https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A502/">git新建仓库推送已有代码</a>
               </h3>
             </div>
@@ -1091,61 +1125,6 @@ docker run -d -p 3000:3000 \ -v /mnt/sda3/lanraragi/database:/root/lanraragi/dat
               <relative-time datetime=" Sun, 31 Oct 2021 15:15:40 &#43;0800" class="no-wrap"
                 title=" Sun, 31 Oct 2021 15:15:40 &#43;0800">
                 Sun, 31 Oct 2021 15:15:40 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B410%E6%9C%8829%E6%97%A501/">树莓派官方系统安装docker</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                安装docker 原文： https://blog.csdn.net/crxk_/article/details/109755321
-两行代码即可
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh
-给docker换源 原文： https://blog.csdn.net/duanhwonline/article/details/107702731
-配置Docker 中国官方镜像加速
-（1） 创建或修改 /etc/docker/daemon.json 文件
-vi /etc/docker/daemon.json
-{ &#34;registry-mirrors&#34;: [ &#34;http://hub-mirror.c.163.com&#34;, &#34;https://dockerhub.azk8s.cn&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://registry.docker-cn.com&#34;, ] } 保存以上内容后，reload该json文件 systemctl daemon-reload
-重启docker systemctl restart docker.service
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Fri, 29 Oct 2021 15:07:26 &#43;0800" class="no-wrap"
-                title=" Fri, 29 Oct 2021 15:07:26 &#43;0800">
-                Fri, 29 Oct 2021 15:07:26 &#43;0800
               </relative-time>
             </div>
           </div>

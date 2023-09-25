@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.118.2">
+	<meta name="generator" content="Hugo 0.119.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script type="application/javascript" src='https://stc214.github.io/js/theme-mode.js'></script>
@@ -504,6 +504,42 @@
                       d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
                     </path>
                   </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A503/">
+                    <span class="repo" title="使用git Action部署博客">使用git Action部署博客</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  参考网址： https://zhuanlan.zhihu.com/p/403221054
+https://zhuanlan.zhihu.com/p/240522090
+https://zhuanlan.zhihu.com/p/109057290
+https://client.sspai.com/post/73512#!
+https://immmmm.com/hugo-github-actions/
+01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &#39;账号邮箱&#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
+pravite_key用在源文件设置 settings&ndash; Secrets and variables&ndash; Actions&ndash;New &ndash;title(ACTIONS_DEPLOY_KEY)-key
+Actions 源码仓库 Actions- New workflow -new file- main.yaml
+name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &#34;0 0 * * *&#34; jobs: build-deploy: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 # v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &#39;0.
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
                   <a class="text-bold flex-auto min-width-0" href="https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A502/">
                     <span class="repo" title="git新建仓库推送已有代码">git新建仓库推送已有代码</span>
                   </a>
@@ -746,109 +782,18 @@ ipconfig /flushdns
             </div>
           </li>
           
-          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-            <div
-              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
-              <div class="pinned-item-list-item-content">
-                <div class="d-flex width-full flex-items-center position-relative">
-                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
-                    width="16" height="16">
-                    <path fill-rule="evenodd"
-                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
-                    </path>
-                  </svg>
-                  <a class="text-bold flex-auto min-width-0" href="https://stc214.github.io/post/2022%E5%B9%B41%E6%9C%884%E6%97%A502/">
-                    <span class="repo" title="Miui13 第三方recovery">Miui13 第三方recovery</span>
-                  </a>
-                </div>
-
-
-                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  原帖地址：酷安原帖作者mi_block
-下载地址：
-AKR下载
-天翼云
-嘟嘟工具
-小米官方刷机包汇总下载网站
-核心注意点 安卓11用A11 安卓12用A12
-帖子内容：
-twrp v3.0.3 A11 和 A12 更新
-【865系列】：米10/米10pro/米10至尊纪念版/k30pro/k30s至尊纪念版
-【870系列】：米10s/k40
-AKR下载(无需注册不限速)：查看链接
-天翼云盘 查看链接
-请检验下载后的文件，防止错误/被篡改！！！
-特性：
-&mdash;支持data解密(Android 11)
-&mdash;支持兼容模式(Android 12)
-&mdash;支持刷入＞4G的包
-&mdash;MTP 支持传输＞4G的文件
-&mdash;ADB sideload 支持＞4G的文件
-&mdash;Fastbootd
-&mdash;OTG 支持exfat
-&mdash;MIUI 更新支持(见下图)
-&mdash;震动
-VAB设备刷rom后可能会出现xx分区挂载失败，导致magisk安装出错，所以提供自动修补boot选项
-Magisk Alpha支持magiskhide，所以使用它来修补
-自动处理至未活动的槽位，省去重启的麻烦操作！
-比功能相当于magisk管理器的修补boot.img功能
-更新(天翼云盘)
-优化/更新
-同步上游代码
-1.magisk alpha修补boot增加选项，不懂有什么用的默认就好(下图默认)
-2.miuiota文件夹改为/data/skkk/miuiota以防止miui报错
-3.更新blobs(A12)
-4.为vab设备的gpt-utils添加缺失的分区
-修复
-1.再次修复设置系统分区读写vendor会失败
-注意：
-系统分区设为可读写增加scratch分区检测，不允许存在此分区时继续操作
-scratch是啥可以查安卓文档
-它会占用super的空间导致更新失败(包括miui官方rec)
-出现此分区需要删除，提供3种方法：
-&ndash;进入miui-电脑连接usb使用执行adb命令：adb enable-verity
-&ndash;线刷一次，线刷包有super.img可以解决问题
-&ndash;进入最新twrp，高级-终端执行命令：lptools remove scratch
-vab设备不要使用lptools，如出现问题可刷完整包(a,b2个slot都要刷到)
-使用A11刷miui安卓12后需要接着刷A12的镜像
-将A12镜像刷入到recovery分区再重启以支持兼容模式
-注意：A11代表安卓11，A12代表安卓12
-2者不兼容
-                </div>
-
-                <p class="mb-0 f6 text-gray">
-                  
-                  
-                  <a href="/tags/note" class="pinned-item-meta muted-link ">
-                    <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                      <path fill-rule="evenodd"
-                        d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                      </path>
-                    </svg>
-                    Note
-                  </a>
-                  
-                  <a href="/tags/%E7%AC%94%E8%AE%B0" class="pinned-item-meta muted-link ">
-                    <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                      <path fill-rule="evenodd"
-                        d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                      </path>
-                    </svg>
-                    笔记
-                  </a>
-                  
-                  
-                </p>
-              </div>
-            </div>
-          </li>
-          
         </ol>
       </div>
     </div>
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "%e4%bd%bf%e7%94%a8git%20Action%e9%83%a8%e7%bd%b2%e5%8d%9a%e5%ae%a2",
+  "link": "https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A503/",
+  "publishDate": "2023-09-25%2019:06:03"
+},
+
 {
   "title": "git%e6%96%b0%e5%bb%ba%e4%bb%93%e5%ba%93%e6%8e%a8%e9%80%81%e5%b7%b2%e6%9c%89%e4%bb%a3%e7%a0%81",
   "link": "https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A502/",
@@ -1429,12 +1374,6 @@ vab设备不要使用lptools，如出现问题可刷完整包(a,b2个slot都要�
   "title": "Ubuntu%20-%20crontab%20%e5%91%bd%e4%bb%a4%e5%ae%9a%e6%97%b6%e6%89%a7%e8%a1%8c%e4%bb%bb%e5%8a%a1",
   "link": "https://stc214.github.io/post/2020_06_30_15_03_34/",
   "publishDate": "2020-06-30%2015:03:37"
-},
-
-{
-  "title": "2023%e5%b9%b49%e6%9c%8825%e6%97%a599",
-  "link": "https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A599/",
-  "publishDate": "0001-01-01%2000:00:00"
 },
 
 {

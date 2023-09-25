@@ -598,6 +598,54 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A502/">ubuntu 20.10&#43;系统默认占用磁盘空间</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                ubuntu 20.10+系统默认占用磁盘空间约为
+10GB不到
+通常虚拟机分配20GB空间足以运行大多数任务。 
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 08 Feb 2021 01:49:56 &#43;0800" class="no-wrap"
+                title=" Mon, 08 Feb 2021 01:49:56 &#43;0800">
+                Mon, 08 Feb 2021 01:49:56 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
                 <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A501/">Win10桥接网卡使得qemu虚拟机可以正常访问内网</a>
               </h3>
             </div>
@@ -1118,74 +1166,6 @@ sudo pishrink.sh pizero.img e2fsck 1.42.9 (28-Dec-2013) Pass 1: Checking inodes,
               <relative-time datetime=" Sat, 06 Feb 2021 03:14:51 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 03:14:51 &#43;0800">
                 Sat, 06 Feb 2021 03:14:51 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A510/">linux搭建smb、挂载smb、Windows共享</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文地址： https://www.cnblogs.com/-xuan/p/10293859.html
-安装完成SMB相关的软件和依赖之后 只需要通过如下命令即可访问smb服务器 smbclient //{smbserverip}/{foldername}
-sudo mount -t cifs //ip地址/path/to/share path/to/mount 命令行解释： mount：挂载命令 -t cifs： 用cifs文件系统挂载samba共享文件，如果提示错误的文件系统的话，可能是没有cifs，需要自己安装。【centos： yum install nfs-utils】 //ip地址/path/to/share：共享目录路径 path/to/mount：要挂载的路径，需要自己创建一个 实现Linux系统之间共享文件资源以及在Linux系统与Windows系统之间共享文件 Samba软件包的构成
-服务端：samba 客户端：samba-client 公共组件：samba-common Smbd：负责为客户机提供服务器中共享资源（目录和文件）的访问，监听139端口（smb协议）,445端口（cifs协议） Nmbd：负责提供基于netblos协议的主机名称解析，以便为windows网络中的主机进行查询服务，监听137-138端口（netblos协议） Samba服务的程序组件 主配置文件路径
-/etc/samba/smb.conf
-配置文件参数解释
-[global]
-#全局参数。
-workgroup = MYGROUP
-#工作组名称
-server string = Samba Server Version %v
-#服务器介绍信息，参数%v为显示
-SMB版本号
-log file = /var/log/samba/log.%m
-#定义日志文件的存放位置与名称，
-参数%m为来访的主机名
-max log size = 50
-#定义日志文件的最大容量为50KB
-security = user
-#安全验证的方式，总共有4种
-#share：来访主机无需验证口令；比较方便，但安全性很差，7.0以上系统不支持share，
-使用user模式，map to guest=bad user代替
-#user：需验证来访主机提供的口令后才可以访问；提升了安全性
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 02:45:32 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 02:45:32 &#43;0800">
-                Sat, 06 Feb 2021 02:45:32 &#43;0800
               </relative-time>
             </div>
           </div>

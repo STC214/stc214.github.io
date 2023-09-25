@@ -598,6 +598,68 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A508/">Debian Docker 安装</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文： https://www.runoob.com/docker/debian-docker-install.html
+Docker 支持以下的 Debian 版本：
+Buster 10
+Stretch 9 (stable) / Raspbian Stretch
+Docker Engine-Community 在 x86_64（或 amd64 ）armhf，和 arm64 体系结构上受支持。
+使用官方安装脚本自动安装
+安装命令如下：
+curl -fsSL https://get.docker.com | bash -s docker &ndash;mirror Aliyun
+也可以使用国内 daocloud 一键安装命令：
+curl -sSL https://get.daocloud.io/docker | sh
+手动安装
+卸载旧版本
+Docker 的旧版本被称为 docker，docker.io 或 docker-engine，如果已安装，请卸载它们：
+$ sudo apt-get remove docker docker-engine docker.io containerd runc
+安装 Docker Engine-Community
+使用 Docker 仓库进行安装
+在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Fri, 05 Feb 2021 23:37:57 &#43;0800" class="no-wrap"
+                title=" Fri, 05 Feb 2021 23:37:57 &#43;0800">
+                Fri, 05 Feb 2021 23:37:57 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
                 <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A507/">树莓派磁盘扩容</a>
               </h3>
             </div>
@@ -1182,86 +1244,6 @@ docker run -d -p 80:80 &ndash;restart=always &ndash;name tmp_docker img_name
               <relative-time datetime=" Wed, 03 Feb 2021 03:02:06 &#43;0800" class="no-wrap"
                 title=" Wed, 03 Feb 2021 03:02:06 &#43;0800">
                 Wed, 03 Feb 2021 03:02:06 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%883%E6%97%A504/">docker 拷贝镜像文件</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://www.cnblogs.com/bigben0123/p/7592970.html
-1、概述
-我们制作好镜像后，有时需要将镜像复制到另一台服务器使用。
-能达到以上目的有两种方式，一种是上传镜像到仓库中（本地或公共仓库），但是另一台服务器很肯能只是与当前服务器局域网想通而没有公网的，所以如果使用仓库的方式，只能自己搭建私有仓库，这会在另一篇文章中介绍。
-如果我们仅仅是要复制到另外少数的服务器，搭建私有仓库显然没有这个必要，而将镜像保存为文件上传到其他服务器再从文件中载入镜像也是一个不错的选择。
-可以使用Docker save和Docker load命令来存储和载入镜像。
-2、保存镜像为文件
-如果要讲镜像保存为本地文件，可以使用Docker save命令。
-命令格式：
-docker save -o 要保存的文件名 要保存的镜像
-首先查看当前的镜像列表：
-docker images
-比如这里,我们将java8的镜像保存为文件：
-docker save -o java8.tar lwieske/java-8
-完成后通过 ls 命令即可看到文件。
-3、从文件载入镜像
-从文件载入镜像可以使用Docker load命令。
-命令格式：
-docker load &ndash;input 文件
-或者
-docker load &lt; 文件名
-此时会导入镜像以及相关的元数据信息等。
-首先使用SSH工具将文件上传到另一台服务器。
-然后通过命令载入镜像：
-docker load &lt; java8.tar
-导入后可以使用docker images命令查看:
-docker images
-原文链接：http://blog.csdn.net/anxpp/article/details/51810776
-Docker 创建镜像、修改、上传镜像
-–创建镜像有很多方法，用户可以从 Docker Hub 获取已有镜像并更新，也可以利用本地文件系统创建一个。
-一、创建镜像
-创建镜像有很多方法，用户可以从 Docker Hub 获取已有镜像并更新，也可以利用本地文件系统创建一个。
-二、修改已有镜像
-1、先使用下载的镜像启动容器。
-$ docker run -t -i training/sinatra /bin/bash root@0b2616b0e5a8:/#
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Wed, 03 Feb 2021 02:21:40 &#43;0800" class="no-wrap"
-                title=" Wed, 03 Feb 2021 02:21:40 &#43;0800">
-                Wed, 03 Feb 2021 02:21:40 &#43;0800
               </relative-time>
             </div>
           </div>
