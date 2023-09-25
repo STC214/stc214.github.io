@@ -25,7 +25,7 @@ https://client.sspai.com/post/73512#!
 https://immmmm.com/hugo-github-actions/
 01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &amp;#39;账号邮箱&amp;#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
 pravite_key用在源文件设置 settings&amp;ndash; Secrets and variables&amp;ndash; Actions&amp;ndash;New &amp;ndash;title(ACTIONS_DEPLOY_KEY)-key
-Actions 源码仓库 Actions- New workflow -new file- main.yaml
+Actions 源码仓库 Actions- New workflow -new file- main.yml
 name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &amp;#34;0 0 * * *&amp;#34; jobs: build-deploy: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 # v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &amp;#39;0." />
 <meta name="keywords"
   content='blog, google analytics' />
@@ -43,7 +43,7 @@ https://client.sspai.com/post/73512#!
 https://immmmm.com/hugo-github-actions/
 01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &amp;#39;账号邮箱&amp;#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
 pravite_key用在源文件设置 settings&amp;ndash; Secrets and variables&amp;ndash; Actions&amp;ndash;New &amp;ndash;title(ACTIONS_DEPLOY_KEY)-key
-Actions 源码仓库 Actions- New workflow -new file- main.yaml
+Actions 源码仓库 Actions- New workflow -new file- main.yml
 name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &amp;#34;0 0 * * *&amp;#34; jobs: build-deploy: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 # v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &amp;#39;0." />
 <meta name="twitter:site" content="https://stc214.github.io/" />
 <meta name="twitter:creator" content="" />
@@ -61,7 +61,7 @@ https://client.sspai.com/post/73512#!
 https://immmmm.com/hugo-github-actions/
 01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &amp;#39;账号邮箱&amp;#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
 pravite_key用在源文件设置 settings&amp;ndash; Secrets and variables&amp;ndash; Actions&amp;ndash;New &amp;ndash;title(ACTIONS_DEPLOY_KEY)-key
-Actions 源码仓库 Actions- New workflow -new file- main.yaml
+Actions 源码仓库 Actions- New workflow -new file- main.yml
 name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &amp;#34;0 0 * * *&amp;#34; jobs: build-deploy: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 # v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &amp;#39;0." />
 <meta property="og:url" content="https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8825%E6%97%A503/" />
 <meta property="og:site_name" content="使用git Action部署博客" />
@@ -174,9 +174,9 @@ name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispa
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 25 Sep 2023 22:28:13 &#43;0800"
+                  Modified <relative-time datetime="Mon, 25 Sep 2023 22:51:49 &#43;0800"
                     class="no-wrap">
-                    Mon, 25 Sep 2023 22:28:13 &#43;0800</relative-time>
+                    Mon, 25 Sep 2023 22:51:49 &#43;0800</relative-time>
                   
                 </div>
               </div>
@@ -238,7 +238,7 @@ name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispa
 <p>settings&ndash; Secrets and variables&ndash; Actions&ndash;New &ndash;title(ACTIONS_DEPLOY_KEY)-key</p>
 <h1 id="actions">Actions</h1>
 <h3 id="源码仓库">源码仓库</h3>
-<p>Actions- New workflow -new file- main.yaml</p>
+<p>Actions- New workflow -new file- main.yml</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Hugo Site to Github Pages on Master Branch</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
