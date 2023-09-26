@@ -519,7 +519,7 @@ https://immmmm.com/hugo-github-actions/
 01.生成token # 注意生成路径不要覆盖掉原本的key ssh-keygen -t rsa -b 4096 -C &#39;账号邮箱&#39; 02.配置 pub key用在pages的设置中 settings-Dewploy keys- 标题（随意）-key
 pravite_key用在源文件设置 settings&ndash; Secrets and variables&ndash; Actions&ndash;New &ndash;title(ACTIONS_DEPLOY_KEY)-key
 Actions 源码仓库 Actions- New workflow -new file- main.yml
-name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &#34;0 0 * * *&#34; jobs: build-deploy: runs-on: ubuntu-latest # 环境推荐最新的ubuntu steps: - uses: actions/checkout@v1 # 不变 v2 does not have submodules option now with: submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 # 不变 with: hugo-version: &#39;0.
+name: Deploy Hugo Site to Github Pages on Master Branch on: push: workflow_dispatch: schedule: # Runs everyday at 8:00 AM - cron: &#34;0 0 * * *&#34; jobs: build-deploy: runs-on: ubuntu-latest # 环境推荐最新的ubuntu steps: - uses: actions/checkout@v1 # 不变 v2 does not have submodules option now # with: # submodules: true - name: Setup Hugo uses: peaceiris/actions-hugo@v2 # 不变 with: hugo-version: &#39;0.
                 </div>
 
                 <p class="mb-0 f6 text-gray">
