@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">106</span>
+              <span class="Counter">107</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">106</span>
+      <span class="Counter ">107</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,66 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%888%E6%97%A503/">在Win10下用Qemu模拟器模拟或虛拟树莓派并设置网卡桥接</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文：
+https://blog.csdn.net/chilwb/article/details/106474387
+PS:原文部分设置和本人本机设定不同，注意命令细节
+为什么要用Qemu模拟树莓派，因为模拟出来后，可以带着到处走，U盘一拷，有电脑的地方就可以调试。调试出了问题，想重新来过，只要把之前的副本复制过去就可以了。等一切弄好后，再写入SD，进行实机测试，使用。这样避免了带着树莓派跑来跑去，调试错了，反复拨卡、写卡、设置、插卡等操作。为什么要用Qemu模拟拟树莓派，官网不是有VMware等虚拟机版的桌面版了么？因为桌面版就一个，更新也不及时，用Qemu，可虚拟任何版本的树莓派系统，如Ubuntu树莓派版，等等。这是因为桌面版是虚拟系统，只支持X86电脑，Qemu虚拟的是硬件本身，支持的是ARM指令，凡硬件能装的系统，Qemu就能模拟拟使用。
+我的系统是2019年的windows 10，使用的镜像是2020年6月1日可在树莓派官网下载的各种镜像。
+在Qemu官网下载最新的4.2版Qemu，地址：https://www.qemu.org/download/
+下载Qemu kernel for emulating Rpi on QEMU，https://github.com/dhruvvyas90/qemu-rpi-kernel 这里有不同版本，可下载最新版，我下载的是：kernel-qemu-4.19.50-buster ，下载网址：https://github.com/dhruvvyas90/qemu-rpi-kernel/blob/master/kernel-qemu-4.19.50-buster
+在树莓派官网下载你喜欢的镜像。我下载的是2020-05-27-raspios-buster
+安装Qemu，其实是解压，放到一个文件夹里，我的是Qemu文件夹。再解压qemu-rpi-kernel-master.zip，针对我的kernel-qemu-4.19.50-buster镜像，我找了其中的两个文件：kernel-qemu-4.19.50-buster、versatile-pb-buster.dtb。该用哪些文件，可查看README.md文件，直接用文本打开就行。
+为方便，把kernel-qemu-4.19.50-buster、versatile-pb-buster.dtb和2020-05-27-raspios-buster镜像文件都一起放到安装Qemu 时解压出来的Qemu文件夹。你也可以放其它地方，但在调用它们时，记得加上地址。
+按win+R，运行，输入cmd，打开命令提示符。进入上面的Qemu文件夹，输入以下命令（中间不换行）：
+qemu-system-arm -kernel kernel-qemu-4.19.50-buster -cpu arm1176 -m 256 -M versatilepb -dtb versatile-pb-buster.dtb -no-reboot -append “root=/dev/sda2 panic=1 rootfstype=ext4 rw” -net nic -net user,hostfwd=tcp::5022-:22 -hda 2020-05-27-raspios-buster-armhf.img 就可以启动树莓派了，后面的操作就跟实机操作一样了。
+在这里插入图片描述
+现在解释一下上面的命令：
+-kernel kernel-qemu-4.19.50-buster #内核文件用的是kernel-qemu-4.19.50-buster文件，qemu-rpi-kernel-master.zip解压出来后，挑出来的文件，没有扩展名。如果文件不在QEMU文件夹，要加上地址。 -cpu arm1176 #CPU用的是arm1176 -m 256 #内存是256M，有点偏小，但实际仿真，感觉没影响。据https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki 解释，是因为versatilepb上有个bug,不允许大于256M。 -M versatilepb #用的开发板是versatilepb，可以用qemu-system-arm -M help命令来查看支持的arm开发板。用qemu-system-arm -M versatilepb -cpu help #查看versatilepb开发板所用的CPU型号。树莓派用的型号是ARM 1176。 -dtb versatile-pb-buster.dtb #dtb文件是versatile-pb-buster.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 08 Feb 2021 02:49:32 &#43;0800" class="no-wrap"
+                title=" Mon, 08 Feb 2021 02:49:32 &#43;0800">
+                Mon, 08 Feb 2021 02:49:32 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1111,61 +1171,6 @@ sudo apt install spice-vdagent
               <relative-time datetime=" Sat, 06 Feb 2021 03:20:52 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 03:20:52 &#43;0800">
                 Sat, 06 Feb 2021 03:20:52 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A511/">树莓派备份系统镜像并压缩</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://cloud.tencent.com/developer/article/1731767
-前言
-手上的pi zero w用了一段时间,上面也部署了相当多的服务应用,都是心血啊,可不想啥时候系统损坏了重装一遍,于是想到备份一波系统镜像 备份
-1.本地新建一个文件,将格式改为.img2.如 pizero.img3.树莓派系统内存卡插上电脑4.打开win32 disk imager,镜像文件选择好刚才新建的镜像,驱动选择插上的内存卡5.点击 read (读取)!!!!,千万不要选错.6.这样算是备份好了,但是有个问题,这样相当于将内存卡复制了一份,大小会和原先内存卡一样大.因此我们需要进行压缩 压缩
-PiShrink压缩脚本是GitHub的一位大佬写的
-(需要Linux环境,将以上的镜像文件将其挂载至Linux)
-https://github.com/Drewsif/PiShrink
-下载脚本,移动到bin目录是为了全局都可以直接使用脚本
-wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh chmod +x pishrink.sh sudo mv pishrink.sh /usr/local/bin 用法也相当简单
-sudo pishrink.sh pizero.img e2fsck 1.42.9 (28-Dec-2013) Pass 1: Checking inodes, blocks, and sizes Pass 2: Checking directory structure Pass 3: Checking directory connectivity Pass 4: Checking reference counts Pass 5: Checking group summary information /dev/loop1: 88262/1929536 files (0.2% non-contiguous), 842728/7717632 blocks resize2fs 1.42.9 (28-Dec-2013) resize2fs 1.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 03:14:51 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 03:14:51 &#43;0800">
-                Sat, 06 Feb 2021 03:14:51 &#43;0800
               </relative-time>
             </div>
           </div>
