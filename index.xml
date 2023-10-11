@@ -14,10 +14,11 @@ wsl &amp;ndash;install -d Ubuntu
 连接磁盘并挂载 以下指令需要在管理员权限的命令行中运行 查看已经连接的磁盘
 wmic diskdrive list breif
 挂载磁盘 wsl &amp;ndash;mount [DeviceID] &amp;ndash;partition [Partitions Num]
-取消挂载 wsl &amp;ndash;unmount [DeviceID] &amp;ndash;partition [Partitions Num]
+取消挂载 wsl &amp;ndash;unmount [DeviceID] 命令后面无需跟上&amp;ndash;partition命令
 4. 可能会用到的命令 4.1 升级WSL内核 wsl &amp;ndash;update
 4.2 重启WSL内核 内核升级完成以后，电脑重启才会生效，这个可以用命令重启
-wsl -l -shutdown</description></item><item><title>docker版Miao-Yunzai</title><link>https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8828%E6%97%A501/</link><pubDate>Thu, 28 Sep 2023 12:02:44 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8828%E6%97%A501/</guid><description>参考链接： 喵云崽库
+wsl -l -shutdown
+4.3 查看本系统WSL情况 wsl -l -v</description></item><item><title>docker版Miao-Yunzai</title><link>https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8828%E6%97%A501/</link><pubDate>Thu, 28 Sep 2023 12:02:44 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B49%E6%9C%8828%E6%97%A501/</guid><description>参考链接： 喵云崽库
 https://gitee.com/yoimiya-kokomi/Miao-Yunzai
 https://github.com/yoimiya-kokomi/Miao-Yunzai
 参考文章
