@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">107</span>
+              <span class="Counter">108</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">107</span>
+      <span class="Counter ">108</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,32 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8811%E6%97%A501/">2021年 加油吧</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                2021年 加油吧 
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Mon, 11 Jan 2021 18:43:34 &#43;0800" class="no-wrap"
+                title=" Mon, 11 Jan 2021 18:43:34 &#43;0800">
+                Mon, 11 Jan 2021 18:43:34 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1056,69 +1082,6 @@ crontab 命令说明 cron 的任务计划保存在 /etc/crontab 文件中，文�
               <relative-time datetime=" Tue, 30 Jun 2020 15:03:37 &#43;0800" class="no-wrap"
                 title=" Tue, 30 Jun 2020 15:03:37 &#43;0800">
                 Tue, 30 Jun 2020 15:03:37 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2020_06_30_14_57_42/">Docker管理面板系列——Portainer(简单、美观、强大)</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：http://www.senra.me/docker-management-panel-series-portainer/
-一.介绍
-Portainer是个轻量级的Docker管理面板，和Rancher这种重量级选手没法比，Portainer倾向于单机的管理(后来发现能够添加多个单机节点切换着管理)，当然，在Docker搞出Swarm之后Portainer也借此实现了集群管理。
-使用官方提供的Demo预览一下
-地址: http://demo.portainer.io/
-用户名: admin
-密码: tryportainer
-你会有一种眼前一亮的感觉，美观，而且功能全面(从边上这一长列就能感受出来)
-虽然选项很多，但是其实就是命令行操作的简化，如果你用过Docker的命令行操作你能很快熟悉Portainer，和Rancher那种多了很多新花样不一样，Rancher的很多东西你看上去是摸不着头脑的，必须看着文档试一下才能大概弄清楚这是个啥。
-二.安装
-是不是眼馋了？那么就让我们装一下玩玩吧。
-这是Portainer对Docker各版本的支持情况
-Portainer的安装方式主要有两种，一个是使用Docker安装，一个是二进制文件直接跑，我建议用Docker安装，比较方便点，也不用你自己去配置自启动啥的。
-其他的请参考官方文档 ——&gt; 传送门
-首先，我们得先把Unix套接字或者TCP监听打开，来方便连接(不过似乎Unix套接字默认是启用的，TCP需要自己开)
-PS.这儿请务必注意，不能直接配0.0.0.0，因为如果不做ACL或者TLS认证会导致你的Docker被人扫到后直接控制，有可能被远程创建挖矿容器
-先确认你的机器中是否存在/etc/sysconfig/docker这个配置文件，如果存在的话请修改，在其中的配置选项中加入如下内容
-#这个仅允许本地连接，如果要远程的话改成0.0.0.0，但是如果是公网中远程请你自己配TLS认证或者防火墙加白名单
--Htcp://127.0.0.1:2375 -H unix:///var/run/docker.sock 但是，很多情况下我们会不存在这个文件(较高版本的Docker不会自动创建这个)，所以我们可以选择另外一种方法，参照Docker文档——&gt;传送门
-vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
-&#34;hosts&#34;: [&#34;tcp://127.0.0.1:2375&#34;, &#34;unix:///var/run/docker.sock&#34;] #如果deamon.json不存在请添加完整的json格式
-{ &#34;hosts&#34;: [&#34;tcp://127.0.0.1:2375&#34;, &#34;unix:///var/run/docker.sock&#34;] } vi /etc/docker/daemon.json #添加如下，这个仅允许本地连接，如果要远程的话改成0.0.0.0，如果添加的不在最后一行请在末尾加上逗号
-&#34;hosts&#34;: [&#34;tcp://127.0.0.1:2375&#34;, &#34;unix:///var/run/docker.sock&#34;] #如果deamon.json不存在请添加完整的json格式
-{ &#34;hosts&#34;: [&#34;tcp://127.0.0.1:2375&#34;, &#34;unix:///var/run/docker.sock&#34;] } 虽然其实你修改启动脚本在dockerd命令之后添加 -H unix:///var/run/docker.sock -H tcp://127.0.0.1 也可以，但是这样终归不怎么优雅。
-准备工作做完，然后开始安装，使用Docker安装有三种连接方式
-首先是全部都需要做的操作，添加一个数据卷，当然你也可以在docker run的时候手动指定数据挂载路径，效果是一样的，将下面docker run命令中的portainer_data换成宿主机上的具体路径就OK
-docker volume create portainer_data 使用Unix套接字连接单个Docker(本地) docker run -d -p 9000:9000 -v /var/run/docker.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                note
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Mon, 01 Jan 0001 00:00:00 &#43;0000" class="no-wrap"
-                title=" Mon, 01 Jan 0001 00:00:00 &#43;0000">
-                Mon, 01 Jan 0001 00:00:00 &#43;0000
               </relative-time>
             </div>
           </div>

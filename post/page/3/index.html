@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">107</span>
+              <span class="Counter">108</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">107</span>
+      <span class="Counter ">108</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,59 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A502/">conda/MiniConda换源</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                Windows下 1. conda源更换为清华源
+Anaconda 是一个用于科学计算的 Python 发行版，支持 Linux, Mac, Windows, 包含了众多流行的科学计算、数据分析的 Python 包。 Anaconda 安装包可以到 https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载。 清华大学开源软件镜像站 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+Windows 用户无法直接创建名为 .condarc 的文件，可先执行 conda config --set show_channel_urls yes 生成该文件之后再修改。
+TUNA 还提供了 Anaconda 仓库与第三方源（conda-forge、msys2、pytorch等，查看完整列表）的镜像，各系统都可以通过修改用户目录下的 .condarc 文件:
+channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true 2. 注意如果需要pytorch, 还需要添加pytorch的镜像：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 3. 如果需要换回conda的默认源，直接删除channels即可，命令如下：
+conda config --remove-key channels Linux下 将以上配置文件写在 ~/.condarc中 vim ~/.condarc
+channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ - https://mirrors.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Sun, 20 Jun 2021 18:07:42 &#43;0800" class="no-wrap"
+                title=" Sun, 20 Jun 2021 18:07:42 &#43;0800">
+                Sun, 20 Jun 2021 18:07:42 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1120,97 +1173,6 @@ mate-icon-theme mate-themes media-player-info mesa-utils mesa-va-drivers mesa-vd
               <relative-time datetime=" Fri, 19 Mar 2021 21:46:01 &#43;0800" class="no-wrap"
                 title=" Fri, 19 Mar 2021 21:46:01 &#43;0800">
                 Fri, 19 Mar 2021 21:46:01 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A503/">在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文链接：https://ywnz.com/linuxjc/5099.html
-你是否正在寻找一种在Ubuntu Linux机器上禁用IPv6连接的方法？在本文中，我将教你如何做到这一点，还介绍如何启用或重新启用IPv6，参考在Linux服务器上禁用IPv6的方法。
-在Ubuntu上禁用IPv6[仅限高级用户]
-下面我将介绍如何在Ubuntu计算机上禁用IPv6协议，打开一个终端（默认：CTRL+ALT+T），需要root权限（参考在Ubuntu系统上为用户授予和删除sudo权限的方法）。
-1、使用Sysctl禁用IPv6
-首先，可以检查是否启用了IPv6：
-ip a
-如果启用了IPv6地址（你的网卡名称可能不同），应该会看到它：
-在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
-要禁用IPv6，你只需输入3个命令：
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
-然后你可以检查它是否有用：
-ip a
-应该看不到IPv6条目了，如下图：
-在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
-但是，这只会暂时禁用IPv6，下次系统引导时，将再次启用IPv6。
-所以需要修改/etc/sysctl.conf，我将使用vim编辑文件，但你可以使用任何你喜欢的编辑器，确保拥有管理员权限（使用sudo）：
-在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
-将以下行添加到文件中：
-net.ipv6.conf.all.disable_ipv6=1
-net.ipv6.conf.default.disable_ipv6=1
-net.ipv6.conf.lo.disable_ipv6=1
-要使设置生效，请使用：
-sudo sysctl -p
-如果重新启动后仍启用IPv6，则必须创建（使用root权限）文件/etc/rc.local，并将其填入：
-#!/bin/bash
-/etc/rc.local /etc/sysctl.d
-/etc/init.d/procps restart
-exit 0
-现在使用chmod命令使文件可执行：
-sudo chmod 755 /etc/rc.local
-从sysctl配置文件中手动读取内核参数。
-2、使用GRUB禁用IPv6
-另一种方法是将GRUB配置为在引导时传递内核参数，你必须编辑/etc/default/grub，再次确保你拥有管理员权限：
-在Ubuntu操作系统上禁用IPv6和重新启用IPv6的方法
-现在，你需要修改GRUB_CMDLINE_LINUX_DEFAULT和GRUB_CMDLINE_LINUX以在启动时禁用IPv6：
-GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash ipv6.disable=1&rdquo;
-GRUB_CMDLINE_LINUX=&ldquo;ipv6.disable=1&rdquo;
-保存文件并运行：
-sudo update-grub
-设置将在重新启动后有效。
-在Ubuntu上重新启用IPv6的方法
-要重新启用IPv6，你必须撤消所做的更改，要在重新启动之前启用IPv6，请输入：
-sudo sysctl -w net.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Fri, 19 Mar 2021 21:21:31 &#43;0800" class="no-wrap"
-                title=" Fri, 19 Mar 2021 21:21:31 &#43;0800">
-                Fri, 19 Mar 2021 21:21:31 &#43;0800
               </relative-time>
             </div>
           </div>

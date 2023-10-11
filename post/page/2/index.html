@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">107</span>
+              <span class="Counter">108</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">107</span>
+      <span class="Counter ">108</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,65 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B411%E6%9C%8825%E6%97%A501/">docker 架设汉化版ubooquity</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文：
+https://www.bilibili.com/read/cv10595812/
+http://yuanfangblog.xyz/technology/236.html
+视频：
+https://www.bilibili.com/video/BV16z4y1Z7xu/
+docker镜像：dezhao/ubooquity
+拉取镜像 docekr pull dezhao/ubooquity
+使用镜像 1.文件夹配置 需要配置config 和漫画文件夹
+根据个人需求可以配置电子书目录
+-v /&lt;docker外路径&gt; : /&lt;docker内路径&gt; 如： -v /home/ubooquity/config:/config -v /home/ubooquity/comics:/comics 更换主题只需要在config/themes文件夹中解压即可识别。
+2.端口配置 2202 2203
+-p /&lt;docker外端口&gt; : /&lt;docker内端口&gt; 如： -p 2202:2202 其他配置可以根据个人需求微调
+3.运行命令： 如有图形界面仅需要根据个人情况配置即可完成
+docker run -d -t \ --restart unless-stopped \ --name ubooquity \ -p 2202:2202 \ -p 2203:2203 \ -v &lt;path to data&gt;:/config \ -v &lt;path to books&gt;:/books \ -v &lt;path to comics&gt;:/comics \ -e TZ=Asia/Shanghai \ -e MAXMEM=1.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Thu, 25 Nov 2021 18:22:46 &#43;0800" class="no-wrap"
+                title=" Thu, 25 Nov 2021 18:22:46 &#43;0800">
+                Thu, 25 Nov 2021 18:22:46 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1082,59 +1141,6 @@ nms = [[1, 2, 3], [7, 8, 9], [10, 11, 12]] f = open(&#39;py_ssv/工作簿1.csv&#
               <relative-time datetime=" Mon, 21 Jun 2021 18:21:57 &#43;0800" class="no-wrap"
                 title=" Mon, 21 Jun 2021 18:21:57 &#43;0800">
                 Mon, 21 Jun 2021 18:21:57 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8820%E6%97%A502/">conda/MiniConda换源</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                Windows下 1. conda源更换为清华源
-Anaconda 是一个用于科学计算的 Python 发行版，支持 Linux, Mac, Windows, 包含了众多流行的科学计算、数据分析的 Python 包。 Anaconda 安装包可以到 https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载。 清华大学开源软件镜像站 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
-Windows 用户无法直接创建名为 .condarc 的文件，可先执行 conda config --set show_channel_urls yes 生成该文件之后再修改。
-TUNA 还提供了 Anaconda 仓库与第三方源（conda-forge、msys2、pytorch等，查看完整列表）的镜像，各系统都可以通过修改用户目录下的 .condarc 文件:
-channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true 2. 注意如果需要pytorch, 还需要添加pytorch的镜像：
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 3. 如果需要换回conda的默认源，直接删除channels即可，命令如下：
-conda config --remove-key channels Linux下 将以上配置文件写在 ~/.condarc中 vim ~/.condarc
-channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ - https://mirrors.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sun, 20 Jun 2021 18:07:42 &#43;0800" class="no-wrap"
-                title=" Sun, 20 Jun 2021 18:07:42 &#43;0800">
-                Sun, 20 Jun 2021 18:07:42 &#43;0800
               </relative-time>
             </div>
           </div>

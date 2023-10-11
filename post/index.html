@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">107</span>
+              <span class="Counter">108</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">107</span>
+      <span class="Counter ">108</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,51 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/">win11安装和使用wsl2挂载ext4分区</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
+https://zhuanlan.zhihu.com/p/433386119
+https://zhuanlan.zhihu.com/p/475462241
+1.开启环境 打开win11设置 搜索控制面板 程序-开启或关闭win功能 勾选 ：
+Hyper-V 适用于Linux的Windows子系统
+根据提示重启
+若之后重启无效则在管理员模式的power shell里输入以下命令
+bcdedit /set hypervisorlaunchtype auto
+2.安装 在win的微软应用商店中安装对应的环境
+搜索wsl和ubuntu 安装最新版即可
+命令行在管理员模式的power shell使用如下命令也可以
+wsl &ndash;install -d Ubuntu
+升级系统环境 sudo apt update &amp;&amp; sudo apt upgrade -y
+连接磁盘并挂载 以下指令需要在管理员权限的命令行中运行 查看已经连接的磁盘
+wmic diskdrive list breif
+挂载磁盘 wsl &ndash;mount [DeviceID] &ndash;partition [Partitions Num]
+取消挂载 wsl &ndash;unmount [DeviceID] &ndash;partition [Partitions Num]
+4. 可能会用到的命令 4.1 升级WSL内核 wsl &ndash;update
+4.2 重启WSL内核 内核升级完成以后，电脑重启才会生效，这个可以用命令重启
+wsl -l -shutdown
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Wed, 11 Oct 2023 18:47:43 &#43;0800" class="no-wrap"
+                title=" Wed, 11 Oct 2023 18:47:43 &#43;0800">
+                Wed, 11 Oct 2023 18:47:43 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1049,65 +1094,6 @@ vab设备不要使用lptools，如出现问题可刷完整包(a,b2个slot都要�
               <relative-time datetime=" Tue, 04 Jan 2022 17:28:19 &#43;0800" class="no-wrap"
                 title=" Tue, 04 Jan 2022 17:28:19 &#43;0800">
                 Tue, 04 Jan 2022 17:28:19 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B411%E6%9C%8825%E6%97%A501/">docker 架设汉化版ubooquity</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：
-https://www.bilibili.com/read/cv10595812/
-http://yuanfangblog.xyz/technology/236.html
-视频：
-https://www.bilibili.com/video/BV16z4y1Z7xu/
-docker镜像：dezhao/ubooquity
-拉取镜像 docekr pull dezhao/ubooquity
-使用镜像 1.文件夹配置 需要配置config 和漫画文件夹
-根据个人需求可以配置电子书目录
--v /&lt;docker外路径&gt; : /&lt;docker内路径&gt; 如： -v /home/ubooquity/config:/config -v /home/ubooquity/comics:/comics 更换主题只需要在config/themes文件夹中解压即可识别。
-2.端口配置 2202 2203
--p /&lt;docker外端口&gt; : /&lt;docker内端口&gt; 如： -p 2202:2202 其他配置可以根据个人需求微调
-3.运行命令： 如有图形界面仅需要根据个人情况配置即可完成
-docker run -d -t \ --restart unless-stopped \ --name ubooquity \ -p 2202:2202 \ -p 2203:2203 \ -v &lt;path to data&gt;:/config \ -v &lt;path to books&gt;:/books \ -v &lt;path to comics&gt;:/comics \ -e TZ=Asia/Shanghai \ -e MAXMEM=1.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Thu, 25 Nov 2021 18:22:46 &#43;0800" class="no-wrap"
-                title=" Thu, 25 Nov 2021 18:22:46 &#43;0800">
-                Thu, 25 Nov 2021 18:22:46 &#43;0800
               </relative-time>
             </div>
           </div>

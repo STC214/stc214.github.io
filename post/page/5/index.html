@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">107</span>
+              <span class="Counter">108</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">107</span>
+      <span class="Counter ">108</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,57 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A501/">OpenWrt 挂载FAT32 / exFat 硬盘</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                更新列表，安装必要到依赖包
+# opkg update # opkg install kmod-usb-storage block-mount kmod-fs-vfat kmod-nls-cp437 kmod-nls-iso8859-1 kmod-fs-exfat usbutils 连接USB设备，用以下命令确认链接
+lsusb -t 如果连接正常，会出现类似以下数据
+/: Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 5000M /: Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/2p, 480M |** Port 1: Dev 5, If 0, Class=Mass Storage, Driver=usb-storage, 480M 查看系统已知的块设备（block devices）列表
+ls -l /dev/sd* 正常清情况会出现以下类似数据。这里挂载了一个硬盘，分别有sda1 与 sda1两个块
+brw------- 1 root root 8, 0 Mar 6 17:19 /dev/sda brw------- 1 root root 8, 1 Mar 6 17:19 /dev/sda1 brw------- 1 root root 8, 2 Mar 6 17:19 /dev/sda2 用 block工具获取更多已存在分区的信息
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Wed, 17 Feb 2021 02:37:51 &#43;0800" class="no-wrap"
+                title=" Wed, 17 Feb 2021 02:37:51 &#43;0800">
+                Wed, 17 Feb 2021 02:37:51 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1118,59 +1169,6 @@ smbclient用法 :
               <relative-time datetime=" Sat, 06 Feb 2021 03:52:49 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 03:52:49 &#43;0800">
                 Sat, 06 Feb 2021 03:52:49 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A512/">如何从主机粘贴到KVM客户机？</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://www.kutu66.com/ubuntu/article_165749
-我有一个使用Virtual Machine Manager创建的QEMU/KVM虚拟机。
-我希望在主机上复制文本并能够将它粘贴到guest中。
-如何在主机和guest之间共享剪贴板？
-答案1
-解决方案很简单。只需在来宾虚拟机中安装spice-vdagent软件包：
-sudo apt install spice-vdagent
-剪贴板会自动共享 - 现在可以在主机和来宾之间复制和粘贴了。
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 03:20:52 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 03:20:52 &#43;0800">
-                Sat, 06 Feb 2021 03:20:52 &#43;0800
               </relative-time>
             </div>
           </div>
