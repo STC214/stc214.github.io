@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">108</span>
+              <span class="Counter">109</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">108</span>
+      <span class="Counter ">109</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,79 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A502/">docker 更换镜像源地址</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                好像国内的镜像好多都访问不了，可以试试这个
+{ “registry-mirrors”: [“https://docker.mirrors.ustc.edu.cn/”] } 然后还发一个规律就是第一次下载很慢，可以ctrl+c暂停掉，然后再下载一次，就变快了很多。
+文章参考:
+Docker 中国官方镜像加速
+参考链接：
+https://www.docker-cn.com/registry-mirror
+https://blog.csdn.net/Mr_OOO/article/details/67016309
+不同版本的docker更换镜像的方法不一样
+这里用的docker18版本
+查看版本命令
+[root@localhost docker]# docker --version Docker version 18.04.0-ce-rc1, build 0c7f7c6 在/etc/docker/目录下新建daemon.json文件，如果有就修改
+/etc/docker/daemon.json
+在daemon.json文件添加如下内容：
+{ &#34;registry-mirrors&#34;: [&#34;https://registry.docker-cn.com&#34;] } 然后重启
+[root@localhost docker]# service docker restart 试试pull是不是变快了…
+直接设置docker的daemon进程的默认镜像地址…,可以试试…
+$ docker --registry-mirror=https://registry.docker-cn.com daemon 直接指定镜像地址下载image也是可以的
+$ docker pull registry.docker-cn.com/library/ubuntu:16.04 后面的library/ubuntu:16.04就是
+原文链接：链接：https://www.jianshu.com/p/34d3b4568059
+不得不说 docker的火爆程度已经达到的地步，
+由于国外docker搭建太慢，国外的安装文档也很全面，这里就不在详述，详情可以点击这里：
+正主：Docker 官方镜像加速：http://www.docker-cn.com/registry-mirror
+在这里打算记录下使用国内源快速搭建docker的方法：Daocloud极速下载真的是快啊～～～
+在 Linux上 安装 Docker
+curl -sSL https://get.daocloud.io/docker | sh 适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源
+当然有时候不知道为什么daocloud响应不了，用阿里云的：
+用阿里云的：
+安装最新版本的Docker Engine
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Wed, 17 Feb 2021 02:42:18 &#43;0800" class="no-wrap"
+                title=" Wed, 17 Feb 2021 02:42:18 &#43;0800">
+                Wed, 17 Feb 2021 02:42:18 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1102,73 +1175,6 @@ sudo ./back.sh youImageName.img
               <relative-time datetime=" Sat, 06 Feb 2021 12:39:29 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 12:39:29 &#43;0800">
                 Sat, 06 Feb 2021 12:39:29 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A513/">linux smbclient命令参数及用法详解--linux访问samba共享资源命</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                smbclient命令属于samba套件，它提供一种命令行使用交互式方式访问samba服务器的共享资源。
-语法
-smbclient(选项)(参数)
-选项
--B&lt;ip地址&gt;：传送广播数据包时所用的IP地址； -d&lt;排错层级&gt;：指定记录文件所记载事件的详细程度； -E：将信息送到标准错误输出设备； -h：显示帮助； -i&lt;范围&gt;：设置NetBIOS名称范围； -I&lt;IP地址&gt;：指定服务器的IP地址； -l&lt;记录文件&gt;：指定记录文件的名称； -L：显示服务器端所分享出来的所有资源； -M&lt;NetBIOS名称&gt;：可利用WinPopup协议，将信息送给选项中所指定的主机； -n&lt;NetBIOS名称&gt;：指定用户端所要使用的NetBIOS名称； -N：不用询问密码； -O&lt;连接槽选项&gt;：设置用户端TCP连接槽的选项； -p&lt;TCP连接端口&gt;：指定服务器端TCP连接端口编号； -R&lt;名称解析顺序&gt;：设置NetBIOS名称解析的顺序； -s&lt;目录&gt;：指定smb.conf所在的目录； -t&lt;服务器字码&gt;：设置用何种字符码来解析服务器端的文件名称； -T&lt;tar选项&gt;：备份服务器端分享的全部文件，并打包成tar格式的文件； -U&lt;用户名称&gt;：指定用户名称； -w&lt;工作群组&gt;：指定工作群组名称。 参数
-smb服务器：指定要连接的smb服务器。
-实例
-列出某个IP地址所提供的共享文件夹
-smbclient -L 198.168.0.1 -U username%password
-像ftp客户端一样使用smbclient
-smbclient //192.168.0.1/tmp -U username%password
-执行smbclient命令成功后，进入smbclient环境，出现提示符：smb:/&gt;
-这里有许多命令和ftp命令相似，如cd 、lcd、get、megt、put、mput等。通过这些命令，我们可以访问远程主机的共享资源。
-直接一次性使用smbclient命令
-smbclient -c &ldquo;ls&rdquo; //192.168.0.1/tmp -U username%password
-和
-smbclient //192.168.0.1/tmp -U username%password smb:/&gt;ls 功能一样的。
-创建一个共享文件夹
-smbclient -c &ldquo;mkdir share1&rdquo; //192.168.0.1/tmp -U username%password
-如果用户共享//192.168.0.1/tmp的方式是只读的，会提示NT_STATUS_ACCESS_DENIED making remote directory /share1
-smbclient用法 :
-参　数： [网络资源] [网络资源]的格式为//服务器名称/资源分享名称。 [密码] 输入存取网络资源所需的密码。 -B&lt;IP地址&gt; 传送广播数据包时所用的IP地址。 -d&lt;排错层级&gt; 指定记录文件所记载事件的详细程度。 -E 将信息送到标准错误输出设备。 -h 显示帮助。 -i&lt;范围&gt; 设置NetBIOS名称范围。 -I&lt;IP地址&gt; 指定服务器的IP地址。 -l&lt;记录文件&gt; 指定记录文件的名称。 -L 显示服务器端所分享出来的所有资源。 -M&lt;NetBIOS名称&gt; 可利用WinPopup协议，将信息送给选项中所指定的主机。 -n&lt;NetBIOS名称&gt; 指定用户端所要使用的NetBIOS名称。 -N 不用询问密码。 -O&lt;连接槽选项&gt; 设置用户端TCP连接槽的选项。 -p&lt;TCP连接端口&gt; 指定服务器端TCP连接端口编号。 -R&lt;名称解析顺序&gt; 设置NetBIOS名称解析的顺序。 -s&lt;目录&gt; 指定smb.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 03:52:49 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 03:52:49 &#43;0800">
-                Sat, 06 Feb 2021 03:52:49 &#43;0800
               </relative-time>
             </div>
           </div>

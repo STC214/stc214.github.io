@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NOTE</title><link>https://stc214.github.io/</link><description>Recent content on NOTE</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Oct 2023 18:47:43 +0800</lastBuildDate><atom:link href="https://stc214.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>win11安装和使用wsl2挂载ext4分区</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/</link><pubDate>Wed, 11 Oct 2023 18:47:43 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/</guid><description>参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NOTE</title><link>https://stc214.github.io/</link><description>Recent content on NOTE</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 12 Oct 2023 13:37:19 +0800</lastBuildDate><atom:link href="https://stc214.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>网件6220刷机</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</link><pubDate>Thu, 12 Oct 2023 13:37:19 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</guid><description>参考网址 https://wanglu.info/2021/04/1401.html
+固件下载网址： https://www.right.com.cn/forum/thread-212965-1-1.html
+https://downloads.x-wrt.com/rom/
+刷不死鸟breed 1. 开启路由器telnet功能 在浏览器中输入：
+http://192.168.1.1/setup.cgi?todo=debug
+然后会看到Debug Enabled !字样，说明已经开启了Telnet连接；
+2. telnet登录路由器 命令：
+telnet 192.168.1.1
+输入路由器登录的用户名和密码;
+3. 进入临时目录，并下载 breed 固件 cd /tmp wget http://d.uniteyun.com/breed/breed-mt7621-r6220.bin
+4. 开始刷breed固件 执行命令：
+mtd_write write breed-mt7621-r6220.bin Bootloader
+会有提示：
+Unlocking Bootloader &amp;hellip;Writing from breed-mt7621-r6220.bin to Bootloader &amp;hellip; [w]
+最多几秒钟就完成了，出现最初登录进入时看到的命令行提示符
+5. 进入breed界面 按住RESET重启路由器，浏览器打开breed地址：
+http://192.168.1.1
+刷入固件 直接将
+xxx-factory-xxx.img
+从固件上传后刷入即可，设备会自动重启同时经历约两到三分钟后即可进入路由器设置页面
+x-wrt的网件固件进入地址是
+192.168.15.1
+根据需要设置固件即可</description></item><item><title>win11安装和使用wsl2挂载ext4分区</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/</link><pubDate>Wed, 11 Oct 2023 18:47:43 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/</guid><description>参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
 https://zhuanlan.zhihu.com/p/433386119
 https://zhuanlan.zhihu.com/p/475462241
 https://learn.microsoft.com/zh-cn/windows/wsl/faq

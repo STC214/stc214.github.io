@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">108</span>
+              <span class="Counter">109</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">108</span>
+      <span class="Counter ">109</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,80 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A501/">如何在Debian 9上安装Python 3.7？</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文：https://www.php.cn/python-tutorials-416979.html
+Python是世界上最流行的编程语言之一，是一种多功能的编程语言；它简单易学，可以使用它来完成我们想要的任何操作，编写小脚本，构建游戏，开发网站等等。而Python 3.7是Python语言的最新主要版本，下面本篇文章将介绍关于在Debian系统上如何安装Python 3.7版本，希望对大家有所帮助。
+在Debian上构建Python 3.7是一个相对简单的过程，不需要花费多长时间。
+1、首先安装构建Python源所需的包：
+$ sudo apt update
+$ sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+2、使用curl命令从python下载页下载所需版本的源代码
+下面的命令是下载Python 3.7.3版本：
+$ curl -O https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+如果下载不动最好是弄个魔法或者离线安装包吧
+3、下载完成后，使用tar命令解压缩：
+$ tar -xf Python-3.7.3.tar.xz
+4、导航到python源目录并运行configure脚本
+该configure脚本将执行许多检查，以确保系统上的所有依赖项都存在。
+$ cd Python-3.7.3
+$ ./configure &ndash;enable-optimizations
+说明：&ndash;enable-optimizations选项将通过运行多个测试来优化Python二进制文件，这将使构建过程变慢。
+5、运行make以启动构建过程：
+$ make -j 8
+为了缩短构建时间，需要根据处理器修改-j标志。如果不知道处理器的核心数量，可以通过键入nproc来找到它。本文以8个内核为例，则使用的是-j8标志。
+6、安装python二进制文件
+构建完成后，以具有sudo访问权限的用户身份运行以下命令，安装python二进制文件：
+$ sudo make altinstall
+注：不要使用标准make install，因为它将覆盖默认python3系统d的二进制文件。
+7、验证
+此时，Python 3.7已安装在Debian系统上并可以使用了。我们可以输入以下命令来验证一下：
+$ python3.7 &ndash;version
+输出
+Python 3.7.3
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Fri, 05 Feb 2021 22:07:34 &#43;0800" class="no-wrap"
+                title=" Fri, 05 Feb 2021 22:07:34 &#43;0800">
+                Fri, 05 Feb 2021 22:07:34 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1173,59 +1247,6 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/f
               <relative-time datetime=" Sat, 23 Jan 2021 15:18:36 &#43;0800" class="no-wrap"
                 title=" Sat, 23 Jan 2021 15:18:36 &#43;0800">
                 Sat, 23 Jan 2021 15:18:36 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8818%E6%97%A501/">Win10 开始菜单备份方法和工具</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://blog.csdn.net/pxmxx/article/details/88881281 每一次重装系统都要为一些常用的软件快捷方式添加到开始菜单界面,一个个的加比较烦人
-所以就找到了下面这款软件
-BackupSML
-官网： https://www.sordum.org/10997/backup-start-menu-layout-v1-4/
-这个官网可能要fq,所以就移到了网盘,下面有下载的链接
-下载:https://www.lanzous.com/i3l5lgb 密码:fgm2
-下面是教程:
-系统是64位的打开64位的软件
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Mon, 18 Jan 2021 18:27:06 &#43;0800" class="no-wrap"
-                title=" Mon, 18 Jan 2021 18:27:06 &#43;0800">
-                Mon, 18 Jan 2021 18:27:06 &#43;0800
               </relative-time>
             </div>
           </div>

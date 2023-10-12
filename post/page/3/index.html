@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">108</span>
+              <span class="Counter">109</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">108</span>
+      <span class="Counter ">109</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,60 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B46%E6%9C%8821%E6%97%A501/">Python中CSV文件读写</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                首先读写csv文件需要引入官方库
+import csv 本文使用的csv文件随便建立一个即可，使用wps等办公软件或者手撸一个utf-8格式的文件都可以 读文件： 普通编写的csv文件和wps、word编写的csv文件编码可能不同。
+按照习惯从空白文件编写的一般为utf-8编码。
+word之类的文字办公软件通常如果为中文的话。
+会选择gbk或者gb2312编码。
+这种时候读写时需要标注对应编码。
+f1 = open(&#39;py_ssv/test.csv&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) with f1: reader = csv.reader(f1) for i in reader: for j in i: print(j) print(type(j)) print(&#39;#&#39;*50) f1 = open(&#39;py_ssv/工作簿1.csv&#39;, &#39;r&#39;, encoding=&#39;gbk&#39;) with f1: reader = csv.reader(f1) for i in reader: for j in i: print(j) print(type(j)) 写文件： 使用csv.writer.writerow可以写一行，通过可迭代的字典或者列表等对象形式，每个元素占用一个格子。
+使用csv.writer.writerow可以写多行，通过可迭代的字典或者列表等对象形式，每一行的元素必须是可迭代对象，可迭代对象中的每个元素占一格。每一个可迭代对象占一行。
+nms = [[1, 2, 3], [7, 8, 9], [10, 11, 12]] f = open(&#39;py_ssv/工作簿1.csv&#39;, &#39;w&#39;,encoding=&#39;utf-8&#39;,newline=&#39;&#39;) with f: writer = csv.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 21 Jun 2021 18:21:57 &#43;0800" class="no-wrap"
+                title=" Mon, 21 Jun 2021 18:21:57 &#43;0800">
+                Mon, 21 Jun 2021 18:21:57 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1106,73 +1160,6 @@ openwrt系统的话这么操作是不可以的 需要先备份boot分区内的cm
               <relative-time datetime=" Tue, 20 Apr 2021 18:54:12 &#43;0800" class="no-wrap"
                 title=" Tue, 20 Apr 2021 18:54:12 &#43;0800">
                 Tue, 20 Apr 2021 18:54:12 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B43%E6%9C%8819%E6%97%A504/">在Ubuntu 20.04系统上安装Cinnamon桌面环境的方法</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://ywnz.com/linuxmh/7348.html
-本文介绍在Ubuntu 20.04系统上安装Cinnamon桌面环境（Cinnamon Desktop Environment）的方法。Cinnamon桌面布局与Gnome 2相似，并通过易于使用和舒适的桌面体验使用户感到宾至如归。
-前言
-Cinnamon是X Window系统的免费使用的桌面环境，最初是从GNOME桌面派生的，它是Linux桌面的最佳桌面环境之一，该桌面环境旨在实现速度、灵活性和高级创新功能，具有基于GNOME核心应用程序的X-Apps。
-Cinnamon Desktop Environment由许多较小的相互关联的项目组成：
-Cinnamon：这是Cinnamon的“shell”，可提供用户界面，例如面板、菜单等。
-CJS：它通过GObject Introspection提供对GNOME库的绑定。
-Cinnamon Control Center：从GNOME控制中心派生的Cinnamon设置中的Cinnamon官方控制中心。
-Cinnamon Desktop：这是GNOME桌面的一个分支，为Cinnamon提供了某些有用的资源。
-MDM：Cinnamon显示管理器。
-Cinnamon Menus：它包含libcinnamon-menu，Cinnamon菜单的布局配置文件以及一个简单的菜单编辑器。
-Muffin：Cinnamon的窗口管理器。
-Nemo：从Nautilus分叉的Cinnamon的文件管理器。
-Cinnamon Screensaver：长时间保持会话空闲时看到的屏幕锁。
-Cinnamon Session：负责启动Cinnamon会议。
-Cinnamon Settings Daemon：它提供了许多会话范围的服务和功能，需要长时间运行。
-Cinnamon Spices：修改您的Cinnamon桌面环境，并使用Cinnamon Spices扩展其功能。
-Cinnamon Translations：Cinnamon翻译是一个包装，其中包含Cinnamon中使用的翻译。
-在Ubuntu 20.04上安装Cinnamon桌面环境
-操作系统存储库中提供了适用于Ubuntu 20.04的Cinnamon Desktop Environment软件包，您只需要更新缓存并开始安装即可：
-sudo apt update sudo apt install cinnamon-desktop-environment 有数十个软件包要安装，如果您的互联网速度不是很好，您可能需要耐心等待才行，会返回如下信息，请按y键安装：
-mate-icon-theme mate-themes media-player-info mesa-utils mesa-va-drivers mesa-vdpau-drivers metacity-common muffin muffin-common nautilus-extension-brasero nemo nemo-data nemo-fileroller netpbm ocl-icd-libopencl1 patchutils pidgin pidgin-data policykit-1-gnome python-backports.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Fri, 19 Mar 2021 21:46:01 &#43;0800" class="no-wrap"
-                title=" Fri, 19 Mar 2021 21:46:01 &#43;0800">
-                Fri, 19 Mar 2021 21:46:01 &#43;0800
               </relative-time>
             </div>
           </div>
