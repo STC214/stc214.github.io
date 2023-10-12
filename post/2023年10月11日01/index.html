@@ -21,6 +21,7 @@
   content="参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
 https://zhuanlan.zhihu.com/p/433386119
 https://zhuanlan.zhihu.com/p/475462241
+https://learn.microsoft.com/zh-cn/windows/wsl/faq
 1.开启环境 打开win11设置 搜索控制面板 程序-开启或关闭win功能 勾选 ：
 Hyper-V 适用于Linux的Windows子系统
 根据提示重启
@@ -37,8 +38,7 @@ wmic diskdrive list breif
 取消挂载 wsl &amp;ndash;unmount [DeviceID] 命令后面无需跟上&amp;ndash;partition命令
 4. 可能会用到的命令 4.1 升级WSL内核 wsl &amp;ndash;update
 4.2 重启WSL内核 内核升级完成以后，电脑重启才会生效，这个可以用命令重启
-wsl -l -shutdown
-4.3 查看本系统WSL情况 wsl -l -v" />
+wsl -l -shutdown" />
 <meta name="keywords"
   content='blog, google analytics' />
 <meta name="robots" content="noodp" />
@@ -51,6 +51,7 @@ wsl -l -shutdown
   content="参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
 https://zhuanlan.zhihu.com/p/433386119
 https://zhuanlan.zhihu.com/p/475462241
+https://learn.microsoft.com/zh-cn/windows/wsl/faq
 1.开启环境 打开win11设置 搜索控制面板 程序-开启或关闭win功能 勾选 ：
 Hyper-V 适用于Linux的Windows子系统
 根据提示重启
@@ -67,8 +68,7 @@ wmic diskdrive list breif
 取消挂载 wsl &amp;ndash;unmount [DeviceID] 命令后面无需跟上&amp;ndash;partition命令
 4. 可能会用到的命令 4.1 升级WSL内核 wsl &amp;ndash;update
 4.2 重启WSL内核 内核升级完成以后，电脑重启才会生效，这个可以用命令重启
-wsl -l -shutdown
-4.3 查看本系统WSL情况 wsl -l -v" />
+wsl -l -shutdown" />
 <meta name="twitter:site" content="https://stc214.github.io/" />
 <meta name="twitter:creator" content="" />
 <meta name="twitter:image"
@@ -81,6 +81,7 @@ wsl -l -shutdown
   content="参考网址 https://blog.csdn.net/weixin_39755625/article/details/111142526
 https://zhuanlan.zhihu.com/p/433386119
 https://zhuanlan.zhihu.com/p/475462241
+https://learn.microsoft.com/zh-cn/windows/wsl/faq
 1.开启环境 打开win11设置 搜索控制面板 程序-开启或关闭win功能 勾选 ：
 Hyper-V 适用于Linux的Windows子系统
 根据提示重启
@@ -97,8 +98,7 @@ wmic diskdrive list breif
 取消挂载 wsl &amp;ndash;unmount [DeviceID] 命令后面无需跟上&amp;ndash;partition命令
 4. 可能会用到的命令 4.1 升级WSL内核 wsl &amp;ndash;update
 4.2 重启WSL内核 内核升级完成以后，电脑重启才会生效，这个可以用命令重启
-wsl -l -shutdown
-4.3 查看本系统WSL情况 wsl -l -v" />
+wsl -l -shutdown" />
 <meta property="og:url" content="https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8811%E6%97%A501/" />
 <meta property="og:site_name" content="win11安装和使用wsl2挂载ext4分区" />
 <meta property="og:image"
@@ -210,9 +210,9 @@ wsl -l -shutdown
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Thu, 12 Oct 2023 07:49:23 &#43;0800"
+                  Modified <relative-time datetime="Thu, 12 Oct 2023 09:52:50 &#43;0800"
                     class="no-wrap">
-                    Thu, 12 Oct 2023 07:49:23 &#43;0800</relative-time>
+                    Thu, 12 Oct 2023 09:52:50 &#43;0800</relative-time>
                   
                 </div>
               </div>
@@ -242,7 +242,7 @@ wsl -l -shutdown
                         </div>
                       </div>
                     </details-menu>
-                      348 Words
+                      434 Words
                     
 
                   </div>
@@ -258,7 +258,8 @@ wsl -l -shutdown
 <blockquote>
 <p><a href="https://blog.csdn.net/weixin_39755625/article/details/111142526">https://blog.csdn.net/weixin_39755625/article/details/111142526</a><br>
 <a href="https://zhuanlan.zhihu.com/p/433386119">https://zhuanlan.zhihu.com/p/433386119</a><br>
-<a href="https://zhuanlan.zhihu.com/p/475462241">https://zhuanlan.zhihu.com/p/475462241</a></p>
+<a href="https://zhuanlan.zhihu.com/p/475462241">https://zhuanlan.zhihu.com/p/475462241</a><br>
+<a href="https://learn.microsoft.com/zh-cn/windows/wsl/faq">https://learn.microsoft.com/zh-cn/windows/wsl/faq</a></p>
 </blockquote>
 <h1 id="1开启环境">1.开启环境</h1>
 <p>打开win11设置
@@ -314,6 +315,21 @@ wsl &ndash;install -d Ubuntu</p>
 <blockquote>
 <p>wsl -l -v</p>
 </blockquote>
+<h3 id="启动">启动</h3>
+<p>打开CMD，输入</p>
+<blockquote>
+<p>bash</p>
+</blockquote>
+<h3 id="2关闭">2.关闭</h3>
+<p>同样是打开CMD，输入</p>
+<blockquote>
+<p>wsl &ndash;list &ndash;verbose</p>
+</blockquote>
+<p>查看WSL的状况</p>
+<blockquote>
+<p>wsl -t [要关闭的WSL的名字]</p>
+</blockquote>
+<p>关闭，在输入第一条命令查看状态是否由Running变为Stopped</p>
 </article>
               </div>
             </div>
