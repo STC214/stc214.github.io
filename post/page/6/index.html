@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">109</span>
+              <span class="Counter">110</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">109</span>
+      <span class="Counter ">110</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,63 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A514/">使用 rpi-backup 脚本进行备份</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文链接：https://shumeipai.nxez.com/2020/10/28/backup-the-raspberry-pi-system-as-an-img-file.html
+只进行部分提取
+最好的树莓派系统备份解决方案，解决了备份文件体积大，恢复也方便，这个脚本备份文件的体积为 已用空间×1.2，我的系统占用了不到 10G 的空间，备份文件大概是 11G 多一些，这相比于全盘备份的 128G 已经小太多了，在使用7z进行极限压缩后甚至只有 1.7G，进行日常归档备份完全可以接受。
+该脚本进行系统恢复时也很方便，将 img 文件像安装系统一样刷入 tf卡 后对分区进行简单拓展后即可。接下来就来演示怎么使用该脚本进行备份。 备份演示
+首先 clone 该脚本：
+git clone https://github.com/nanhantianyi/rpi-backup.git &amp;&amp; cd rpi-backup
+然后要安装依赖项，这里我用的是 Manjaro-arm 系统。在 Manjaro 系统中该脚本无法自动安装依赖项，需要运行这行命令 sudo pacman -Sy &amp;&amp; pacman -S dosfstools parted multipath-tools rsync 来安装依赖。 如果你是用 apt 进行安装软件的系统，可以跳过这一步，该脚本会自动安装依赖项。
+然后运行
+sudo ./back.sh youImageName.img
+该脚本就会开始备份，如果不指定文件名则会自动命名。 如果你的内存卡剩余空间不够的话就挂载 U 盘，将 img 直接保存在 U 盘中，要注意U盘务必挂载到 /media 目录下，不要挂载到 /mnt，因为脚本会对 /mnt 目录进行备份操作，会导致递归性的备份，总之就是不要挂载到 /mnt 目录，切记！
+脚本运行结束后就得到了备份镜像。 备份的恢复
+备份镜像恢复可以直接用烧录软件直接烧录，这里我使用的是 Etcher，我也推荐大家使用这个软件，站内有这个软件的文章：使用 Etcher 给 SD 卡安装树莓派系统，界面简洁明了，选择镜像，选择要刷入的磁盘，Flash！
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Sat, 06 Feb 2021 12:39:29 &#43;0800" class="no-wrap"
+                title=" Sat, 06 Feb 2021 12:39:29 &#43;0800">
+                Sat, 06 Feb 2021 12:39:29 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1124,65 +1181,6 @@ Windows 10
               <relative-time datetime=" Sat, 06 Feb 2021 01:24:25 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 01:24:25 &#43;0800">
                 Sat, 06 Feb 2021 01:24:25 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A504/">MacOS Docker 安装</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文链接：https://www.runoob.com/docker/macos-docker-install.html
-使用 Homebrew 安装
-macOS 我们可以使用 Homebrew 来安装 Docker。
-Homebrew 的 Cask 已经支持 Docker for Mac，因此可以很方便的使用 Homebrew Cask 来进行安装：
-$ brew install &ndash;cask &ndash;appdir=/Applications docker
-==&gt; Creating Caskroom at /usr/local/Caskroom
-==&gt; We&rsquo;ll set permissions properly so we won&rsquo;t need sudo in the future
-Password: # 输入 macOS 密码
-==&gt; Satisfying dependencies
-==&gt; Downloading https://download.docker.com/mac/stable/21090/Docker.dmg
-######################################################################## 100.0%
-==&gt; Verifying checksum for Cask docker
-==&gt; Installing Cask docker
-==&gt; Moving App &lsquo;Docker.app&rsquo; to &lsquo;/Applications/Docker.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 01:23:24 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 01:23:24 &#43;0800">
-                Sat, 06 Feb 2021 01:23:24 &#43;0800
               </relative-time>
             </div>
           </div>

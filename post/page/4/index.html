@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">109</span>
+              <span class="Counter">110</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">109</span>
+      <span class="Counter ">110</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,65 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A501/">树莓派使用移动硬盘当系统盘启动需要注意设置的一个点</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                1. 系统刷入 树莓派更新eeprom和frameware固件之后,直接按照刷入sd卡的方式将目标系统刷入移动硬盘即可（PS:清空警告）
+官方刷写工具： https://downloads.raspberrypi.org/imager/imager_latest.exe
+eeprom 最新版：https://github.com/raspberrypi/rpi-eeprom
+此项可以直接通过解压对应的启动方式所代表的文件夹内丢入sd卡等后插入树莓派开机等几秒即可完成刷写和设置
+frameware最新版：https://github.com/raspberrypi/firmware/releases
+对于某些无法直接开机的系统可以直接将解压后的boot文件夹内的文件全部覆盖到boot分区内
+2.一些细节 如果刷入后系统可以直接开启则无需其他操作。
+如果刷入后系统无法正常启动的话Linux系统只需要按照上述方法解压frameware内的boot文件夹并复制其中所有文件到boot分区即可
+openwrt系统的话这么操作是不可以的 需要先备份boot分区内的cmdline.txt
+之后打开将其中启动字段修改
+原 root=/dev/mm******03
+改 root=/dev/sda2
+其他内容原封不动即可
+具体是sda还是sdb根据树莓派启动时具体提示来写
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Tue, 20 Apr 2021 18:54:12 &#43;0800" class="no-wrap"
+                title=" Tue, 20 Apr 2021 18:54:12 &#43;0800">
+                Tue, 20 Apr 2021 18:54:12 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1146,62 +1205,6 @@ opkg update opkg install samba36-server 2. 配置全局共享参数 配置文件
               <relative-time datetime=" Thu, 18 Feb 2021 14:57:05 &#43;0800" class="no-wrap"
                 title=" Thu, 18 Feb 2021 14:57:05 &#43;0800">
                 Thu, 18 Feb 2021 14:57:05 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8817%E6%97%A503/">使用Portainer管理Docker容器</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                官网：https://portainer.io/Portainer
-Portainer和Shipyard一样，同样是一个给予Swarm技术衍生出来的负责管理Docker容器的Web UI界面. 演示Live： Github地址： 官方文档：https://portainer.readthedocs.io/ 部署教程：https://portainer.readthedocs.io/en/latest/deployment.html Installation
-首先你得安装好docker,这个可以看看我之前的那篇文章.
-我们创建一个属于我们自己的数据卷 docker volume create portainer_data
-运行容器
-docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer View On http://serverip:9000 没错 就是这么简单 使用
-首次登录会让你设置一个管理员账号 [图片上传失败&hellip;(image-f17c-1510939718923)]
-接着会询问你管理的主机是本地的Local还是远程的Remote [图片上传失败&hellip;(image-c7c08-1510939718923)]
-然后就进入到主界面 [图片上传失败&hellip;(image-4ddab3-1510939718923)]
-可以尝试体验一下这个Portainer平台.
-换源：选择Registries-&gt;点击Add registry-&gt;Custom registry 输入你的URL镜像源即可. 原文链接：https://www.jianshu.com/p/aff1512746b4
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Wed, 17 Feb 2021 02:58:25 &#43;0800" class="no-wrap"
-                title=" Wed, 17 Feb 2021 02:58:25 &#43;0800">
-                Wed, 17 Feb 2021 02:58:25 &#43;0800
               </relative-time>
             </div>
           </div>
