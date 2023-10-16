@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on NOTE</title><link>https://stc214.github.io/post/</link><description>Recent content in Posts on NOTE</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 14 Oct 2023 18:49:02 +0800</lastBuildDate><atom:link href="https://stc214.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>光猫桥接模式下,通过路由器访问光猫.简单设置</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8814%E6%97%A501/</link><pubDate>Sat, 14 Oct 2023 18:49:02 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8814%E6%97%A501/</guid><description>原帖地址 已测试有效 https://www.right.com.cn/forum/thread-400002-1-1.html
 https://www.right.com.cn/forum/thread-399853-1-1.html
-当前固件版本 R23.9.18 / LuCI Master (git-23.262.38442-90de3e8)</description></item><item><title>网件6220刷机</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</link><pubDate>Thu, 12 Oct 2023 13:37:19 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</guid><description>参考网址 https://wanglu.info/2021/04/1401.html
+当前固件版本 R23.9.18 / LuCI Master (git-23.262.38442-90de3e8)
+建立端口后需将防火墙作用域新建的wan0</description></item><item><title>网件6220刷机</title><link>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</link><pubDate>Thu, 12 Oct 2023 13:37:19 +0800</pubDate><guid>https://stc214.github.io/post/2023%E5%B9%B410%E6%9C%8812%E6%97%A501/</guid><description>参考网址 https://wanglu.info/2021/04/1401.html
 固件下载网址： https://www.right.com.cn/forum/thread-212965-1-1.html
 https://downloads.x-wrt.com/rom/
 刷不死鸟breed 1. 开启路由器telnet功能 在浏览器中输入：
