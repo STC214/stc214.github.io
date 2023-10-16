@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">110</span>
+              <span class="Counter">111</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">110</span>
+      <span class="Counter ">111</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,87 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A503/">树莓派入门系列01</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文：
+https://blog.csdn.net/zhshh123/article/details/85051969
+下载固件装机步骤
+简述 安装官方镜像 下载镜像 格式化内存卡 烧录镜像到内存卡 启动树莓派 无显示器启动方式 安装Centos镜像 下载镜像 格式化内存卡 烧录镜像到内存卡 启动树莓派 设置 简述
+本节我们将讲解树莓派如何烧录镜像，这也是使用树莓派的第一步。
+我们这次分别讲解Raspbian官方系统和Centos系统的安装。
+树莓派还有很多版本的系统，可以查看http://shumeipai.nxez.com/download#os。
+安装官方镜像
+下载镜像
+官方镜像下载地址：https://www.raspberrypi.org/downloads/raspbian/
+下载界面
+这里有三种版本的镜像：
+1.带图形桌面和推荐软件：Raspbian Stretch with desktop and recommended software
+2.带图形桌面：Raspbian Stretch with desktop
+3.最简版：Raspbian Stretch Lite
+大家可以根据需要选择相应的版本，这里我们先选择第二种。
+格式化内存卡
+SD Formatter 4.0 软件 下载地址：https://pan.baidu.com/s/1l54wL7f8TjQE1nll0bC4Qg
+将内存卡放入读卡器，插入电脑。
+打开SD Formatter软件，选择内存卡，点击格式化。
+格式化内存卡
+一直确定，直到格式化成功。
+格式化成功
+注：这也是内存卡刻录镜像后，恢复内存卡原大小的方法。
+烧录镜像到内存卡
+Win32DiskImager软件 下载地址：https://pan.baidu.com/s/1Qt8km7Rdyqbk-uQp8AhSWg
+打开Win32DiskImager软件，Image File处选择刚刚下载的img格式镜像文件，并且Device处选择内存卡的盘符，点击write开始烧录。
+烧录镜像
+在烧录完成后，如果系统提示格式化内存卡，点击取消，不要进行格式化。直接桌面右下角弹出内存卡。
+启动树莓派
+如果你有HDMI接口显示器的话，可以把内存卡直接插到树莓派上，连接显示器鼠标，直接通电启动。
+如果你没有显示器的话，可以参考下一步，采用无显示器的方式启动。
+默认账户：
+用户名pi，密码raspberry 用户名root，密码raspberry
+无显示器启动方式
+在内存卡boot盘中新建一个ssh的空文件，为了打开ssh功能。 在内存卡boot盘中新建一个wpa_supplicant.conf文本文件，写入wifi配置： country=CN ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev update_config=1 network={ ssid=&#34;你的无线网名称&#34; psk=&#34;你的无线网密码&#34; key_mgmt=WPA-PSK priority=1 } 如果没有路由器可以手机开热点，让树莓派连接热点，手机上看树莓派的ip。 如果有路由器，直接登录路由器管理界面，查看树莓派ip。 在这里插入图片描述 使用xshell，直接连接树莓派，使用默认账户登录。 安装Centos镜像
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Fri, 05 Feb 2021 22:39:14 &#43;0800" class="no-wrap"
+                title=" Fri, 05 Feb 2021 22:39:14 &#43;0800">
+                Fri, 05 Feb 2021 22:39:14 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1194,69 +1275,6 @@ Github Action自动签到抽奖天翼云盘，每日100+MB
               <relative-time datetime=" Fri, 29 Jan 2021 22:57:38 &#43;0800" class="no-wrap"
                 title=" Fri, 29 Jan 2021 22:57:38 &#43;0800">
                 Fri, 29 Jan 2021 22:57:38 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8823%E6%97%A502/">Conda 换清华源</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                关键命令
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ 方法 https://blog.csdn.net/qq_43198568/article/details/105626024 Anaconda之conda换国内源
-前言 方法一：使用 Anaconda Navigator 换源（最简单） 方法二：使用 Anaconda Prompt 换源（最常用） 方法三：修改 .condarc 文件（最强硬） 前言
-我知道，网上的教 conda 换国内源的教程数不胜数，但是很多都是一个方法翻来覆去的讲。
-本文，一共讲述的 conda 换源的三种方法，非常简单易懂。
-方法一：使用 Anaconda Navigator 换源（最简单）
-打开 Anaconda Navigator
-在这里插入图片描述
-出现如下界面，点击 Channels
-在这里插入图片描述
-点击 Add…，输入 https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/，点击 Enter
-在这里插入图片描述
-在这里插入图片描述
-相同的操作，输入 https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 与 https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/，最终得到如下效果，并点击 Update channels
-在这里插入图片描述
-等待更新完毕即可。
-方法二：使用 Anaconda Prompt 换源（最常用）
-打开 Anaconda Prompt
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 23 Jan 2021 15:56:45 &#43;0800" class="no-wrap"
-                title=" Sat, 23 Jan 2021 15:56:45 &#43;0800">
-                Sat, 23 Jan 2021 15:56:45 &#43;0800
               </relative-time>
             </div>
           </div>

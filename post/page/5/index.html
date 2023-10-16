@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">110</span>
+              <span class="Counter">111</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">110</span>
+      <span class="Counter ">111</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,56 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A501/">openwrt设置samba</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                1. 安装Samba服务(当前步骤最新版固件一般都可以省略) 执行如下命令安装Samba服务：
+opkg update opkg install samba36-server 2. 配置全局共享参数 配置文件路径为
+/etc/samba/smb.conf.template
+将 [global] 中的 invalid users = root 注掉，像下面的样子：
+[global] netbios name = |NAME| display charset = |CHARSET| interfaces = |INTERFACES| server string = |DESCRIPTION| unix charset = |CHARSET| workgroup = |WORKGROUP| browseable = yes deadtime = 30 domain master = yes encrypt passwords = true enable core files = no guest account = nobody guest ok = yes # invalid users = root local master = yes load printers = no map to guest = Bad User max protocol = SMB2 min receivefile size = 16384 null passwords = yes obey pam restrictions = yes os level = 20 passdb backend = smbpasswd preferred master = yes printable = no security = user smb encrypt = disabled smb passwd file = /etc/samba/smbpasswd socket options = TCP_NODELAY IPTOS_LOWDELAY syslog = 2 use sendfile = yes writeable = yes 3.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Thu, 18 Feb 2021 14:57:05 &#43;0800" class="no-wrap"
+                title=" Thu, 18 Feb 2021 14:57:05 &#43;0800">
+                Thu, 18 Feb 2021 14:57:05 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1125,55 +1175,6 @@ deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui 至此，树
               <relative-time datetime=" Sat, 06 Feb 2021 23:31:49 &#43;0800" class="no-wrap"
                 title=" Sat, 06 Feb 2021 23:31:49 &#43;0800">
                 Sat, 06 Feb 2021 23:31:49 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%886%E6%97%A515/">LINUX下挂载(mount)查看树莓派镜像文件</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文： https://blog.csdn.net/bona020/article/details/77882812
-fdisk -lu 20170507.img 可查看扇区信息 62914560=扇区大小*主分区起始扇区
-sudo mount -t ext4 -o loop,offset=72004560 rpi-20140907.img /mnt/loop/
-如果要把映像内容复制到别的地方（以便作为nfs启动的rootfs），应该用cp -ra，不要只用cp
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Sat, 06 Feb 2021 18:54:19 &#43;0800" class="no-wrap"
-                title=" Sat, 06 Feb 2021 18:54:19 &#43;0800">
-                Sat, 06 Feb 2021 18:54:19 &#43;0800
               </relative-time>
             </div>
           </div>

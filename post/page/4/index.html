@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">110</span>
+              <span class="Counter">111</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">110</span>
+      <span class="Counter ">111</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,74 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B44%E6%9C%8820%E6%97%A502/">docker修改镜像存放目录三方法（推荐1）</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原文链接：https://www.cnblogs.com/zmdComeOn/p/11977649.html
+docker info ：查看docker的存储等相关信息。
+将路径修改至挂载磁盘中
+前提：磁盘已挂载成功
+方法一：
+1、停止docker 服务
+service docker stop 2、备份数据到新的存放路径
+cp -r /var/lib/docker/* /mnt/docker 3、备份 /var/lib/docker 路径
+mv /var/lib/docker /var/lib/dockerbak} 4、创建软连接
+ln -s /mnt/docker /var/lib/docker 5、启动docker
+service docker start 如果docker完整，并可用，可删除原来的备份文件
+此方法，启动Docker时发现存储目录依旧是/var/lib/docker，但是实际上是存储在数据盘的，你可以在数据盘上看到容量变化。
+方法二：
+关闭docker
+在 Ubuntu 中的位置是：/etc/default/docker，在 CentOS 中的位置是：/etc/sysconfig/docker。
+在OPTIONS加上下面那段代码： &ndash;graph=/local/docker 新的存储目录
+OPTIONS=&rsquo;&ndash;selinux-enabled &ndash;log-driver=journald &ndash;signature-verification=false &ndash;graph=/local/docker &ndash;insecure-registry=0.0.0.0/0'
+重启docker后，docker info 就可以看到目录换了
+方法三：（建议：装好docker后及时修改默认路径，不要等到应用级的镜像pull进来后再去修改默认存储路径，不然各种错误让你应接不暇，这点我深有体会）
+最好是先关闭docker再进行操作
+如果docker是1.12或以上的版本，可以修改（或新建）daemon.json文件。修改后会立即生效，不需重启docker服务。
+vim /etc/docker/daemon.json { &#34;graph&#34;: &#34;/new-path/docker&#34; } 注意：如果之前有镜像和对应的数据，执行完这一步，默认存储路径是改掉了，但是会导致之前的镜像找不到，可以把/var/lib/docker/目录下的所有文件 cp -R 到挂载有数据分区的目录下 即：cp -R /var/lib/docker/* /data/tootls/docker/
+再测试下镜像是否能找到
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Tue, 20 Apr 2021 19:10:12 &#43;0800" class="no-wrap"
+                title=" Tue, 20 Apr 2021 19:10:12 &#43;0800">
+                Tue, 20 Apr 2021 19:10:12 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1155,56 +1223,6 @@ curl -fsSL https://get.docker.com | bash -s docker &ndash;mirror Aliyun
               <relative-time datetime=" Thu, 18 Feb 2021 16:15:35 &#43;0800" class="no-wrap"
                 title=" Thu, 18 Feb 2021 16:15:35 &#43;0800">
                 Thu, 18 Feb 2021 16:15:35 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%8818%E6%97%A501/">openwrt设置samba</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                1. 安装Samba服务(当前步骤最新版固件一般都可以省略) 执行如下命令安装Samba服务：
-opkg update opkg install samba36-server 2. 配置全局共享参数 配置文件路径为
-/etc/samba/smb.conf.template
-将 [global] 中的 invalid users = root 注掉，像下面的样子：
-[global] netbios name = |NAME| display charset = |CHARSET| interfaces = |INTERFACES| server string = |DESCRIPTION| unix charset = |CHARSET| workgroup = |WORKGROUP| browseable = yes deadtime = 30 domain master = yes encrypt passwords = true enable core files = no guest account = nobody guest ok = yes # invalid users = root local master = yes load printers = no map to guest = Bad User max protocol = SMB2 min receivefile size = 16384 null passwords = yes obey pam restrictions = yes os level = 20 passdb backend = smbpasswd preferred master = yes printable = no security = user smb encrypt = disabled smb passwd file = /etc/samba/smbpasswd socket options = TCP_NODELAY IPTOS_LOWDELAY syslog = 2 use sendfile = yes writeable = yes 3.
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Thu, 18 Feb 2021 14:57:05 &#43;0800" class="no-wrap"
-                title=" Thu, 18 Feb 2021 14:57:05 &#43;0800">
-                Thu, 18 Feb 2021 14:57:05 &#43;0800
               </relative-time>
             </div>
           </div>
