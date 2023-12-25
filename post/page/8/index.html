@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">111</span>
+              <span class="Counter">112</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -467,7 +467,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">111</span>
+      <span class="Counter ">112</span>
     </a>
   </nav>
 </div>
@@ -593,6 +593,86 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://stc214.github.io/post/2021%E5%B9%B42%E6%9C%885%E6%97%A504/">树莓派入门系列02</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                原帖链接：https://blog.csdn.net/zhshh123/article/details/85063916
+系统备份步骤
+简述 全卡备份 创建img文件 使用软件备份 压缩备份 原理 备份流程 安装工具 存储镜像到U盘 创建img文件 对img文件分区 格式化img文件中的分区 备份boot分区 备份root分区 清理工作 完整的压缩备份脚本 简述
+我们经常需要复制已经部署好的树莓派系统，批量复制到更多的树莓派上。或者当我们只有一张内存卡时，我们希望随时更换不同的系统，希望备份当前的系统。
+树莓派系统的备份可以分为两种，一种是简单的全卡备份，备份出来的镜像大小与sd卡容量一致，另一种就是压缩备份，备份出来的镜像大小与系统实际占用的大小一致。
+全卡备份
+全卡备份是最简单的一种，直接使用我们烧录镜像的软件——Win32DiskImager即可。
+但是备份出来的镜像大小会和sd卡的容量一致，如果sd卡16G，备份的镜像也是16G。所有请谨慎选择全卡备份。
+创建img文件
+在硬盘上创建一img后缀的空文件，并保证该分区的可用容量大于sd卡的容量。
+在这里插入图片描述 在这里插入图片描述
+使用软件备份
+选择刚刚创建的空文件，选择要备份的sd卡盘符，点击read。
+在这里插入图片描述
+压缩备份
+压缩备份比全卡备份要复杂，从网上找到了一个可以直接使用的脚本，直接安利给大家。
+【终极解决方案】树莓派RaspberryPi系统备份Image的制作：http://www.360doc.com/content/17/0805/03/40492717_676751545.shtml
+原理
+树莓派的官方系统是基于Debian的，主要是两个分区：启动分区（boot）、根分区（root）。
+boot分区：fat32格式，挂载点/boot，存放一些系统启动需要的基本文件，包括内核、驱动、firmware、启动脚本等。
+root分区：ext4格式，挂载点/，存放一些安装的软件和库文件、系统配置、用户数据等。
+另外当系统启动时会自动生成和挂载一些必要的其他文件夹，包括temfs、sysfs、proc、debugfs、configfs等（使用mount可以看到他们），这些都是虚拟文件系统，由操作系统自动管理，备份时不需要关注。
+所以对于树莓派系统的备份，主要就是对boot、root分区的备份。
+官方镜像也是包含这两个分区，并通过烧录的操作，将这两个分区写入sd卡。首次烧录完毕后，不论你的sd卡容量为多少，启动后的boot和/分区大小都是固定的，然后使用raspi-config，扩展root分区的大小为整张sd卡的大小。
+官方镜像
+备份流程
+读取当前系统boot、root分区的大小 创建img文件，并根据当前系统大小，对img文件分区和格式化，分出fat32格式的boot分区、ext4格式的root分区。 备份boot、root分区 和原来一样的方式，烧录备份的系统到sd卡，正常使用。 安装工具
+rsync：镜像备份工具
+dosfstools：fat32分区格式化工具
+parted &amp; kpartx：虚拟磁盘工具
+pv：显示进度
+sudo apt-get -y install rsync dosfstools parted kpartx pv 存储镜像到U盘
+img备份完成后反正是要拷贝出来的，所以直接将img文件创建在U盘上。并且避免了备份时自己备份自己，可能带来的问题。
+下面这段脚本，可以直接带上u盘参数，也可以直接默认/dev/sda1。
+#mount USB device usbmount=/mnt mkdir -p $usbmount if [ -z $1 ]; then echo &#34;no argument, assume the mount device is /dev/sda1 ?
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/note">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                Note
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                笔记
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Fri, 05 Feb 2021 22:46:52 &#43;0800" class="no-wrap"
+                title=" Fri, 05 Feb 2021 22:46:52 &#43;0800">
+                Fri, 05 Feb 2021 22:46:52 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1206,75 +1286,6 @@ schedule其实就只是个定时器。在while True死循环中，schedule.run_p
               <relative-time datetime=" Wed, 03 Feb 2021 01:14:03 &#43;0800" class="no-wrap"
                 title=" Wed, 03 Feb 2021 01:14:03 &#43;0800">
                 Wed, 03 Feb 2021 01:14:03 &#43;0800
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://stc214.github.io/post/2021%E5%B9%B41%E6%9C%8829%E6%97%A501/">Github Action自动签到抽奖天翼云盘，每日100&#43;MB</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                原文：https://haoduck.com/462.html
-使用方法
-打开 https://github.com/peng4740/Cloud189Checkin-Actions
-一 Fork此仓库
-Github Action自动签到抽奖天翼云盘，每日100+MB
-二 设置账号密码
-添加名为USER、PWD的变量
-值分别为账号、密码
-多账号时账号密码一行一个一一对应
-示例：
-USER
-123456 24678 PWD
-cxkjntm jntmcxk Github Action自动签到抽奖天翼云盘，每日100+MB
-Github Action自动签到抽奖天翼云盘，每日100+MB
-Github Action自动签到抽奖天翼云盘，每日100+MB
-三 启用Action
-1 点击Action，再点击I understand my workflows, go ahead and enable them
-2 修改任意文件后提交一次
-Github Action自动签到抽奖天翼云盘，每日100+MB
-四 查看运行结果
-Actions &gt; Cloud189Checkin &gt; build
-能看到如下图所示，表示成功（已经看不到了。。只能通过是否自动签到判断）
-Github Action自动签到抽奖天翼云盘，每日100+MB
-此后，将会在每天10:00自动运行
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/note">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                Note
-              </a>
-              
-              <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                笔记
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Fri, 29 Jan 2021 22:57:38 &#43;0800" class="no-wrap"
-                title=" Fri, 29 Jan 2021 22:57:38 &#43;0800">
-                Fri, 29 Jan 2021 22:57:38 &#43;0800
               </relative-time>
             </div>
           </div>
